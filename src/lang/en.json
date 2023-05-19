@@ -1,3 +1,11 @@
 {
-    "header": ""
+    "header": {
+        "book": "Book",
+        "bookingConfirm": "Booking Confirm",
+        "usageHistory": "Usage History",
+        "calendar": "Calendar",
+        "notice": "Notice",
+        "mypage": "My Page",
+        "logout": "Logout"
+    }
 }

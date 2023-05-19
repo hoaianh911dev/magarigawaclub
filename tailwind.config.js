@@ -112,7 +112,9 @@ const spacing = {
     200: '200px',
     250: '250px',
     300: '300px',
-    500: '500px'
+    500: '500px',
+    '95%': '95%',
+    'auto': 'auto',
 }
 
 const borderWidth = {

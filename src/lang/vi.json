@@ -1,3 +1,11 @@
 {
-    "header": ""
+    "header": {
+        "book": "Đặt trước",
+        "bookingConfirm": "Xác Nhận Đặt Phòng",
+        "usageHistory": "Lịch Sử Sử Dụng",
+        "calendar": "Lịch",
+        "notice": "Thông Báo",
+        "mypage": "Trang Cá Nhân",
+        "logout": "Đăng Xuất"
+    }
 }
