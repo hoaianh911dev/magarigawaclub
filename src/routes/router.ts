@@ -5,6 +5,7 @@ import { PATH } from '../constants/path'
 import { DEFAULT_TITLE } from '../constants/default'
 
 const Login = () => import('../pages/auth/Login.vue')
+const NotFound = () => import('../pages/auth/Login.vue')
 
 const routes = [
     {
@@ -12,7 +13,11 @@ const routes = [
         name: PATH.login.name,
         component: Login,
         meta: { title: PATH.login.title }
-    }
+    },
+    {
+        path: "/:catchAll(.*)",
+        component: NotFound,
+      },
 ]
 
 const router = createRouter({
@@ -25,14 +30,6 @@ router.afterEach(to => {
     nextTick(() => {
         document.title = String(to.meta.title) || DEFAULT_TITLE;
     })
-})
-
-router.beforeEach((to, from, next) => {
-    
-    const checkPageExist = routes.findIndex(r => r.name === to.name)
-    if(checkPageExist === -1) {
-        next({name: PATH.login.name})
-    }
 })
 
 export default router

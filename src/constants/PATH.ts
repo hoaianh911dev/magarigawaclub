@@ -3,5 +3,10 @@ export const PATH = {
         url: '/login',
         name: 'Login',
         title: 'Login'
+    },
+    home: {
+        url: '/',
+        name: 'Home',
+        title: 'Home'
     }
 }
