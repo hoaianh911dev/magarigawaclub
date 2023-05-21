@@ -14,5 +14,11 @@
         "message": "message",
         "notice": "notice",
         "member": "member"
+    },
+    "login": {
+        "lblEmail": "Email",
+        "lblPassword": "Mật khẩu",
+        "forgetPassword": "Quên mật khẩu",
+        "btnLogin": "Đăng Nhập"
     }
 }

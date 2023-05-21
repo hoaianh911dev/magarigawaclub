@@ -14,5 +14,11 @@
         "message": "message",
         "notice": "notice",
         "member": "member"
+    },
+    "login": {
+        "lblEmail": "Email",
+        "lblPassword": "Password",
+        "forgetPassword": "Forget Password",
+        "btnLogin": "Login"
     }
 }

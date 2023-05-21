@@ -8,3 +8,7 @@ svg {
 a {
     cursor: pointer;
 }
+.section-main {
+    min-height: 100vh;
+    overflow: auto;
+}

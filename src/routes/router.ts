@@ -5,7 +5,7 @@ import { PATH } from '../constants/path'
 import { DEFAULT_TITLE } from '../constants/default'
 
 const Login = () => import('../pages/auth/Login.vue')
-const NotFound = () => import('../pages/auth/Login.vue')
+const NotFound = () => import('../pages/not found/NotFound.vue')
 
 const routes = [
     {
@@ -28,7 +28,7 @@ const router = createRouter({
 //load title page
 router.afterEach(to => {
     nextTick(() => {
-        document.title = String(to.meta.title) || DEFAULT_TITLE;
+        document.title = to.meta.title || DEFAULT_TITLE;
     })
 })
 
