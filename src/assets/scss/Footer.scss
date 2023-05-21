@@ -1,0 +1,29 @@
+#Footer {
+    color: #454545;
+    .item-link {
+        color: #454545;
+        text-align: center;
+        svg {
+            path {
+                color: #454545
+            }
+        }
+        .title {
+            text-transform: capitalize;
+            color: #454545;
+            font-size: 14px;
+        }
+    }
+    
+    .fixed-bottom {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1030;
+    }
+    
+    nav {
+        border-top: 1px solid;
+    }
+}

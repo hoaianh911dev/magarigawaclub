@@ -7,5 +7,12 @@
         "notice": "Thông Báo",
         "mypage": "Trang Cá Nhân",
         "logout": "Đăng Xuất"
+    },
+    "footer": {
+        "home": "home",
+        "calendar": "calendar",
+        "message": "message",
+        "notice": "notice",
+        "member": "member"
     }
 }

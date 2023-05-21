@@ -7,5 +7,12 @@
         "notice": "Notice",
         "mypage": "My Page",
         "logout": "Logout"
+    },
+    "footer": {
+        "home": "home",
+        "calendar": "calendar",
+        "message": "message",
+        "notice": "notice",
+        "member": "member"
     }
 }

@@ -3,14 +3,14 @@
         <nav class="navbar fixed-top bg-black">
             <div class="mx-auto max-w-95% px-2 sm:px-6 lg:px-8">
                 <div class="relative flex justify-between items-center h-56">
-                    <a class="absolute inset-y-0 btnBack p-5 items-center flex" @click="$router.go(-1)">
+                    <a class="absolute inset-y-0 btnBack items-center flex" @click="$router.go(-1)">
                         <i class="fa-solid fa-chevron-left"></i>
                     </a>
                     <router-link class="flex-1 flex justify-between" to="/#">
                         <img width="150" class="m-auto" src="/img/logo.svg" alt="Magarigawa">
                     </router-link>
                     <div class="absolute inset-y-0 right-0 flex items-center">
-                        <button class="p-5 flex" type="button"
+                        <button class="flex" type="button"
                         @click="showDropdown = !showDropdown">
                             <font-awesome-icon :icon="['fa-solid', 'fa-bars']" class="text-20" v-if="!showDropdown"/>
                             <font-awesome-icon :icon="['fa-solid', 'fa-xmark']" class="text-20" v-else/>
@@ -51,39 +51,9 @@ export default {
     data() {
         return {
             showDropdown: false,
-            menu: [
-                {   
-                    to: '',
-                    label: this.$t('grouptabbooking.btnbooking'),
-                    subMenu: [
-                        { to: '/31', label: this.$t('grouptabbooking.btntripbook') },
-                        { to: '/stay-book', label: this.$t('grouptabbooking.btnstaybook') },
-                        { to: '/faclility-book', label: this.$t('grouptabbooking.btnfacilitybook') },
-                    ],
-                    isActive: false
-                },
-                { to: '/1', label: this.$t('grouptabbooking.btnconfirm'), subMenu: null,isActive: false},
-                { to: '/2', label: this.$t('grouptabbooking.btnhistory'), subMenu: null,isActive: false },
-                { to: '/3', label: this.$t('grouptabbooking.btncalendar'), subMenu: null,isActive: false },
-                { to: '/4', label: this.$t('grouptabbooking.btnnotice'), subMenu: null,isActive: false },
-                { to: '/5', label: this.$t('grouptabbooking.btnmypage'), subMenu: null,isActive: false },
-                { to: '/6', label: this.$t('grouptabbooking.btnlogout'), subMenu: null,isActive: false },
-            ]
         }
-    },
-    methods: {
-        toggleActive(item) {
-            this.menu.forEach((menuItem) => {
-                menuItem.isActive = false;
-            });
-            item.isActive = true;
-        },
-        clearActive(){
-            this.menu.forEach((menuItem) => {
-                menuItem.isActive = false;
-            });
-        }
-    },
+    }
+
 }
 </script>
 
