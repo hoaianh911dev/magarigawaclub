@@ -18,7 +18,7 @@ export default {
     created() {
         this.checkUserLogined = JSON.parse(localStorage.getItem('user'))
         if (this.checkUserLogined) {
-            this.$router.push(PATH.login.url)
+            this.$router.push(PATH.home.url)
         } 
 
      },
