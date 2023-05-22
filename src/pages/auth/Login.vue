@@ -36,19 +36,9 @@ import { ResponseCode } from '../../enums/response'
 import useAuth from '../../hooks/useAuth'
 import NotifyMessage from '../../components/notify/NotifyMessage.vue'
 import { MSG } from '../../constants/mesage'
-import { PATH } from '../../constants/PATH'
+import { PATH } from '../../constants/path'
 
 export default {
-    // created() {
-    //     const { setUser } = useAuth()
-    //     axios.post(authEnpoint.login, {email: 'bruno@email.com', password: 'bruno'}).then(function(response) {
-//         if(response.data.code === ResponseCode.Ok) {
-    //             setUser(JSON.stringify({email: 'bruno@email.com', 'accessToken': response.data.access_token}))
-    //             console.log('response',response)
-    //         }
-            
-    //     })
-    // },
     components: {
         NotifyMessage
     },

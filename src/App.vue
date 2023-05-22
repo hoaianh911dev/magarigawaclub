@@ -5,6 +5,7 @@ import AuthLayout from './layouts/AuthLayout.vue'
 
 import { PATH } from './constants/path'
 
+
 export default {
     components: {
         MainLayout,
@@ -12,22 +13,34 @@ export default {
     },
     data() {
         return {
-            checkUserLogined: false
+            isUserLogined: false
         }
     },
+
     created() {
-        this.checkUserLogined = JSON.parse(localStorage.getItem('user'))
-        if (this.checkUserLogined) {
-            this.$router.push(PATH.home.url)
-        } else {
-            this.$router.push(PATH.login.url)
-        }
+        this.isUserLogined = JSON.parse(localStorage.getItem('user'))
+        this.loadRouter()
     },
+    mounted() {
+        window.addEventListener('storage', () => {
+            this.loadRouter()
+        })
+    },
+    methods: {
+        loadRouter() {
+            this.isUserLogined = JSON.parse(localStorage.getItem('user'))
+            if (this.isUserLogined) {
+                this.$router.push(PATH.home.url)
+            } else {
+                this.$router.push(PATH.login.url)
+            }
+        }
+    }
 }
 </script>
 
 <template>
- <MainLayout v-if="checkUserLogined"></MainLayout>
+ <MainLayout v-if="isUserLogined"></MainLayout>
  <AuthLayout v-else></AuthLayout>
 </template>
 
