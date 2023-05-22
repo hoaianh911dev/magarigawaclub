@@ -6,6 +6,7 @@ import { DEFAULT_TITLE } from '../constants/default'
 
 const Login = () => import('../pages/auth/Login.vue')
 const NotFound = () => import('../pages/not found/NotFound.vue')
+const HomeTop = () => import('../pages/home/HomeTop.vue')
 
 const routes = [
     {
@@ -15,9 +16,16 @@ const routes = [
         meta: { title: PATH.login.title }
     },
     {
+        path: PATH.home.url,
+        name: PATH.home.name,
+        component: HomeTop,
+        meta: { title: PATH.home.title, footerActiveIndex: 1 },
+        
+    },
+    {
         path: "/:catchAll(.*)",
         component: NotFound,
-      },
+    },
 ]
 
 const router = createRouter({

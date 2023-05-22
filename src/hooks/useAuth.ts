@@ -4,5 +4,8 @@ export default function useAuth() {
     const setUser = function(user: any) {
         localStorage.setItem("user", user)
     }
-    return {accessToken, setUser}
+    const removeUser = function() {
+        localStorage.removeItem("user")
+    }
+    return {accessToken, setUser, removeUser}
 }

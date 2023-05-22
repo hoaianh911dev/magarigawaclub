@@ -6,7 +6,7 @@ export const PATH = {
     },
     home: {
         url: '/',
-        name: 'Home',
+        name: 'HomeTop',
         title: 'Home'
-    }
+    },
 }

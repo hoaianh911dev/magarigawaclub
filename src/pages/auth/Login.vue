@@ -65,10 +65,9 @@ export default {
             const { setUser } = useAuth()
             const response = await axios.post(authEnpoint.login, {email: this.form.email, password: this.form.password})
             if(response.data.code === ResponseCode.Ok) {
-                setUser(JSON.stringify({email: 'bruno@email.com', 'accessToken': response.data.access_token}))
+                setUser(JSON.stringify({email: this.form.email, 'accessToken': response.data.access_token}))
                 this.$router.push(PATH.home.url)
             } else {
-                console.log(this)
                 this.isAlertConfirm = true
                 this.message = MSG.ERROR.E_0001
             }

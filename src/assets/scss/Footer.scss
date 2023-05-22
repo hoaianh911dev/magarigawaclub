@@ -13,6 +13,14 @@
             color: #454545;
             font-size: 14px;
         }
+        &.active {
+            path {
+                color: white;
+            }
+            .title {
+                color: white;
+            }
+        }
     }
     
     .fixed-bottom {

@@ -1,6 +1,6 @@
 <template>
     <li class="nav-link text-white">
-        <router-link :to="to">
+        <router-link :to="to" @click="$emit('handleClick')">
             {{ nameItem }}
         </router-link>
     </li>

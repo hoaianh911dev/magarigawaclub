@@ -33,7 +33,7 @@
                     <DropdownItem :nameItem="$t('header.mypage')"
                     to="/31"></DropdownItem>
                     <DropdownItem :nameItem="$t('header.logout')"
-                    to="/31"></DropdownItem>
+                    to="/31" @handleClick="logout"></DropdownItem>
                 </ul>
             </div>
         </nav>
@@ -52,7 +52,13 @@ export default {
         return {
             showDropdown: false,
         }
-    }
+    },
+
+    methods: {
+        logout() {
+            console.log('logout')
+        }
+    },
 
 }
 </script>

@@ -1,5 +1,5 @@
 <template>
-    <router-link class="border-0 btn btn-outline-primary" :className="className"
+    <router-link class="border-0 btn btn-outline-primary item-link" :class="{'active': active}"
         :to="to">
         <font-awesome-icon :icon="['fa-solid', icon]" class="text-17"/>
         <br>
@@ -13,7 +13,7 @@ export default {
         nameItem: String,
         to: String,
         icon: String,
-        className: String
+        active: Boolean
     }
 }
 </script>
