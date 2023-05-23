@@ -1,0 +1,90 @@
+.content-main {
+    .content-item {
+        margin-top: 70px;
+        .card {
+            border-radius: 5px;
+            padding: 10px;
+            margin-top: 20px;
+            .badget_status {
+                width: 70px;
+                height: 70px;
+                background-color: $white;
+                padding: 5px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 5px;
+            }
+        }
+        .list_group {
+            margin-top: 20px;
+            .list_group_item {
+                border-top: 1px solid $border-main;
+                display: flex;
+                padding: 15px 0px;
+                &:last-child {
+                    border-bottom: 1px solid $border-main;
+                }
+                &> div:first-child {
+                    margin-right: 10px;
+                }
+            }
+        }
+        
+        &.checkin_item {
+            margin-top: 25px;
+            .card {
+                background-color: $bg-checkin;
+            }
+        }
+        &.reserve-item {
+            .list_group_item {
+                border: none;
+                &:last-child {
+                    border: none;
+                }
+                &.card {
+                    margin-top: 12px;
+                    padding: 10px;
+                }
+            }
+            .card {
+                background-color: $bg-trip;
+                &.item_trip {
+                    background-color: $bg-trip;
+                    .badget_status {
+                        color: $text-trip;
+                    }
+                }
+                &.item_stay {
+                    background-color: $bg-stay;
+                    .badget_status {
+                        color: $text-stay;
+                    }
+                }
+                &.item_facility {
+                    background-color: $bg-facility;
+                    .badget_status {
+                        color: $text-facility;
+                    }
+                }
+            }
+        }
+        .title_item {
+            text-align: center;
+            letter-spacing: 2px;
+            font-size: 25px;
+            font-weight: 500;
+            text-transform: uppercase;
+            .badge_item {
+                background-color: $bg-btn-primary;
+                letter-spacing: 0px;
+                text-transform: none;
+                padding: 1px 5px;
+                border-radius: 2px;
+                font-weight: normal;
+                vertical-align: middle;
+            }
+        }
+    }
+}

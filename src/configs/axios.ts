@@ -16,13 +16,8 @@ instance.interceptors.request.use(
         if(accessToken) {
             config.headers["x-access-token"] = accessToken
         }
-                console.log('accessToken',accessToken)
-        console.log(config)
 
     return config
-},
-error => {
-
 })
 
 export default instance

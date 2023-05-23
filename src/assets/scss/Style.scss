@@ -12,3 +12,12 @@ a {
     color: red;
     font-size: 14px;
 }
+.section-main {
+    margin-top: $height-top-sm;
+    background-color: $bg-main;
+    height: calc(100vh - $height-top-sm - $height-footer-sm);
+    overflow: auto;
+    .content-main {
+        padding-bottom: 30px;
+    }
+}

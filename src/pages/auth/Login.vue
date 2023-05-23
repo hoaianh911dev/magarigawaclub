@@ -1,7 +1,7 @@
 <template>
     <NotifyMessage :show=isAlertConfirm :message=message
     @confirm="isAlertConfirm=false"></NotifyMessage>
-    <section class="section-main">
+    <section class="section-main section-user">
         <div class="login-content">
             <div class="logo_title">
                 <img src="/img/logo.svg" />

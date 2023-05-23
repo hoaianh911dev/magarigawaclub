@@ -1,6 +1,6 @@
 <template>
-    <footer id="Footer">
-        <nav class="navbar fixed-bottom navbar-dark bg-black py-10">
+    <footer id="Footer" class="fixed-bottom">
+        <nav class="navbar navbar-dark bg-black py-10">
             <div class="mx-auto max-w-95% px-2 sm:px-6 lg:px-8">
                 <div class="flex justify-between">
                     <FooterItem :nameItem=" $t('footer.home') " to="/" icon="fa-house" :active="footerActiveIndex === 1"></FooterItem>

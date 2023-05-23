@@ -1,8 +1,8 @@
 #Header {
-    border-bottom: 1px solid #646464;
+    border-bottom: 1px solid $border-main;
    .nav-link {
         padding: 10px 0px;
-        border-bottom: 1px solid #646464;
+        border-bottom: 1px solid $border-main;
         display: block;
         a {
             font-size: 14px;
@@ -11,7 +11,7 @@
             border-bottom: none;
         }
    }
-   .fixed-top {
+   &.fixed-top {
         position: fixed;
         top: 0;
         right: 0;

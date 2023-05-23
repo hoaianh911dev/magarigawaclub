@@ -6,6 +6,9 @@
     height: 100%;
     min-height: 100vh;
     overflow: auto;
+    &.section-user {
+        margin-top: 0px;
+    }
     .login-content {
         margin: auto;
         width: 500px;

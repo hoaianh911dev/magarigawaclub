@@ -1,5 +1,6 @@
 #Footer {
     color: #454545;
+    border-top: 1px solid $border-main;
     .item-link {
         color: #454545;
         text-align: center;
@@ -29,9 +30,5 @@
         bottom: 0;
         left: 0;
         z-index: 1030;
-    }
-    
-    nav {
-        border-top: 1px solid;
     }
 }
