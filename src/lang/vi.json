@@ -20,5 +20,20 @@
         "lblPassword": "Mật khẩu",
         "forgetPassword": "Quên mật khẩu",
         "btnLogin": "Đăng Nhập"
+    },
+    "resetPassword": {
+        "titleSendMail": "Gửi mail",
+        "noteSendMail1": "Chúng tôi sẽ gửi cho bạn một email để tạo và thay đổi mật khẩu của bạn.",
+        "noteSendMail2": "Nhập địa chỉ email của bạn (ID người dùng) và nhấn nút gửi.",
+        "noteSendMail3": "Địa chỉ email phải được đăng ký trước trong hệ thống.",
+        "noteSendMail4": "Nếu bạn không nhận được email, vui lòng liên hệ với quản trị viên hệ thống của bạn.",
+        "plEmail": "Email",
+        "titleResetPassword": "Đặt lại mật khẩu",
+        "noteResetPasswor": "Vui lòng nhập mật khẩu mới.",
+        "plNewPassword": "Mật khẩu mới",
+        "plConfirmNewPassword": "Xác nhận mật khẩu mới"
+    },
+    "groupButton": {
+        "btnSend": "Gửi"
     }
 }

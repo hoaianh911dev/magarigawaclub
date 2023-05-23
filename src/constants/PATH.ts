@@ -9,4 +9,14 @@ export const PATH = {
         name: 'HomeTop',
         title: 'Home'
     },
+    resetPassword: {
+        url: '/reset-password',
+        name: 'ResetPassword',
+        title: 'Reset Password'
+    },
+    sendMail: {
+        url: '/send-mail',
+        name: 'SendMail',
+        title: 'Send Mail'
+    }
 }

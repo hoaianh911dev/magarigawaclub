@@ -20,5 +20,20 @@
         "lblPassword": "Password",
         "forgetPassword": "Forget Password",
         "btnLogin": "Login"
+    },
+    "resetPassword": {
+        "titleSendMail": "Send mail",
+        "noteSendMail1": "We will send you an email to create and change your password.",
+        "noteSendMail2": "Enter your email address (user ID) and hit the submit button.",
+        "noteSendMail3": "The email address must be pre-registered in the system.",
+        "noteSendMail4": "If you do not receive the email, please contact your system administrator.",
+        "plEmail": "Email",
+        "titleResetPassword": "Reset password",
+        "noteResetPasswor": "Please enter a new password.",
+        "plNewPassword": "New password",
+        "plConfirmNewPassword": "Confirm new password"
+    },
+    "groupButton": {
+        "btnSend": "Send"
     }
 }

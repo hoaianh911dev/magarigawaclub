@@ -1,7 +1,7 @@
 <template>
     <NotifyMessage :show=isAlertConfirm :message=message
     @confirm="isAlertConfirm=false"></NotifyMessage>
-    <section class="section-main section-user">
+    <section class="section-main section-user section-login">
         <div class="login-content">
             <div class="logo_title">
                 <img src="/img/logo.svg" />
@@ -16,7 +16,7 @@
                     v-model="form.password"/>
                 </div>
                 <div class="mt-8 text-end">
-                    <a>> {{ $t('login.forgetPassword') }}</a>
+                    <a @click="$router.push(PATH.sendMail.url)">> {{ $t('login.forgetPassword') }}</a>
                 </div>
                 <div class="mt-30 mb-30">
                     <button class="btnSubmit" @click="SubmitForm">
@@ -47,7 +47,8 @@ export default {
             errors: {},
             form: {},
             isAlertConfirm: false,
-            message: ''
+            message: '',
+            PATH: PATH
         }
     },
     methods: {
