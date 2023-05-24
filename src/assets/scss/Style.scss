@@ -20,6 +20,10 @@ a {
     .content-main {
         padding-bottom: 30px;
     }
+    &::-webkit-scrollbar {
+        width: 0 !important;
+        display: none;
+    }
 }
 .group-input {
     margin-top: 12px;
