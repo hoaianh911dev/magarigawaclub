@@ -34,6 +34,12 @@
         "plConfirmNewPassword": "Xác nhận mật khẩu mới"
     },
     "groupButton": {
-        "btnSend": "Gửi"
+        "btnSend": "Gửi",
+        "btnTrip": "Chuyến đi",
+        "btnStay": "Chỗ ở",
+        "btnFacility": "Cơ sở",
+        "btnBooking": "Đặt trước",
+        "btnConfirmation": "Xác nhận",
+        "btnHistory": "Lịch sử"
     }
 }

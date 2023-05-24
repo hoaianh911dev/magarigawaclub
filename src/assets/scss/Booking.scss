@@ -1,0 +1,20 @@
+.tab-group {
+    .tab-content {
+        background-color: $bg-booking;
+    }
+    .form-calendar {
+        .el-calendar-table td {
+            border: none;
+        }
+        .el-calendar-table .el-calendar-day {
+            height: 80px !important;
+            padding: unset !important;
+        }
+    }
+}
+.section-booking {
+    .form-calendar {
+        margin-top: 0px;
+        padding-bottom: 30px;
+    }
+}

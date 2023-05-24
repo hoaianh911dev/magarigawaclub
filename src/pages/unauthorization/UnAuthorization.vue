@@ -1,7 +1,7 @@
 <template>
-    <img src="/img/401.jpg"/>
+    <img src="/img/401.jpg" class="w-full"/>
 
-    <div class="group-button">
+    <div class="group-button mb-30">
         <button @click="$router.push(PATH.login.url)">Login</button>
     </div>
 

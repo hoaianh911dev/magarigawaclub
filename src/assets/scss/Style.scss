@@ -108,6 +108,16 @@ a {
 }
 .form-calendar {
     margin-top: 20px;
+    .custome-header-calendar {
+        background-color: $bg-main;
+    }
+    .custom-header-btn {
+        border: none;
+        background: transparent;
+        color: white;
+        font-size: 20px;
+        margin: 0px 10px;
+    }
     .el-calendar__header {
         color: black
     }
@@ -144,6 +154,26 @@ a {
     .custome-header-calendar thead {
         text-transform: uppercase;
     }
+    .choosed_date {
+        background: $bg-trip;
+        height: 50%;
+    }
+    .booking-stay, .booking-facility, .booking-trip {
+        font-size: 11px;
+        color: $white;
+    }
+    .booking-stay {
+        background-color: $bg-stay;
+    }
+    .booking-facility {
+        background-color: $bg-facility;
+    }
+    .booking-trip {
+        background-color: $bg-trip;
+    }
+    .el-calendar-day {
+        text-align: center;
+    }
 }
 .overlay {
     position: absolute;
@@ -153,4 +183,13 @@ a {
     bottom: 0;
     background-color: #15150b70;
 
+}
+.el-dialog {
+    min-width: 340px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    --el-dialog-margin-top: 0px;
+    margin: 0px;
+    width: 70%;
 }

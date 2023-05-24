@@ -1,0 +1,89 @@
+$bg-main: #000000;
+$color-main: #FFFFFF;
+$font-size: 16px;
+$border-color: #646464;
+
+.row {
+    --bs-gutter-x: 0;
+    --bs-gutter-y: 0;
+}
+.popup {
+    max-height: calc(100vh - 190px);
+    overflow: hidden;
+    .content-popup {
+        max-height: calc(100vh - 250px);
+        overflow: auto;
+    }
+    .friend-item {
+        color: $bg-main;
+        padding: 0.5rem 1rem;
+        border-bottom: 1px solid;
+    }
+    .group-input {
+        margin-top: 10px;
+        input, select {
+            height: 42px;
+            border-radius: 5px;
+            padding: 5px;
+            border: 1px solid #dcdfe6 !important;
+            color: $bg-main;
+            outline: none;
+            text-align: left !important;
+            text-align-last: left !important;
+            width: 100%;
+        }
+        button {
+            background: #c47200;
+            height: 100%;
+            border-radius: 5px;
+            min-width: 90px;
+            padding: 7px 10px;
+        }
+        button.submit {
+            background: #c80014;
+            padding: 10px;
+        }
+        label.title-input {
+            display: flex;
+            align-items: center;
+        }
+    }
+    .total_price {
+        text-align: end;
+        border-top: 1px solid #6464647a;
+        margin-top: 15px;
+        padding-top: 15px;
+    }
+}
+.popup_otherGuest {
+    .group_dateChoose {
+        background-color: lightsteelblue;
+        padding: 7px 0px;
+    }
+}
+.popup_friend {
+    input {
+        width: 90% !important;
+    }
+}
+button {
+    border: none;
+    outline: none;
+    color: white;
+}
+.popup_type {
+    .btnType {
+        margin-left: 10px;
+        padding: 3px 15px;
+        border-radius: 5px;
+    }
+    .btnTypeTrip {
+        background-color: #3696C8;
+    }
+    .btnTypeStay {
+        background-color: #c85a8c;
+    }
+    .btnTypeFacility {
+        background-color: #509646;
+    }
+}

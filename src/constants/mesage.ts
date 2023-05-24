@@ -1,6 +1,15 @@
 // ERROR
-const ERROR = {
-    E_0001: 'Email và mật khẩu không chính xác'
+const ERROR_VI = {
+    E_0001: 'Email và mật khẩu không chính xác',
+    E_0002: '{0} là trường bắt buộc',
+    E_0003: '{0} không đúng định dạng',
+    E_0004: 'Mật khẩu không trùng khớp'
+}
+const ERROR_EN = {
+    E_0001: 'Incorrect email and password',
+    E_0002: '{0} is a required field',
+    E_0003: '{0} is not in the correct format',
+    E_0004: 'Passwords do not match'
 }
 
 
@@ -32,6 +41,9 @@ const getMSG = (StrArr, Code) => {
     }
     return Code
 }
+
+const language = localStorage.getItem('language')
+const ERROR = language === 'en' ? ERROR_EN : ERROR_VI
 
 export const MSG = {
     ERROR, INFO, CONFIRM, SUCCESS,

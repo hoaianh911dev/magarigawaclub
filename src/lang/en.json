@@ -34,6 +34,12 @@
         "plConfirmNewPassword": "Confirm new password"
     },
     "groupButton": {
-        "btnSend": "Send"
+        "btnSend": "Send",
+        "btnTrip": "Trip",
+        "btnStay": "Stay",
+        "btnFacility": "Facility",
+        "btnBooking": "Book",
+        "btnConfirmation": "Confirmation",
+        "btnHistory": "History"
     }
 }

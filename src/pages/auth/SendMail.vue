@@ -10,7 +10,9 @@
             </div>
             <div class="form_input">
                 <div class="group-input">
-                    <input :placeholder="$t('resetPassword.plEmail')" v-model="form.email"/>
+                    <input :placeholder="$t('resetPassword.plEmail')" name="email"
+                    class="required email" :nameControl="$t('resetPassword.plEmail')" v-model="form.email"/>
+                    <span v-if="errors.email" class="text-error">{{ errors.email }}</span>
                 </div>
             </div>
             <div class="describe_title mt-30">
@@ -18,8 +20,8 @@
                 <p>{{ $t('resetPassword.noteSendMail4') }}</p>
             </div>
             <div class="group-button">
-                <button class="btnSubmit" :disabled="!form.email"
-                @click="$router.push(PATH.resetPassword.url)">{{ $t('groupButton.btnSend') }}</button>
+                <button class="btnSubmit"
+                @click="submitForm">{{ $t('groupButton.btnSend') }}</button>
             </div>
         </div>
     </section>
@@ -28,13 +30,21 @@
 <script lang="ts">
 
 import { PATH } from '../../constants/path';
+import useFormValidation from '../../hooks/useFormValidation'
 
 export default {
     data() {
         return {
-            form: {
-            },
+            form: {},
+            errors: {},
             PATH: PATH
+        }
+    },
+    methods: {
+        submitForm() {
+            this.errors = useFormValidation()
+            if (Object.keys(this.errors).length > 0) return
+            this.$router.push(PATH.resetPassword.url)
         }
     },
 }

@@ -1,0 +1,22 @@
+.btn-group__tabs {
+    button {
+        background: transparent;
+        border: none;
+        background: #464646;
+        padding: 10px;
+        border-left: 1px solid #606060;
+        color: white;
+        &.active-stay {
+            background-color: #C85A8D;
+        }
+        &.active-facility {
+            background-color: #519646;
+        }
+        &:first-child {
+            border-left: none;
+        }
+        &.active-booking, &.active-trip {
+            background-color: #3696C8;
+        }
+    }
+}

@@ -1,0 +1,37 @@
+.menu_top {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: auto;
+    margin-top: 10px;
+    li {
+        background: transparent;
+        border: none;
+        color: #464646;
+        list-style-type: none;
+        padding: 0px 7px 5px 7px;
+        text-align: center;
+        border-bottom: 4px solid black;
+        img {
+            width: 30px;
+            height: 30px;
+            margin: auto;
+            margin-bottom: 7px;
+            &.menu_logo.active {
+                display: none;
+            }
+        }
+        &.active {
+            border-bottom: 4px solid white;
+            color: white;
+            img.menu_logo {
+                display: none;
+            }
+            img.menu_logo.active {
+                display: block;
+                margin: auto;
+                margin-bottom: 7px;
+            }
+        }
+    }
+}
