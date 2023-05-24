@@ -9,6 +9,8 @@ const NotFound = () => import('../pages/not found/NotFound.vue')
 const HomeTop = () => import('../pages/home/HomeTop.vue')
 const ResetPassword = () => import("../pages/auth/ResetPassword.vue")
 const SendMail = () => import("../pages/auth/SendMail.vue")
+const BookingConfirm = () => import("../pages/calendar/BookingConfirm.vue")
+const UnAuthorization = () => import("../pages/unauthorization/UnAuthorization.vue")
 
 const routes = [
     {
@@ -39,8 +41,21 @@ const routes = [
         
     },
     {
+        path: PATH.bookingConfirm.url,
+        name: PATH.bookingConfirm.name,
+        component: BookingConfirm,
+        meta: { title: PATH.bookingConfirm.title, footerActiveIndex: 2, isAuthencation: true },
+        
+    },
+    {
+        path: PATH.unauthorization.url,
+        name: PATH.unauthorization.name,
+        component: UnAuthorization,
+        meta: { title: PATH.unauthorization.title }
+    },
+    {
         path: "/:catchAll(.*)",
-        component: NotFound,
+        component: NotFound
     },
 ]
 
@@ -54,6 +69,17 @@ router.afterEach(to => {
     nextTick(() => {
         document.title = to.meta.title || DEFAULT_TITLE;
     })
+})
+
+router.beforeEach((to, from, next) => {
+    const isAuthencation = to.meta.isAuthencation
+    if(isAuthencation) {
+        const isUserLogined = JSON.parse(localStorage.getItem('user'))
+        if (!isUserLogined) {
+            next({ name: PATH.unauthorization.name })
+        } 
+    }
+    next()
 })
 
 export default router

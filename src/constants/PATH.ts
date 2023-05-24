@@ -18,5 +18,15 @@ export const PATH = {
         url: '/send-mail',
         name: 'SendMail',
         title: 'Send Mail'
+    },
+    bookingConfirm: {
+        url: '/booking-confirm',
+        name: 'BookingConfirm',
+        title: 'Booking Confirm'
+    },
+    unauthorization: {
+        url: '/unauthorization',
+        name: 'UnAuthorization',
+        title: 'UnAuthorization'
     }
 }
