@@ -35,7 +35,7 @@ const routes = [
         path: PATH.home.url,
         name: PATH.home.name,
         component: HomeTop,
-        meta: { title: PATH.home.title, footerActiveIndex: 1 },
+        meta: { title: PATH.home.title, footerActiveIndex: 1, isAuthencation: true },
         
     },
     {

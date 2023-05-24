@@ -13,7 +13,16 @@ export default {
     },
     data() {
         return {
-            isUserLogined: false
+            isUserLogined: false,
+            isAuthencation: false
+        }
+    },
+
+    watch: {
+        '$route.meta': {
+            handler() {
+                this.isAuthencation = this.$route.meta.isAuthencation
+            }
         }
     },
 
@@ -23,16 +32,18 @@ export default {
     },
     mounted() {
         window.addEventListener('storage', () => {
-            this.loadRouter()
+            this.isUserLogined = JSON.parse(localStorage.getItem('user'))
         })
     },
     methods: {
         loadRouter() {
-            this.isUserLogined = JSON.parse(localStorage.getItem('user'))
-            if (this.isUserLogined) {
-                this.$router.push(PATH.home.url)
-            } else {
-                this.$router.push(PATH.login.url)
+            if(this.isAuthencation) {
+                this.isUserLogined = JSON.parse(localStorage.getItem('user'))
+                if (this.isUserLogined) {
+                    this.$router.push(PATH.home.url)
+                } else {
+                    this.$router.push(PATH.login.url)
+                }
             }
         }
     }
