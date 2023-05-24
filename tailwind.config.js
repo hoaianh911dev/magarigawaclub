@@ -123,7 +123,8 @@ const borderWidth = {
     1: '1px',
     1.5: '1.5px',
     2: '2px',
-    2.5: '2.5px'
+    2.5: '2.5px',
+    4: '4px'
 }
 
 const borderRadius = {
@@ -133,7 +134,8 @@ const borderRadius = {
     10: '10px',
     12: '12px',
     16: '16px',
-    '50%': '50%'
+    '50%': '50%',
+    'full': '9999px'
 }
 
 const boxShadow = {

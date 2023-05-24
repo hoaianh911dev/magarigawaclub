@@ -10,6 +10,11 @@
         :modules="modules"
         :slides-per-view="1"
         navigation
+        :autoplay="{
+            'delay': 4000,
+            'disableOnInteraction': false
+        }"
+        :loop="true"
         class="thumb_main" v-if="lstImage.length > 0">
             <swiper-slide v-for="(item,index) in lstImage" :key="index">
                 <img :src="item" />
@@ -35,7 +40,7 @@
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import 'swiper/css'
 import 'swiper/css/navigation'
-import { Thumbs, Navigation } from 'swiper'
+import { Thumbs, Navigation, Autoplay } from 'swiper'
 import { ref } from 'vue'
 
 export default {
@@ -61,7 +66,7 @@ export default {
         
 
         return {
-            modules: [Thumbs, Navigation],
+            modules: [Thumbs, Navigation, Autoplay],
             setThumbsSwiper,slide,swiperRef
         };
     },

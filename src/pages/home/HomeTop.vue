@@ -197,22 +197,24 @@
             <button>Lưu</button>
         </div>
     </section>
+    <Loading v-if="isLoading"></Loading>
 </template>
 
 <script lang="ts">
 
 import ThumbGallaryVue from '../../components/image/ThumbGallery.vue'
 import { arrPeople, dayOfWeeks } from '../../constants/default'
+import Loading from '../../components/loading/Loading.vue'
 
 import { ElDatePicker, ElCalendar } from 'element-plus'
 import { ref } from 'vue'
-
 
 export default {
     components: {
         ThumbGallaryVue,
         ElDatePicker,
-        ElCalendar
+        ElCalendar,
+        Loading
     },
     data() {
         return {
@@ -239,6 +241,7 @@ export default {
                     "day": '2023-04-15'
                 }
             ],
+            isLoading: false
         }
     },
     setup() {
@@ -257,10 +260,14 @@ export default {
             const [year, month] = val.toString().split("  ");
             const monthIndex = new Date(`${month} 1, 2021`).getMonth() + 1;
             const formattedMonth = `${monthIndex}`;
-            const day = new Date().getDate();
             return `${year} . ${formattedMonth} ${month} `;
         },
-    }
+    },
+    created() {
+        this.isLoading = true
+        console.log('call api')
+        this.isLoading = false
+    },
 }
 </script>
 
