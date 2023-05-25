@@ -12,6 +12,8 @@ const SendMail = () => import("../pages/auth/SendMail.vue")
 const BookingConfirm = () => import("../pages/calendar/BookingConfirm.vue")
 const UnAuthorization = () => import("../pages/unauthorization/UnAuthorization.vue")
 const TripBook = () => import("../pages/calendar/TripBook.vue")
+const TripConfirm = () => import("../pages/calendar/TripConfirm.vue")
+const TripHistory = () => import("../pages/calendar/TripHistory.vue")
 
 const routes = [
     {
@@ -53,6 +55,18 @@ const routes = [
         name: PATH.tripBook.name,
         component: TripBook,
         meta: { title: PATH.tripBook.title, footerActiveIndex: 2, isAuthencation: true }
+    },
+    {
+        path: PATH.tripConfirm.url, 
+        name: PATH.tripConfirm.name,
+        component: TripConfirm,
+        meta: { title: PATH.tripConfirm.title, footerActiveIndex: 2, isAuthencation: true }
+    },
+    {
+        path: PATH.tripHistory.url, 
+        name: PATH.tripHistory.name,
+        component: TripHistory,
+        meta: { title: PATH.tripHistory.title, footerActiveIndex: 2, isAuthencation: true }
     },
     {
         path: PATH.unauthorization.url,

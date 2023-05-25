@@ -33,6 +33,14 @@
             align-items: center;
         }
     }
+    .title-date {
+        padding-top: 20px;
+        div {
+            padding: 5px 20px;
+            text-align: center;
+            background-color: #969696;
+        }
+    }
 }
 .section-book {
     .show-more a.btnMore {
@@ -41,8 +49,80 @@
     .custom-header {
         justify-content: center !important;
         background-color: #969696;
+        font-size: 14px;
+    }
+    .calendar-time {
+        max-height: 300px;
+        overflow: auto;
+        padding-top: 40px;
+        table {
+            width: 100%;
+            th {
+                width: 55px;
+                padding: 15px 10px 15px 0px;
+                transform: translateY(-50%);
+            }
+            tr td {
+                width: 50%;
+                text-align: center;
+                border-top: 1px solid #474747;
+                color: #2A2A2A;
+                
+                .status {
+                    border-radius: 5px;
+                    padding: 10px;
+                }
+                .statusCleaning {
+                    background-color: #B4B4B4;
+                }
+                .statusChoose {
+                    background-color: white;
+                    margin: 0px 7px 0px 0px;
+                }
+                .statusSelected {
+                    background-color: #3696C8;
+                    color: white;
+                }
+                &:last-child td {
+                    display: none;
+                }
+            }
+    
+        }
+        table tr td:nth-child(n+5) {
+            display: none;
+        }
+    }
+    .lst_booked {
+        padding: 20px;
+        .lst_item {
+            border-top: 1px solid $border-main;
+            padding: 20px 0px;
+            cursor: pointer;
+            &:last-child {
+                border-bottom: 1px solid $border-main;
+            }
+            button {
+                background-color: red;
+                border-radius: 5px;
+                font-size: 14px;
+                padding: 2px 7px;
+                margin-right: 10px;
+            }
+            .item_calendar {
+                margin-top: 10px;
+            }
+            button.status_finish {
+                &.isStay {
+                    background: $bg-stay;
+                }
+                &.isFacility {
+                    background: $bg-facility;
+                }
+            }
+        }
     }
 }
-.text-note, .calendar-time {
+.text-note, .calendar-time, .form-book {
     padding: 20px;
 }

@@ -42,7 +42,12 @@
         "btnConfirmation": "Confirmation",
         "btnHistory": "History",
         "btnMore": "Set up in greater detail",
-        "btnSearch": "Search"
+        "btnSearch": "Search",
+        "btnContinue": "Continue",
+        "btnFriend": "Friend",
+        "btnAddMember": "Add members",
+        "btnSave": "Save",
+        "btnClose": "Close"
     },
     "popup": {
         "serviceType": "Service type",
@@ -52,7 +57,11 @@
         "fee": "Fee",
         "totalAmount": "Total Amount",
         "checkin": "Checkin date and time",
-        "checkout": "Checkout date and time"
+        "checkout": "Checkout date and time",
+        "noteOtherGuest": "Vehicle reservation registration",
+        "noteOtherGuest2": "Please fill in the information for unregistered guests.",
+        "fullName": "Full name",
+        "birthday": "Birthday"
     },
     "book": {
         "titleBook": "Book",
@@ -63,6 +72,11 @@
         "lblPossible": "Possible",
         "selfDriving": "Self-Driving",
         "tripNote1": "Please select your preferred driving slot",
-        "tripNote2": "Multiple selections allowed"
+        "tripNote2": "Multiple selections allowed",
+        "lblVehicle": "Vehicle",
+        "lblCustomer": "Customer",
+        "sttBooked": "Booked",
+        "lblTime": "Time",
+        "sttCompleted": "Completed"
     }
 }

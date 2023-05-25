@@ -7,7 +7,11 @@
                 <div class="tab-panel">
                     <TripBook1 v-if="isTripBook === 1"
                     :formInput="formInput"
-                    :formatDate="formatDate"></TripBook1>
+                    :formatDate="formatDate"
+                    @submitBookHandler="submitBookHandler"></TripBook1>
+                    <TripBook2 v-if="isTripBook === 2"
+                    :formInput="formInput"
+                    :formatDate="formatDate"></TripBook2>
                 </div>
             </div>
         </div>
@@ -19,6 +23,7 @@
 import TypeTabBooking from '../../components/tabs/TypeTabBooking.vue'
 import StatusTabBooking from '../../components/tabs/StatusTabBooking.vue'
 import TripBook1 from './TripBook1.vue'
+import TripBook2 from './TripBook2.vue'
 
 import { dayOfWeeks } from '../../constants/default'
 
@@ -26,7 +31,8 @@ export default {
     components: {
         TypeTabBooking,
         StatusTabBooking,
-        TripBook1
+        TripBook1,
+        TripBook2
     },
     data() {
         return {
@@ -43,6 +49,11 @@ export default {
             const date = new Date(this.dateBook)
             return `${date.getFullYear()}.${date.getMonth()+1}.${date.getDate()} ${dayOfWeeks[date.getDay()]}`
         },
+    },
+    methods: {
+        submitBookHandler() {
+            this.isTripBook = 2
+        }
     },
 }
 

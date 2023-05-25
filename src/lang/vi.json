@@ -42,7 +42,12 @@
         "btnConfirmation": "Xác nhận",
         "btnHistory": "Lịch sử",
         "btnMore": "Thiết lập chi tiết hơn",
-        "btnSearch": "Tìm kiếm"
+        "btnSearch": "Tìm kiếm",
+        "btnContinue": "Tiếp tục",
+        "btnFriend": "Bạn bè",
+        "btnAddMember": "Thêm thành viên",
+        "btnSave": "Lưu",
+        "btnClose": "Đóng"
     },
     "popup": {
         "serviceType": "Loại dịch vụ",
@@ -52,7 +57,11 @@
         "fee": "Phí",
         "totalAmount": "Tổng số tiền",
         "checkin": "Ngày giờ nhận phòng",
-        "checkout": "Ngày giờ trả phòng"
+        "checkout": "Ngày giờ trả phòng",
+        "noteOtherGuest": "Đăng ký đặt chỗ phương tiện",
+        "noteOtherGuest2": "Vui lòng điền thông tin cho khách chưa đăng ký.",
+        "fullName": "Họ và tên",
+        "birthday": "Ngày sinh"
     },
     "book": {
         "titleBook": "Đặt chỗ",
@@ -63,6 +72,11 @@
         "lblPossible": "Khả thi",
         "selfDriving": "Tự lái",
         "tripNote1": "Vui lòng chọn khung thời gian lái xe mong muốn của bạn.",
-        "tripNote2": "Có thể chọn nhiều."
+        "tripNote2": "Có thể chọn nhiều.",
+        "lblVehicle": "Phương tiện",
+        "lblCustomer": "Khách",
+        "sttBooked": "Đã đặt",
+        "lblTime": "Thời gian",
+        "sttCompleted": "Hoàn thành"
     }
 }

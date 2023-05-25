@@ -83,12 +83,68 @@
         <div class="custom-header">
             {{ formatDate }}
         </div>
+        <div class="calendar-time">
+            <table>
+                <tbody>
+                    <tr v-for="item in arrTime" :key="item">
+                        <th>{{ item }}</th>
+                        <div hidden>{{ currentTime = item }}</div>
+                        <template v-for="data in calculatorTimeSpan" :key="data">
+                            <td v-if="calculatorTimeSpan.findIndex(x => x.countColumn === 3) > -1" :rowspan="data.rowSpan"
+                                colspan="2">
+                                <div class=" status statusCleaning">{{ data.content }}</div>
+                            </td> 
+                            <template v-else-if="calculatorTimeSpan.length === 2">
+                                <td :rowspan="data.rowSpan" v-if="data.countColumn === 1 || data.countColumn === 2">
+                                    <div class=" status statusChoose" 
+                                    @click="hanldeAddSelect(data)" :class="{'statusSelected' : data.selected}">
+                                        {{data.content}}
+                                        <br >
+                                        {{ data.fromTime }} - {{ data.toTime }}
+                                    </div>
+                                </td>
+                            </template>
+                            <template v-else>
+                                <td :rowspan="data.countColumn === 1 ? data.rowSpan : 1">
+                                    <div :class="{
+                                        'status statusChoose': data.countColumn === 1,
+                                        'statusSelected' : data.countColumn === 1 && data.selected
+                                    }"
+                                    @click="data.countColumn === 1 ? hanldeAddSelect(data) : ''">
+                                        <div>{{ data.countColumn === 1 ? data.content : '' }}</div>
+                                        {{ data.countColumn === 1 ? data.fromTime +' -' : '' }} {{ data.countColumn === 1 ? data.toTime : "" }}
+                                    </div>
+                                </td>
+                                <td :rowspan="data.countColumn === 2 ? data.rowSpan : 1">
+                                    <div :class="{
+                                        'status statusChoose': data.countColumn === 2,
+                                        'statusSelected': data.selected}"
+                                    @click="data.countColumn === 2 ? hanldeAddSelect(data) : ''">
+                                        <div>{{ data.countColumn === 2 ? data.content : '' }}</div>
+                                        {{ data.countColumn === 2 ? data.fromTime +' -' : "" }} {{ data.countColumn === 2 ? data.toTime : '' }}
+                                    </div>
+                                </td>
+                            </template> 
+                        </template>
+                        <template v-if="calculatorTimeSpan.length === 0">
+                            <td></td>
+                            <td></td>
+                        </template>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="group-button submit-form">
+        <button
+            @click="handleSubmit" :disabled="formInput.bookes.length === 0">{{$t('groupButton.btnContinue')}}</button>
     </div>
 </template>
 
 <script lang="ts">
 
 import { ElDatePicker } from 'element-plus'
+import { arrTime } from '../../constants/default'
 
 export default {
     
@@ -99,11 +155,112 @@ export default {
         return {
             isVisibleMore: false,
             arrType: ['', 'Type1', 'Type2'],
+            arrTime: arrTime,
+            currentTime: '',
+            lstData: [
+                {
+                    id: 1,
+                    fromTime: '08:00',
+                    toTime: '08:20',
+                    countColumn: 3, 
+                    content: 'COURSE CLEANING・座学',
+                    selected: false
+                },
+                {
+                    id: 2,
+                    fromTime: '09:00',
+                    toTime: '09:40',
+                    countColumn: 1,
+                    content: 'Morning A',
+                    selected: false
+                }, 
+                {
+                    id: 3,
+                    fromTime: '09:40',
+                    toTime: '10:20',
+                    countColumn: 2,
+                    content: 'Morning B',
+                    selected: false
+                }, 
+                {
+                    id: 4,
+                    fromTime: '10:20',
+                    toTime: '11:00',
+                    countColumn: 1,
+                    content: 'Morning A',
+                    selected: false
+                }, 
+                {
+                    id: 5,
+                    fromTime: '11:00',
+                    toTime: '11:40',
+                    countColumn: 2,
+                    content: 'Morning B',
+                    selected: false
+                }, 
+                {
+                    id: 6,
+                    fromTime: '11:40',
+                    toTime: '12:00',
+                    countColumn: 1,
+                    content: 'Mix 20min',
+                    selected: false
+                }, 
+                {
+                    id: 7,
+                    fromTime: '12:00',
+                    toTime: '12:20',
+                    countColumn: 3,
+                    content: 'COURSE CLEANING・座学',
+                    selected: false
+                }, 
+                {
+                    id: 8,
+                    fromTime: '12:20',
+                    toTime: '13:00',
+                    countColumn: 1,
+                    content: 'Beginner',
+                    selected: false
+                }, 
+                {
+                    id: 9,
+                    fromTime: '12:20',
+                    toTime: '13:00',
+                    countColumn: 2,
+                    content: 'Family',
+                    selected: false
+                }, 
+                {
+                    id: 10,
+                    fromTime: '13:00',
+                    toTime: '13:40',
+                    countColumn: 1,
+                    content: 'Afternoon A',
+                    selected: false
+                }, 
+            ],
         }
     },
     props: {
         formInput: Object,
         formatDate: String
+    },
+    computed: {
+        calculatorTimeSpan() {
+            const lstData = this.lstData.map(function(item) {
+
+                const startTime = new Date(`2023-01-01 ${item.fromTime}`)
+                const endTime = new Date(`2023-01-01 ${item.toTime}`)
+                const timeDifference = endTime - startTime
+                const hours = timeDifference/(3600*1000)
+
+                return {
+                    ...item,
+                    rowSpan: hours / (20/60) 
+                }
+            })
+            return lstData.filter(data => data.fromTime === this.currentTime)
+        },
     },
     methods: {
         disabledDate(date) {
@@ -112,7 +269,24 @@ export default {
             if (formatDay1 < formatDay2) return true
             return false
         },
+        hanldeAddSelect(item) {
+            const index = this.lstData.findIndex(x => x.id === item.id)
+            this.lstData[index].selected = !this.lstData[index].selected
+            if(this.lstData[index].selected === true) {
+                this.formInput.bookes.push(this.lstData[index])
+            } else {
+                const indexBook = this.formInput.bookes.findIndex(x => x.id === item.id)
+                this.formInput.bookes.splice(indexBook, 1)
+            }
+        },
+        handleSubmit() {
+            this.$emit('submitBookHandler')
+        },
     },
 
 }
 </script>
+
+<style lang="scss">
+@import '../../assets/scss/Booking.scss';
+</style>

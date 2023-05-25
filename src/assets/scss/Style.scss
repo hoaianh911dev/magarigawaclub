@@ -225,3 +225,18 @@ a {
     margin: 0px;
     width: 70%;
 }
+.btn_showPopupFriend {
+    background-color: $bg-btn-primary;
+    border-radius: 5px;
+    min-width: 90px;
+    padding: 7px 10px;
+}
+.add-guest {
+    text-align: center;
+    text-decoration: underline;
+    margin-top: 5px;
+    color: $bg-trip;
+    a {
+        cursor: pointer;
+    }
+}

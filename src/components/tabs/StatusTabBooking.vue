@@ -14,11 +14,11 @@
                 'active-booking': tabNameActive === 'confirm'}">
             {{$t('groupButton.btnConfirmation')}}
         </button>
-        <button class="nav-link col-span-4" @click="!isBooking ? changeRoute('usage-history') : $emit('updateNameActive', 'usage-history')"
-        :class="{'active-stay': routeName === 'StayUsageHistory',
-                'active-facility': routeName === 'FacilityUsageHistory',
-                'active-trip': routeName === 'TripUsageHistory',
-                'active-booking': tabNameActive === 'usage-history'}">
+        <button class="nav-link col-span-4" @click="!isBooking ? changeRoute('history') : $emit('updateNameActive', 'history')"
+        :class="{'active-stay': routeName === 'StayHistory',
+                'active-facility': routeName === 'FacilityHistory',
+                'active-trip': routeName === 'TripHistory',
+                'active-booking': tabNameActive === 'history'}">
             {{$t('groupButton.btnHistory')}}
         </button>
     </div>
