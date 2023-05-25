@@ -1,6 +1,10 @@
 .tab-group {
     .tab-content {
         background-color: $bg-booking;
+        min-height: calc(100svh - $height-top-sm - $height-footer-sm - $height-tab-type - $height-status-type);
+        &.hidden_status {
+            min-height: calc(100svh - $height-top-sm - $height-footer-sm - $height-tab-type);
+        }
     }
     .form-calendar {
         .el-calendar-table td {
@@ -17,4 +21,28 @@
         margin-top: 0px;
         padding-bottom: 30px;
     }
+}
+.section-main {
+    .form-search {
+        padding: 20px;
+    }
+    .group-input {
+        margin-top: 10px;
+        label.title-input {
+            display: flex;
+            align-items: center;
+        }
+    }
+}
+.section-book {
+    .show-more a.btnMore {
+        background: $bg-booking;
+    }
+    .custom-header {
+        justify-content: center !important;
+        background-color: #969696;
+    }
+}
+.text-note, .calendar-time {
+    padding: 20px;
 }

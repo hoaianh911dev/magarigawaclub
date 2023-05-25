@@ -132,11 +132,35 @@
                             <div class="content-more" v-if="isShowMore">
                                 <div class="grid grid-cols-12 gap-5 group-input">
                                     <div class="col-span-3 title">Thứ</div>
-                                    <div class="col-span-9 grid grid-cols-9 gap-5">
-                                        <div class="col-span-3 flex items-center" v-for="item in dayOfWeeks" :key="item">
-                                            <input type="checkbox" :id="item"/>
-                                            <label :for="item">{{item}}</label>
-                                        </div>
+                                    <div class="col-span-9 grid grid-cols-12">
+                                        <label class="group-checkbox col-span-4">MON
+                                            <input type="checkbox">
+                                            <span class="custome-checkbox"></span>
+                                        </label>
+                                        <label class="group-checkbox col-span-4">TUE
+                                            <input type="checkbox">
+                                            <span class="custome-checkbox"></span>
+                                        </label>
+                                        <label class="group-checkbox col-span-4">WEB
+                                            <input type="checkbox">
+                                            <span class="custome-checkbox"></span>
+                                        </label>
+                                        <label class="group-checkbox col-span-4">THU
+                                            <input type="checkbox">
+                                            <span class="custome-checkbox"></span>
+                                        </label>
+                                        <label class="group-checkbox col-span-8">FRI
+                                            <input type="checkbox">
+                                            <span class="custome-checkbox"></span>
+                                        </label>
+                                        <label class="group-checkbox col-span-4">SAT
+                                            <input type="checkbox">
+                                            <span class="custome-checkbox"></span>
+                                        </label>
+                                        <label class="group-checkbox col-span-4">SUN
+                                            <input type="checkbox">
+                                            <span class="custome-checkbox"></span>
+                                        </label>
                                     </div>
                                 </div>
                                 <div class="grid grid-cols-12 gap-5 group-input">
@@ -149,10 +173,10 @@
                                 </div>
                                 <div class="grid grid-cols-12 gap-5 group-input">
                                     <div class="col-span-3 title">Tự chạy</div>
-                                    <div class="col-span-9">
-                                        <input type="checkbox" id="probable"/>
-                                        <label for="probable">Khả thi</label>
-                                    </div>
+                                    <label class="col-span-9 group-checkbox">
+                                        <input type="checkbox">
+                                        <span class="custome-checkbox"></span>Khả thi
+                                    </label>
                                 </div>
                             </div>
                             <div class="group-button">

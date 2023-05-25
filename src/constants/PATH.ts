@@ -28,5 +28,10 @@ export const PATH = {
         url: '/unauthorization',
         name: 'UnAuthorization',
         title: 'UnAuthorization'
+    },
+    tripBook: {
+        url: '/trip-book/:date?',
+        name: 'TripBook',
+        title: 'Trip Book'
     }
 }

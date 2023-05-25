@@ -40,6 +40,29 @@
         "btnFacility": "Facility",
         "btnBooking": "Book",
         "btnConfirmation": "Confirmation",
-        "btnHistory": "History"
+        "btnHistory": "History",
+        "btnMore": "Set up in greater detail",
+        "btnSearch": "Search"
+    },
+    "popup": {
+        "serviceType": "Service type",
+        "datetime": "Date and time",
+        "customer": "Customer",
+        "vehicle": "Vehicle",
+        "fee": "Fee",
+        "totalAmount": "Total Amount",
+        "checkin": "Checkin date and time",
+        "checkout": "Checkout date and time"
+    },
+    "book": {
+        "titleBook": "Book",
+        "lblDate": "Date",
+        "lblNumberPeople": "Passenger count",
+        "lblWeek": "Day of week",
+        "lblCategory": "Category",
+        "lblPossible": "Possible",
+        "selfDriving": "Self-Driving",
+        "tripNote1": "Please select your preferred driving slot",
+        "tripNote2": "Multiple selections allowed"
     }
 }

@@ -15,6 +15,10 @@ a {
     color: red;
     font-size: 14px;
 }
+.line {
+    border-top: 1px solid $border-main;
+    margin: 0 20px;
+}
 .section-main {
     margin-top: $height-top-sm;
     background-color: $bg-main;
@@ -61,6 +65,7 @@ a {
 }
 .group-button {
     margin-top: 20px;
+    padding-bottom: 20px;
     text-align: center;
     button {
         background-color: $bg-btn-primary;
@@ -68,6 +73,32 @@ a {
         padding: 10px;
         min-width: 200px;
         
+    }
+}
+.group-checkbox {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 10px;
+    padding-right: 10px;
+    input[type=checkbox] {
+        margin-right: 5px;
+        height: 0px;
+        width: 0px;
+        display: none;
+        &:checked~ .custome-checkbox {
+            background: #3796c8;
+
+        }
+    }
+    .custome-checkbox {
+        height: 20px;
+        width: 20px;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        background: white;
+        transform: translateY(-50%);
+        border-radius: 5px;
     }
 }
 .custome_date {
@@ -159,6 +190,7 @@ a {
         height: 50%;
     }
     .booking-stay, .booking-facility, .booking-trip {
+        cursor: pointer;
         font-size: 11px;
         color: $white;
     }

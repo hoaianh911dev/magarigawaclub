@@ -11,6 +11,7 @@ const ResetPassword = () => import("../pages/auth/ResetPassword.vue")
 const SendMail = () => import("../pages/auth/SendMail.vue")
 const BookingConfirm = () => import("../pages/calendar/BookingConfirm.vue")
 const UnAuthorization = () => import("../pages/unauthorization/UnAuthorization.vue")
+const TripBook = () => import("../pages/calendar/TripBook.vue")
 
 const routes = [
     {
@@ -48,6 +49,12 @@ const routes = [
         
     },
     {
+        path: PATH.tripBook.url,
+        name: PATH.tripBook.name,
+        component: TripBook,
+        meta: { title: PATH.tripBook.title, footerActiveIndex: 2, isAuthencation: true }
+    },
+    {
         path: PATH.unauthorization.url,
         name: PATH.unauthorization.name,
         component: UnAuthorization,
@@ -55,7 +62,7 @@ const routes = [
     },
     {
         path: "/:catchAll(.*)",
-        component: NotFound
+        component: NotFound,
     },
 ]
 

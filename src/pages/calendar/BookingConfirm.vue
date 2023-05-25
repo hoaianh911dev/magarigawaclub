@@ -6,7 +6,7 @@
             <StatusTabBooking v-if="type" :routeName="routeName"
             :tabNameActive="tabNameActive" :isBooking="true"
             @updateNameActive="updateNameActive"></StatusTabBooking>
-            <div class="tab-content">
+            <div class="tab-content" :class="{'hidden_status': !type}">
                 <div class="tab-panel">
                     <div class="form-calendar">
                         <div class="custome-header-calendar">
@@ -39,9 +39,9 @@
                                     :class="{ 'booking-trip' : item.day == data.day && item.status == 1,
                                             'booking-stay': item.day == data.day && item.status == 2,
                                             'booking-facility': item.day == data.day && item.status == 3}"
-                                            @click="clickCalendarHandler($event, data.day, item.status)">{{ item.day == data.day && item.status == 1 ? '走行' : 
-                                    item.day == data.day && item.status == 2 ? '宿泊': 
-                                    item.day == data.day && item.status == 3 ? '施設' : ''}}</div>
+                                            @click="clickCalendarHandler($event, data.day, item.status)">{{ item.day == data.day && item.status == 1 ? $t('groupButton.btnTrip') : 
+                                    item.day == data.day && item.status == 2 ? $t('groupButton.btnStay') : 
+                                    item.day == data.day && item.status == 3 ? $t('groupButton.btnFacility') : ''}}</div>
                                 </div>
                             </template>
                         </el-calendar>
@@ -51,6 +51,17 @@
         </div>
         <BookingDetailPopup :isShowPopup="isShowPopup"
         :statusCurrent="statusCurrent" @closeDialog="isShowPopup = false"></BookingDetailPopup>
+        <el-dialog v-model="isShowPopupType">
+            <div class="popup popup_type">
+                <div class="content-popup">
+                    <div class="text-center">
+                        <button class="btnType btnTypeTrip" @click="$router.push(`/trip-book/${dateType}`)">{{ $t('groupButton.btnTrip') }}</button>
+                        <button class="btnType btnTypeStay" @click="$router.push('/stay-book')">{{ $t('groupButton.btnStay') }}</button>
+                        <button class="btnType btnTypeFacility" @click="$router.push('/facility-book')">{{ $t('groupButton.btnFacility') }}</button>
+                    </div>
+                </div>
+            </div>
+        </el-dialog>
     </section>
 </template>
 
@@ -95,7 +106,8 @@ export default {
                 }
             ],
             isShowPopup: false,
-            statusCurrent: ''
+            statusCurrent: '',
+            isShowPopupType: false
         }
     },
     setup() {
@@ -140,4 +152,5 @@ export default {
 
 <style lang="scss">
 @import '../../assets/scss/Booking.scss';
+@import '../../assets/scss/Popup.scss';
 </style>

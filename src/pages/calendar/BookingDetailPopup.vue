@@ -2,37 +2,29 @@
     <el-dialog v-model="diglogVisible" :before-close="handleClose">
         <div class="popup popup_friend">
             <div class="content-popup">
-                <div v-if="statusCurrent === 1">
-                    <div>{{ $t('popup.typeBook') }}: {{ dialogItem.typeBook }}</div>
+                <div>{{ $t('popup.serviceType') }}: {{ dialogItem.typeBook }}</div>
+                <div v-if="statusCurrent === 1 || statusCurrent === 3">
                     <div>
                     {{ $t('popup.datetime') }}: {{ dialogItem.date }}
                     </div>
-                    <div>
-                        {{ $t('popup.nameRider') }}１: {{ dialogItem.riderName }}
-                    </div>
-                    <div>
-                        {{ $t('popup.runningvehicle') }}: {{ dialogItem.vehicle }}
-                    </div>
                 </div>
                 <div v-if="statusCurrent === 2">
-                    <div>{{ $t('popup.typeStay') }}: {{ dialogItem.typeBook }}</div>
                     <div>{{ $t('popup.checkin') }}: {{ dialogItem.dateCheckin }}</div>
                     <div>{{ $t('popup.checkout') }}: {{ dialogItem.dateCheckout }}</div>
-                    <div>{{ $t('popup.guests') }}: {{ dialogItem.riderName }}</div>
                 </div>
-                <div v-if="statusCurrent === 3">
-                    <div>{{ $t('popup.typefacility') }}: {{ dialogItem.serviceType }}</div>
-                    <div>{{ $t('popup.datetime') }}: {{ dialogItem.date }}</div>
+                <div>
+                    {{ $t('popup.customer') }}1: {{ dialogItem.riderName }}
+                </div>
+                <div v-if="statusCurrent === 1">
                     <div>
-                        {{ $t('popup.nameCus') }}１: {{ dialogItem.riderName }}
+                        {{ $t('popup.vehicle') }}: {{ dialogItem.vehicle }}
                     </div>
                 </div>
-                
                 <div>
-                    {{ $t('popup.price') }}: {{ dialogItem.price }}
+                    {{ $t('popup.fee') }}: {{ dialogItem.price }}
                 </div>
                 <div class="total_price">
-                    {{ $t('popup.total') }}: {{ dialogItem.price }}
+                    {{ $t('popup.totalAmount') }}: {{ dialogItem.price }}
                 </div>
             </div>
         </div>
