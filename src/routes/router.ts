@@ -21,6 +21,17 @@ const FacilityBook = () => import("../pages/calendar/FacilityBook.vue")
 const FacilityConfirm = () => import("../pages/calendar/FacilityConfirm.vue")
 const FacilityHistory = () => import("../pages/calendar/FacilityHistory.vue")
 const MyPage = () => import("../pages/member/MyPage.vue")
+const MembershipCard = () => import("../pages/member/MembershipCard.vue")
+const MembershipInfo = () => import("../pages/member/MembershipInfo.vue")
+const MembershipConfim = () => import("../pages/member/MembershipConfirm.vue")
+const Friends = () => import("../pages/member/Friends.vue")
+const GuestList = () => import("../pages/member/GuestList.vue")
+const GuestEdit = () => import("../pages/member/GuestEdit.vue")
+const VehicleInfo = () => import("../pages/member/VehicleInfo.vue")
+const VehicleEdit = () => import("../pages/member/VehicleEdit.vue")
+const ContactUs = () => import('../pages/member/ContactUs.vue')
+const PrivacyPolicy = () => import('../pages/member/PrivacyPolicy.vue')
+const TermsOfService = () => import('../pages/member/TermsOfService.vue')
 
 const routes = [
     {
@@ -116,6 +127,72 @@ const routes = [
         name: PATH.myPage.name,
         component: MyPage,
         meta: { title: PATH.myPage.title, footerActiveIndex: 5, isAuthencation: true }
+    },
+    {
+        path: PATH.membershipCard.url,
+        name: PATH.membershipCard.name,
+        component: MembershipCard,
+        meta: { title: PATH.membershipCard.title, footerActiveIndex: 5, isAuthencation: true }
+    },
+    {
+        path: PATH.membershipInfo.url,
+        name: PATH.membershipInfo.name,
+        component: MembershipInfo,
+        meta: { title: PATH.membershipInfo.title, footerActiveIndex: 5, isAuthencation: true }
+    },
+    {
+        path: PATH.membershipConfirm.url,
+        name: PATH.membershipConfirm.name,
+        component: MembershipConfim,
+        meta: { title: PATH.membershipConfirm.title, footerActiveIndex: 5, isAuthencation: true }
+    },
+    {
+        path: PATH.friend.url,
+        name: PATH.friend.name,
+        component: Friends,
+        meta: { title: PATH.friend.title, footerActiveIndex: 5, isAuthencation: true }
+    },
+    {
+        path: PATH.guestList.url,
+        name: PATH.guestList.name,
+        component: GuestList,
+        meta: { title: PATH.guestList.title, footerActiveIndex: 5, isAuthencation: true }
+    },
+    {
+        path: PATH.guestEdit.url + "/:id?",
+        name: PATH.guestEdit.name,
+        component: GuestEdit,
+        meta: { title: PATH.guestEdit.title, footerActiveIndex: 5, isAuthencation: true }
+    },
+    {
+        path: PATH.vehicleInfo.url,
+        name: PATH.vehicleInfo.name,
+        component: VehicleInfo,
+        meta: { title: PATH.vehicleInfo.title, footerActiveIndex: 5, isAuthencation: true}
+    },
+    {
+        path: PATH.vehicleEdit.url + "/:id?",
+        name: PATH.vehicleEdit.name,
+        component: VehicleEdit,
+        meta: { title: PATH.vehicleEdit.title, footerActiveIndex: 5, isAuthencation: true }
+    },
+    {
+        path: PATH.contactUs.url,
+        name: PATH.contactUs.name,
+        component: ContactUs,
+        meta: { title: PATH.contactUs.title, footerActiveIndex: 5, isAuthencation: true }
+    },
+    {
+        path: PATH.privacyPolicy.url,
+        name: PATH.privacyPolicy.name,
+        component: PrivacyPolicy,
+        meta: { title: PATH.privacyPolicy.title, footerActiveIndex: 5, isAuthencation: true }
+    },
+    {
+        path: PATH.termsOfService.url,
+        name: PATH.termsOfService.name,
+        component: TermsOfService,
+        meta: { title: PATH.termsOfService.title, footerActiveIndex: 5, isAuthencation: true }
     },
     {
         path: PATH.unauthorization.url,

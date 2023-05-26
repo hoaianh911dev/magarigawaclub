@@ -1,5 +1,12 @@
 .section-member {
     padding: 20px;
+    textarea {
+        width: 100%;
+        border-radius: 5px;
+        outline: none;
+        color: $black;
+        padding: 10px;
+    }
     .menu-item {
         background-color: #323232;
         display: flex;
@@ -41,6 +48,137 @@
             &.active {
                 background: $bg-btn-primary;
             }
+        }
+    }
+    button {
+        &.btnDelImg, &.btnAddImg {
+            width: auto;
+            border-radius: 5px;
+            padding: 5px 15px;
+            min-width: auto;
+        }
+        &.btnDelImg {
+            margin-right: 10px;
+            background-color: $bg-btn-disable;
+        }
+        &.btnAddImg {
+            background-color: #519646;
+        }
+    }
+    .content-wrapper {
+        background-color: $white;
+        color: $text-main;
+        padding: 20px;
+        border-radius: 10px;
+        max-width: 500px;
+        margin: auto;
+        .logo {
+            img {
+                margin: auto;
+            }
+        }
+        .infor-item {
+            margin: 0px 10px;
+            padding: 10px;
+            border-bottom: 1px solid $border-main-light;
+        }
+    }
+    .form-input {
+        .group-input {
+            margin-bottom: 15px;
+        }
+        .title-input {
+            margin-bottom: 5px;
+            display: inline-block;
+        }
+        input, select {
+            height: 50px;
+            text-align-last: left;
+        }
+        .title-input-main {
+            font-size: 17px;
+            font-weight: 500;
+            margin: 10px 0px;
+        }
+    }
+    .title_main {
+        text-align: center;
+        margin-top: 10px;
+        h2 {
+            font-size: 22px;
+            letter-spacing: 3px;
+        }
+    }
+    .content_friend {
+        margin: 15px 0px;
+        .friend-item {
+            padding: 0.5rem 1rem;
+            border-bottom: 1px solid $border-main;
+        }
+        .group-input {
+            input {
+                height: 42px;
+                border-radius: 5px;
+                padding: 5px;
+                border: 1px solid $border-main;
+                color: $black;
+                outline: none;
+                text-align: left !important;
+                -moz-text-align-last: left !important;
+                text-align-last: left !important;
+                width: 100%;
+            }
+            button {
+                background: #c47200;
+                height: 100%;
+                border-radius: 5px;
+                min-width: 90px;
+                padding: 7px 10px;
+                border: none;
+                outline: none;
+                color: $white;
+            }
+        }
+    }
+    .list_guest {
+        .item_guest {
+            border-bottom: 1px solid $border-main;
+            padding-bottom: 10px;
+            margin-top: 20px;
+            .title_guest {
+                font-size: 16px;
+                border-bottom: 1px solid $border-main;
+                padding-bottom: 10px;
+            }
+            .info_guest {
+                button {
+                    border: 1px solid $border-main-light;
+                    background: transparent;
+                    color: $border-main-light;
+                    padding: 3px 12px;
+                    border-radius: 5px;
+                }
+            }
+        }
+    }
+    .list_vehicle {
+        .title {
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+    }
+}
+.section-membership {
+    .button-group {
+        text-align: center;
+        margin: 20px;
+        button {
+            border: 1px solid $border-main;
+            background-color: transparent;
+            color: white;
+            padding: 5px 20px;
+            border-radius: 5px;
+        
         }
     }
 }

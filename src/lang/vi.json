@@ -53,12 +53,17 @@
         "btnGuest": "Khách",
         "btnTripHistory": "Lịch sử chuyến đi",
         "btnTripBook": "Đặt chuyến đi",
+        "btnTripConfirm": "Xác nhận chuyến đi",
         "btnVehicleInfo": "Thông tin xe",
         "btnContact": "Liên hệ",
         "btnPrivacyPolicy": "Chính sách bảo mật",
         "btnTermUse": "Điều khoản sử dụng",
         "btnVi": "Tiếng việt",
-        "btnEn": "Tiếng anh"
+        "btnEn": "Tiếng anh",
+        "btnCreate": "Tạo",
+        "btnEdit": "Sửa",
+        "btnDelete": "Xoá",
+        "btnAdd": "Thêm"
     },
     "popup": {
         "serviceType": "Loại dịch vụ",
@@ -99,7 +104,35 @@
         "facilityNote": "Vui lòng chọn thời gian mong muốn của bạn."
     },
     "member": {
-        
-        
+        "regularMember": "Thành viên chính thức",
+        "lblName": "Tên",
+        "lblBirthday": "Ngày sinh",
+        "lblAddress": "Địa chỉ",
+        "lblTel": "SĐT",
+        "lblYourName": "Tên bạn",
+        "lblSurname": "Họ",
+        "lblZipCode": "Mã vùng",
+        "lblCity": "Tỉnh/ Thành phố",
+        "lblAddressDetail": "Địa chỉ cụ thể",
+        "lblAddressHouse": "Số nhà",
+        "lblBuildingName": "Tên toà nhà và số phòng",
+        "lblPhoneNumber": "Số điện thoại",
+        "titleFriend": "Bạn bè",
+        "titleGuestInfo": "Thông tin khách",
+        "lblGuest": "Khách",
+        "titleGuestEdit": "Thêm khách",
+        "titleVehicleInfo": "Thông tin xe",
+        "lblVehicle": "Phương tiện",
+        "lblMaker": "Hãng sản xuất",
+        "lblModelYear": "Năm sản xuất",
+        "lblCategory": "Loại",
+        "lblStatus": "Trạng thái",
+        "titleContact": "Liên hệ",
+        "lblSubject": "Tiêu đề",
+        "lblReplyAddress": "Địa chỉ gửi trả lời",
+        "lblContent": "Nội dung",
+        "titlePrivacyPolicy": "Chính sách bảo mật",
+        "content": "article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article",
+        "titleTermsOfService": "Điều khoản sử dụng"
     }
 }

@@ -78,5 +78,60 @@ export const PATH = {
         url: '/mypage',
         name: 'MyPage',
         title: 'My Page'
+    },
+    membershipCard: {
+        url: '/membership-card',
+        name: 'MembershipCard',
+        title: 'Membership Card'
+    },
+    membershipInfo: {
+        url: '/membership-info',
+        name: 'MembershipInfo',
+        title: 'Membership Infomation'
+    },
+    membershipConfirm: {
+        url: '/membership-confirm',
+        name: 'MembershipConfirm',
+        title: 'Membership Confirm'
+    },
+    friend: {
+        url: '/friend',
+        name: 'Friend',
+        title: 'Friend'
+    },
+    guestList: {
+        url: '/guest-list',
+        name: 'GuestList',
+        title: 'Guest List'
+    },
+    guestEdit: {
+        url: '/guest-edit',
+        name: 'GuestEdit',
+        title: 'Guest Edit'
+    },
+    vehicleInfo: {
+        url: '/vehicle-info',
+        name: 'VehicleInfo',
+        title: 'Vehicle Information'
+    },
+    vehicleEdit: {
+        url: '/vehicle-edit',
+        name: 'VehicleEdit',
+        title: 'Vehicle Edit'
+    },
+    contactUs: {
+        url: '/contact-us',
+        name: 'ContactUs',
+        title: 'Contact Us'
+    },
+    privacyPolicy: {
+        url: '/privacy-policy',
+        name: 'PrivacyPolicy',
+        title: 'Privacy Policy'
+    },
+    termsOfService: {
+        url: '/terms-of-service',
+        name: 'TermsOfService',
+        title: 'Terms Of Service'
     }
 }

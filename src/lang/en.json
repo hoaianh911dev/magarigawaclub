@@ -53,12 +53,17 @@
         "btnGuest": "Guest",
         "btnTripHistory": "Trip History",
         "btnTripBook": "Trip Book",
+        "btnTripConfirm": "Trip Confirm",
         "btnVehicleInfo": "Vehicle Information",
         "btnContact": "Contact Us",
         "btnPrivacyPolicy": "Privacy Policy",
         "btnTermUse": "Terms Of Use",
         "btnVi": "Vietnamese",
-        "btnEn": "English"
+        "btnEn": "English",
+        "btnCreate": "Create",
+        "btnEdit": "Edit",
+        "btnDelete": "Delete",
+        "btnAdd": "Add"
     },
     "popup": {
         "serviceType": "Service type",
@@ -99,6 +104,35 @@
         "facilityNote": "Please select your preferred time."
     },
     "member": {
-       
+       "regularMember": "Regular member",
+       "lblName": "Name",
+       "lblBirthday": "Birthday",
+       "lblAddress": "Address",
+       "lblTel": "Tel",
+       "lblYourName": "Your name",
+       "lblSurname": "Surname",
+       "lblZipCode": "Zip code",
+       "lblCity": "City/Provice",
+       "lblAddressDetail": "Address detail",
+       "lblAddressHouse": "Address number",
+       "lblBuildingName": "Building name and room number",
+       "lblPhoneNumber": "Phone number",
+       "titleFriend": "Friend",
+       "titleGuestInfo": "Guest information",
+       "lblGuest": "Guest",
+       "titleGuestEdit": "Add guest",
+       "titleVehicleInfo": "Vehicle information",
+       "lblVehicle": "Vehicle",
+       "lblMaker": "Marker",
+       "lblModelYear": "Model year",
+       "lblCategory": "Category",
+       "lblStatus": "Status",
+       "titleContact": "Contact",
+       "lblSubject": "Subject",
+       "lblReplyAddress": "Reply address",
+       "lblContent": "Content",
+       "titlePrivacyPolicy": "Privacy policy",
+        "content": "article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article",
+        "titleTermsOfService": "Terms Of Service"
     }
 }

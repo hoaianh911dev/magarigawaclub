@@ -1,18 +1,15 @@
 <template>
     <ul class="menu_top" >
         <li :class="type === 'trip' || routeName.toLowerCase().includes('trip') ? 'active':''" @click="!isBooking ? this.$router.push('/trip-book') : $emit('updateType', 'trip')">
-            <img src="/img/trip.png" class="menu_logo" />
-            <img src="/img/trip_white.png" class="menu_logo active" />
+            <font-awesome-icon :icon="['fas', 'gear']" class="text-26 mb-10" :class="routeName.toLowerCase().includes('trip') ? 'active':''"/>
             <div>{{$t('groupButton.btnTrip')}}</div>
         </li>
         <li :class="type === 'stay' || routeName.toLowerCase().includes('stay') ? 'active':''" @click="!isBooking ? this.$router.push('/stay-book') : $emit('updateType', 'stay')">
-            <img src="/img/stay.png" class="menu_logo" />
-            <img src="/img/stay_white.png" class="menu_logo active" />
+            <font-awesome-icon :icon="['fas', 'bed']" class="text-26 mb-10" :class="routeName.toLowerCase().includes('trip') ? 'active':''"/>
             <div>{{$t('groupButton.btnStay')}}</div>
         </li>
         <li :class="type === 'facility' || routeName.toLowerCase().includes('facility') ? 'active':''" @click="!isBooking ? this.$router.push('/facility-book') : $emit('updateType', 'facility')">
-            <img src="/img/facility.png" class="menu_logo" />
-            <img src="/img/facility_white.png" class="menu_logo active" />
+            <font-awesome-icon :icon="['fas', 'house']" class="text-26 mb-10" :class="routeName.toLowerCase().includes('trip') ? 'active':''"/>
             <div>{{$t('groupButton.btnFacility')}}</div>
         </li>
     </ul>

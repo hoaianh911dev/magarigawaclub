@@ -35,7 +35,7 @@
     </div>
 </template>
 
-<script>
+<script lang="ts">
 
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import 'swiper/css'
