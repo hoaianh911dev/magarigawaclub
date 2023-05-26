@@ -43,5 +43,10 @@ export const PATH = {
         url: '/trip-history',
         name: 'TripHistory',
         title: 'Trip History'
+    },
+    stayBook: {
+        url: '/stay-book',
+        name: 'StayBook',
+        title: 'Stay Book'
     }
 }

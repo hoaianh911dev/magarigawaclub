@@ -77,6 +77,12 @@
         "lblCustomer": "Customer",
         "sttBooked": "Booked",
         "lblTime": "Time",
-        "sttCompleted": "Completed"
+        "sttCompleted": "Completed",
+        "lblCheckin": "Check in",
+        "lblCheckout": "Check out",
+        "lblRoomCount": "Room count",
+        "lblDuration": "Duration",
+        "building": "Building",
+        "accommodation": "Accommodation"
     }
 }

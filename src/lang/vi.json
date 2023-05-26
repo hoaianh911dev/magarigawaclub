@@ -77,6 +77,12 @@
         "lblCustomer": "Khách",
         "sttBooked": "Đã đặt",
         "lblTime": "Thời gian",
-        "sttCompleted": "Hoàn thành"
+        "sttCompleted": "Hoàn thành",
+        "lblCheckin": "Check in",
+        "lblCheckout": "Check out",
+        "lblRoomCount": "Số phòng",
+        "lblDuration": "Thời gian",
+        "building": "Tòa nhà",
+        "accommodation": "Đêm lưu trú"
     }
 }
