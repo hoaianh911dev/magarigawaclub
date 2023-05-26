@@ -15,6 +15,8 @@ const TripBook = () => import("../pages/calendar/TripBook.vue")
 const TripConfirm = () => import("../pages/calendar/TripConfirm.vue")
 const TripHistory = () => import("../pages/calendar/TripHistory.vue")
 const StayBook = () => import("../pages/calendar/StayBook.vue")
+const StayConfirm = () => import("../pages/calendar/StayConfirm.vue")
+const StayHistory = () => import("../pages/calendar/StayHistory.vue")
 
 const routes = [
     {
@@ -74,6 +76,18 @@ const routes = [
         name: PATH.stayBook.name,
         component: StayBook,
         meta: { title: PATH.stayBook.title, footerActiveIndex: 2, isAuthencation: true }
+    },
+    {
+        path: PATH.stayConfirm.url,
+        name: PATH.stayConfirm.name,
+        component: StayConfirm,
+        meta: { title: PATH.stayConfirm.title, footerActiveIndex: 2, isAuthencation: true }
+    },
+    {
+        path: PATH.stayHistory.url,
+        name: PATH.stayHistory.name,
+        component: StayHistory,
+        meta: { title: PATH.stayHistory.title, footerActiveIndex: 2, isAuthencation: true }
     },
     {
         path: PATH.unauthorization.url,

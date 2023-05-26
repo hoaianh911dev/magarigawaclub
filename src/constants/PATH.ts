@@ -48,5 +48,15 @@ export const PATH = {
         url: '/stay-book',
         name: 'StayBook',
         title: 'Stay Book'
+    },
+    stayConfirm: {
+        url: '/stay-confirm',
+        name: 'StayConfirm',
+        title: 'Stay Confirm'
+    },
+    stayHistory: {
+        url: '/stay-history',
+        name: 'StayHistory',
+        title: 'Stay History'
     }
 }
