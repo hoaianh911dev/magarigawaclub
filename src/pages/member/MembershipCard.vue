@@ -6,7 +6,8 @@
             </div>
             <div class="mt-10 text-center">{{ $t('member.regularMember') }}</div>
             <div class="mt-10">
-                <img src="/img/qrcode.png" class="m-auto"/>
+                <vue-qrcode value="1" class="m-auto"
+                :options="{ width: 130 }"></vue-qrcode>
             </div>
             <div class="text-center mt-10">
                 {{ user.idUser }}

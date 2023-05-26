@@ -202,25 +202,25 @@ const routes = [
         path: PATH.notice.url,
         name: PATH.notice.name,
         component: Notice,
-        meta: { title: PATH.notice.title, footerActiveIndex: 4, isAuthencetion: true }
+        meta: { title: PATH.notice.title, footerActiveIndex: 4, isAuthencation: true }
     },
     {
         path: PATH.noticeDetail.url + "/:id",
         name: PATH.noticeDetail.name,
         component: NoticeDetail,
-        meta: { title: PATH.noticeDetail.title, footerActiveIndex: 4, isAuthencetion: true }
+        meta: { title: PATH.noticeDetail.title, footerActiveIndex: 4, isAuthencation: true }
     },
     {
         path: PATH.eventDetail.url + "/:id",
         name: PATH.eventDetail.name,
         component: EventDetail,
-        meta: { title: PATH.eventDetail.title, footerActiveIndex: 4, isAuthencetion: true }
+        meta: { title: PATH.eventDetail.title, footerActiveIndex: 4, isAuthencation: true }
     },
     {
         path: PATH.checkIn.url,
         name: PATH.checkIn.name,
         component: CheckIn,
-        meta: { title: PATH.checkIn.title, footerActiveIndex: 5, isAuthencetion: true }
+        meta: { title: PATH.checkIn.title, footerActiveIndex: 5, isAuthencation: true }
     },
     {
         path: PATH.unauthorization.url,

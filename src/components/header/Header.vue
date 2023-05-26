@@ -21,17 +21,17 @@
             <div v-show="showDropdown" class="dropdown_menu">
                 <ul class="navbar-nav ms-auto p-20">
                     <DropdownItem :nameItem="$t('header.book')"
-                    to="/31"></DropdownItem>
+                    :to="PATH.tripBook.url" @handleClick="closeDropdown"></DropdownItem>
                     <DropdownItem :nameItem="$t('header.bookingConfirm')"
-                    to="/31"></DropdownItem>
+                    :to="PATH.tripConfirm.url" @handleClick="closeDropdown"></DropdownItem>
                     <DropdownItem :nameItem="$t('header.usageHistory')"
-                    to="/31"></DropdownItem>
+                    :to="PATH.tripHistory.url" @handleClick="closeDropdown"></DropdownItem>
                     <DropdownItem :nameItem="$t('header.calendar')"
-                    to="/31"></DropdownItem>
+                    :to="PATH.bookingConfirm.url" @handleClick="closeDropdown"></DropdownItem>
                     <DropdownItem :nameItem="$t('header.notice')"
-                    to="/31"></DropdownItem>
+                    :to="PATH.notice.url" @handleClick="closeDropdown"></DropdownItem>
                     <DropdownItem :nameItem="$t('header.mypage')"
-                    to="/31"></DropdownItem>
+                    :to="PATH.myPage.url" @handleClick="closeDropdown"></DropdownItem>
                     <DropdownItem :nameItem="$t('header.logout')"
                     :to="PATH.login.url" @handleClick="logout"></DropdownItem>
                 </ul>
@@ -68,7 +68,11 @@ export default {
     methods: {
         logout() {
             const { removeUser } = useAuth()
+            this.showDropdown = false
             removeUser()
+        },
+        closeDropdown() {
+            this.showDropdown = false
         }
     },
 
