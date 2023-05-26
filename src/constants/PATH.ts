@@ -73,5 +73,10 @@ export const PATH = {
         url: '/facility-history',
         name: 'FacilityHistory',
         title: 'Facility History'
+    },
+    myPage: {
+        url: '/mypage',
+        name: 'MyPage',
+        title: 'My Page'
     }
 }

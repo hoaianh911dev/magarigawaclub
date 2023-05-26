@@ -47,7 +47,18 @@
         "btnFriend": "Friend",
         "btnAddMember": "Add members",
         "btnSave": "Save",
-        "btnClose": "Close"
+        "btnClose": "Close",
+        "btnMembershipCard": "Membership Card",
+        "btnMembershipInfo": "Membership Infomation",
+        "btnGuest": "Guest",
+        "btnTripHistory": "Trip History",
+        "btnTripBook": "Trip Book",
+        "btnVehicleInfo": "Vehicle Information",
+        "btnContact": "Contact Us",
+        "btnPrivacyPolicy": "Privacy Policy",
+        "btnTermUse": "Terms Of Use",
+        "btnVi": "Vietnamese",
+        "btnEn": "English"
     },
     "popup": {
         "serviceType": "Service type",
@@ -86,5 +97,8 @@
         "accommodation": "Accommodation",
         "lblFacility": "Facility",
         "facilityNote": "Please select your preferred time."
+    },
+    "member": {
+       
     }
 }

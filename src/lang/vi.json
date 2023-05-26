@@ -47,7 +47,18 @@
         "btnFriend": "Bạn bè",
         "btnAddMember": "Thêm thành viên",
         "btnSave": "Lưu",
-        "btnClose": "Đóng"
+        "btnClose": "Đóng",
+        "btnMembershipCard": "Thẻ thành viên",
+        "btnMembershipInfo": "Thông tin thành viên",
+        "btnGuest": "Khách",
+        "btnTripHistory": "Lịch sử chuyến đi",
+        "btnTripBook": "Đặt chuyến đi",
+        "btnVehicleInfo": "Thông tin xe",
+        "btnContact": "Liên hệ",
+        "btnPrivacyPolicy": "Chính sách bảo mật",
+        "btnTermUse": "Điều khoản sử dụng",
+        "btnVi": "Tiếng việt",
+        "btnEn": "Tiếng anh"
     },
     "popup": {
         "serviceType": "Loại dịch vụ",
@@ -86,5 +97,9 @@
         "accommodation": "Đêm lưu trú",
         "lblFacility": "Cơ sở",
         "facilityNote": "Vui lòng chọn thời gian mong muốn của bạn."
+    },
+    "member": {
+        
+        
     }
 }

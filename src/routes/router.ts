@@ -20,6 +20,7 @@ const StayHistory = () => import("../pages/calendar/StayHistory.vue")
 const FacilityBook = () => import("../pages/calendar/FacilityBook.vue")
 const FacilityConfirm = () => import("../pages/calendar/FacilityConfirm.vue")
 const FacilityHistory = () => import("../pages/calendar/FacilityHistory.vue")
+const MyPage = () => import("../pages/member/MyPage.vue")
 
 const routes = [
     {
@@ -109,6 +110,12 @@ const routes = [
         name: PATH.facilityHistory.name,
         component: FacilityHistory,
         meta: { title: PATH.facilityHistory.title, footerActiveIndex: 2, isAuthencation: true }
+    },
+    {
+        path: PATH.myPage.url,
+        name: PATH.myPage.name,
+        component: MyPage,
+        meta: { title: PATH.myPage.title, footerActiveIndex: 5, isAuthencation: true }
     },
     {
         path: PATH.unauthorization.url,
