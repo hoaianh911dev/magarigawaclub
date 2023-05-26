@@ -6,7 +6,7 @@
                     <FooterItem :nameItem=" $t('footer.home') " :to="PATH.home.url" icon="fa-house" :active="footerActiveIndex === 1"></FooterItem>
                     <FooterItem :nameItem=" $t('footer.calendar') " :to="PATH.bookingConfirm.url" icon="fa-calendar-days" :active="footerActiveIndex === 2"></FooterItem>
                     <FooterItem :nameItem=" $t('footer.message') " to="/" icon="fa-message" :active="footerActiveIndex === 3"></FooterItem>
-                    <FooterItem :nameItem=" $t('footer.notice') " to="/" icon="fa-bell" :active="footerActiveIndex === 4"></FooterItem>
+                    <FooterItem :nameItem=" $t('footer.notice') " :to="PATH.notice.url" icon="fa-bell" :active="footerActiveIndex === 4"></FooterItem>
                     <FooterItem :nameItem=" $t('footer.member') " :to="PATH.myPage.url" icon="fa-address-card" :active="footerActiveIndex === 5"></FooterItem>
                 </div>
             </div>

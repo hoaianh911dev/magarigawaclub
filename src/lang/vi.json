@@ -63,7 +63,8 @@
         "btnCreate": "Tạo",
         "btnEdit": "Sửa",
         "btnDelete": "Xoá",
-        "btnAdd": "Thêm"
+        "btnAdd": "Thêm",
+        "btnApplication": "Đăng ký"
     },
     "popup": {
         "serviceType": "Loại dịch vụ",
@@ -133,6 +134,10 @@
         "lblContent": "Nội dung",
         "titlePrivacyPolicy": "Chính sách bảo mật",
         "content": "article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article",
-        "titleTermsOfService": "Điều khoản sử dụng"
+        "titleTermsOfService": "Điều khoản sử dụng",
+        "titleCheckin": "Check in",
+        "lblDateCheckin": "Ngày giờ",
+        "lblPlan": "Kế hoạch",
+        "lbUsageHistory": "Lịch sử sử dụng"
     }
 }

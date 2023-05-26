@@ -133,5 +133,25 @@ export const PATH = {
         url: '/terms-of-service',
         name: 'TermsOfService',
         title: 'Terms Of Service'
+    },
+    notice: {
+        url: '/notice',
+        name: 'Notice',
+        title: 'Notice'
+    },
+    noticeDetail: {
+        url: '/notice-detail',
+        name: 'NoticeDetail',
+        title: 'Notice Detail'
+    },
+    eventDetail: {
+        url: '/event-detail',
+        name: 'EventDetail',
+        title: 'Event Detail'
+    },
+    checkIn: {
+        url: '/checkin',
+        name: 'CheckIn',
+        title: 'Check In'
     }
 }

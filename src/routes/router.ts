@@ -32,6 +32,10 @@ const VehicleEdit = () => import("../pages/member/VehicleEdit.vue")
 const ContactUs = () => import('../pages/member/ContactUs.vue')
 const PrivacyPolicy = () => import('../pages/member/PrivacyPolicy.vue')
 const TermsOfService = () => import('../pages/member/TermsOfService.vue')
+const Notice = () => import('../pages/notice/Notice.vue')
+const NoticeDetail = () => import('../pages/notice/NoticeDetail.vue')
+const EventDetail = () => import('../pages/notice/EventDetail.vue')
+const CheckIn = () => import('../pages/checkin/CheckIn.vue')
 
 const routes = [
     {
@@ -193,6 +197,30 @@ const routes = [
         name: PATH.termsOfService.name,
         component: TermsOfService,
         meta: { title: PATH.termsOfService.title, footerActiveIndex: 5, isAuthencation: true }
+    },
+    {
+        path: PATH.notice.url,
+        name: PATH.notice.name,
+        component: Notice,
+        meta: { title: PATH.notice.title, footerActiveIndex: 4, isAuthencetion: true }
+    },
+    {
+        path: PATH.noticeDetail.url + "/:id",
+        name: PATH.noticeDetail.name,
+        component: NoticeDetail,
+        meta: { title: PATH.noticeDetail.title, footerActiveIndex: 4, isAuthencetion: true }
+    },
+    {
+        path: PATH.eventDetail.url + "/:id",
+        name: PATH.eventDetail.name,
+        component: EventDetail,
+        meta: { title: PATH.eventDetail.title, footerActiveIndex: 4, isAuthencetion: true }
+    },
+    {
+        path: PATH.checkIn.url,
+        name: PATH.checkIn.name,
+        component: CheckIn,
+        meta: { title: PATH.checkIn.title, footerActiveIndex: 5, isAuthencetion: true }
     },
     {
         path: PATH.unauthorization.url,

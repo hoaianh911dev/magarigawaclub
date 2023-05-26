@@ -63,7 +63,8 @@
         "btnCreate": "Create",
         "btnEdit": "Edit",
         "btnDelete": "Delete",
-        "btnAdd": "Add"
+        "btnAdd": "Add",
+        "btnApplication": "Application"
     },
     "popup": {
         "serviceType": "Service type",
@@ -133,6 +134,10 @@
        "lblContent": "Content",
        "titlePrivacyPolicy": "Privacy policy",
         "content": "article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article article",
-        "titleTermsOfService": "Terms Of Service"
+        "titleTermsOfService": "Terms Of Service",
+        "titleCheckin": "Check in",
+        "lblDateCheckin": "Date time",
+        "lblPlan": "Plan",
+        "lbUsageHistory": "Usage history"
     }
 }

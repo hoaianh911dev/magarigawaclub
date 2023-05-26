@@ -167,6 +167,55 @@
             margin-bottom: 8px;
         }
     }
+    .list_checkin {
+        margin-top: 20px;
+        .date, .plan {
+            border-top: 1px solid $border-main;
+            padding: 15px 5px;
+        }
+        .plan {
+            border-bottom: 1px solid $border-main;
+        }
+        .btnStatus {
+            background-color: transparent;
+            color: white;
+            border: none;
+            outline: none;
+            border-radius: 5px;
+            padding: 3px 15px;
+            font-size: 14px;
+            &.btnStay {
+                background-color: #C85A8D;
+            }
+            &.btnFacility {
+                background-color: #519646;
+            }
+            &.btnTrip {
+                background-color: #3696c8;
+            }
+        }
+        .checkin_item {
+            margin-top: 10px;
+            &:first-child {
+                margin-top: 0px;
+            }
+        }
+        .history {
+            margin-top: 35px;
+            .title {
+                margin-bottom: 10px;
+            }
+            .history_item {
+                padding: 10px 0px;
+                border-top: 1px solid $border-main;
+                display: flex;
+                justify-content: space-between;
+                &:last-child {
+                    border-bottom: 1px solid $border-main;
+                }
+            }
+        }
+    }
 }
 .section-membership {
     .button-group {

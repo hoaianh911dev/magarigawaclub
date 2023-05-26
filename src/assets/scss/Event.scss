@@ -1,0 +1,27 @@
+.section-notice {
+    padding: 20px;
+    .item_notice {
+        border-top: 1px solid #646464;
+        padding: 20px 0px;
+        cursor: pointer;
+        &:last-child {
+            border-bottom: 1px solid #646464;
+        }
+    }
+    .content-main {
+        margin-top: 20px;
+        .datetime {
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+        .title {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .content {
+            font-size: 15px;
+            line-height: 28px;
+            text-align: justify;
+        }
+    }
+}
