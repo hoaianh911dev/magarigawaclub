@@ -122,13 +122,10 @@
             }
         }
     }
-    .form-book {
-
-    }
 }
 .text-note, .calendar-time, .form-book {
     padding: 20px;
-    .btn_inforRoom, .btn_typeRoom {
+    .btn_inforRoom, .btn_typeRoom, .btnChooseTime {
         border-radius: 5px;
         min-width: 90px;
         padding: 7px 10px;
@@ -143,5 +140,8 @@
     h5.title-date {
         font-size: 16px;
         padding: 10px 0px;
+    }
+    .btnChooseTime {
+        width: 100%;
     }
 }

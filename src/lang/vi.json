@@ -83,6 +83,8 @@
         "lblRoomCount": "Số phòng",
         "lblDuration": "Thời gian",
         "building": "Tòa nhà",
-        "accommodation": "Đêm lưu trú"
+        "accommodation": "Đêm lưu trú",
+        "lblFacility": "Cơ sở",
+        "facilityNote": "Vui lòng chọn thời gian mong muốn của bạn."
     }
 }

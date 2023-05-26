@@ -83,6 +83,8 @@
         "lblRoomCount": "Room count",
         "lblDuration": "Duration",
         "building": "Building",
-        "accommodation": "Accommodation"
+        "accommodation": "Accommodation",
+        "lblFacility": "Facility",
+        "facilityNote": "Please select your preferred time."
     }
 }

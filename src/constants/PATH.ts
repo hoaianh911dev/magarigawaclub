@@ -58,5 +58,20 @@ export const PATH = {
         url: '/stay-history',
         name: 'StayHistory',
         title: 'Stay History'
+    },
+    facilityBook: {
+        url: '/facility-book',
+        name: 'FacilityBook',
+        title: 'Facility Book'
+    },
+    facilityConfirm: {
+        url: '/facility-confirm',
+        name: 'FacilityConfirm',
+        title: 'Facility Confirm'
+    },
+    facilityHistory: {
+        url: '/facility-history',
+        name: 'FacilityHistory',
+        title: 'Facility History'
     }
 }
