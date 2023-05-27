@@ -35,17 +35,21 @@
 import { PATH } from '../../constants/path'
 import useFormValidation from '../../hooks/useFormValidation'
 import { MSG } from "../../constants/mesage"
+import axios from '../../configs/axios'
+import authEnpoint from '../../endpoints/auth.endpoint'
+import { ResponseCode } from '../../enums/response'
 
 export default {
     data() {
         return {
             form: {},
             errors: {},
-            PATH: PATH
+            PATH: PATH,
+            id: this.$route.params.id
         }
     },
     methods: {
-        submitForm() {
+        async submitForm() {
             this.errors = useFormValidation()
             //check password confirm
             if(this.form.confirmNewPassword != this.form.newPassword) 
@@ -53,7 +57,26 @@ export default {
 
             if (Object.keys(this.errors).length > 0) return
 
-            this.$router.push(PATH.login.url)
+            try {
+                let response = await axios.put(authEnpoint.updatePassword, {id: this.id, password: this.form.confirmNewPassword})
+                if(response.data.code === ResponseCode.Ok) {
+                    this.$swal({
+                        icon: 'success',
+                        text: MSG.SUCCESS.S_0002
+                    }).then(() => { this.$router.push(PATH.login.url) })
+                } else {
+                    this.$swal({
+                    icon: 'error',
+                    text: MSG.ERROR.E_0005
+                })
+                }
+            }
+            catch(error) {
+                this.$swal({
+                    icon: 'error',
+                    text: MSG.ERROR.E_0005
+                })
+            }
         }
     },
 }

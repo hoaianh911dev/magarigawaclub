@@ -45,7 +45,7 @@ const routes = [
         meta: { title: PATH.login.title }
     },
     {
-        path: PATH.resetPassword.url,
+        path: PATH.resetPassword.url + "/:id",
         name: PATH.resetPassword.name,
         component: ResetPassword,
         meta: { title: PATH.resetPassword.title },

@@ -11,5 +11,6 @@ export const ResponseCode = {
 export const ResponseMessage = {
     UnAuthorized: 'Incorrect email or password',
     BadAuthorizationHeader: 'Bad Authorization Header',
-    AccessTokenNotValid: 'Access Token Is Not Valid'
+    AccessTokenNotValid: 'Access Token Is Not Valid',
+    NoContent: "No Content"
 }
