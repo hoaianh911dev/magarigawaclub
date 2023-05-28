@@ -31,10 +31,9 @@
 
 import { PATH } from '../../constants/path';
 import useFormValidation from '../../hooks/useFormValidation'
-import axios from '../../configs/axios'
-import authEnpoint from '../../endpoints/auth.endpoint'
 import { ResponseCode } from '../../enums/response'
 import { MSG } from '../../constants/mesage'
+import { checkEmailExist, sendMailResetPassword } from '../../hooks/useAuthApi'
 
 export default {
     data() {
@@ -49,10 +48,10 @@ export default {
             this.errors = useFormValidation()
             if (Object.keys(this.errors).length > 0) return
             try {
-                let response = await axios.get(authEnpoint.checkEmailExist + "?email=" + this.form.email)
+                let response = await checkEmailExist(this.form.email)
                 if(response.data.code === ResponseCode.Ok) {
                     const id = response.data.id
-                    response = await axios.post(authEnpoint.sendMail, { id:id })
+                    response = await sendMailResetPassword(id)
                     if(response.data.code === ResponseCode.Ok) {
                         this.$swal({
                             icon: 'success',

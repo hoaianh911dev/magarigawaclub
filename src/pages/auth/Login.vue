@@ -1,6 +1,4 @@
 <template>
-    <NotifyMessage :show=isAlertConfirm :message=message
-    @confirm="isAlertConfirm=false"></NotifyMessage>
     <section class="section-main section-user section-login">
         <div class="login-content">
             <div class="logo_title">
@@ -30,37 +28,37 @@
 
 <script lang="ts">
 
-import axios from '../../configs/axios'
-import authEnpoint from '../../endpoints/auth.endpoint'
 import { ResponseCode } from '../../enums/response'
-import useAuth from '../../hooks/useAuth'
-import NotifyMessage from '../../components/notify/NotifyMessage.vue'
 import { MSG } from '../../constants/mesage'
 import { PATH } from '../../constants/path'
+import { login } from '../../hooks/useAuthApi'
+import useAuth from '../../hooks/useAuth'
 
 export default {
-    components: {
-        NotifyMessage
-    },
     data() {
         return {
             errors: {},
             form: {},
-            isAlertConfirm: false,
-            message: '',
             PATH: PATH
         }
     },
     methods: {
         async SubmitForm() {
             const { setUser } = useAuth()
-            const response = await axios.post(authEnpoint.login, {email: this.form.email, password: this.form.password})
+            const response = await login(this.form.email, this.form.password)
             if(response.data.code === ResponseCode.Ok) {
-                setUser(JSON.stringify({email: this.form.email, 'accessToken': response.data.access_token}))
-                this.$router.push(PATH.home.url)
+                this.$swal({
+                    icon: 'success',
+                    text: MSG.SUCCESS.S_0003
+                }).then(() => { 
+                    setUser(JSON.stringify({email: this.form.email, 'accessToken': response.data.access_token}))
+                    this.$router.push(PATH.home.url)
+                })
             } else {
-                this.isAlertConfirm = true
-                this.message = MSG.ERROR.E_0001
+                this.$swal({
+                    icon: 'error',
+                    text: MSG.ERROR.E_0001
+                })
             }
         }
     }

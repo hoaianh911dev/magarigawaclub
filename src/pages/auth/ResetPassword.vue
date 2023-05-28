@@ -10,7 +10,7 @@
             <div class="form_input">
                 <div class="group-input">
                     <input :placeholder="$t('resetPassword.plNewPassword')" v-model="form.newPassword" 
-                    name="newPassword" class="required" :nameControl="$t('resetPassword.plNewPassword')"
+                    name="newPassword" class="required password" :nameControl="$t('resetPassword.plNewPassword')"
                     type="password"/>
                     <span v-if="errors.newPassword" class="text-error">{{ errors.newPassword }}</span>
                 </div>
@@ -35,9 +35,8 @@
 import { PATH } from '../../constants/path'
 import useFormValidation from '../../hooks/useFormValidation'
 import { MSG } from "../../constants/mesage"
-import axios from '../../configs/axios'
-import authEnpoint from '../../endpoints/auth.endpoint'
 import { ResponseCode } from '../../enums/response'
+import { updatePassword } from '../../hooks/useAuthApi'
 
 export default {
     data() {
@@ -58,7 +57,7 @@ export default {
             if (Object.keys(this.errors).length > 0) return
 
             try {
-                let response = await axios.put(authEnpoint.updatePassword, {id: this.id, password: this.form.confirmNewPassword})
+                let response = await updatePassword(this.id, this.form.confirmNewPassword)
                 if(response.data.code === ResponseCode.Ok) {
                     this.$swal({
                         icon: 'success',
@@ -66,9 +65,9 @@ export default {
                     }).then(() => { this.$router.push(PATH.login.url) })
                 } else {
                     this.$swal({
-                    icon: 'error',
-                    text: MSG.ERROR.E_0005
-                })
+                        icon: 'error',
+                        text: MSG.ERROR.E_0005
+                    })
                 }
             }
             catch(error) {
