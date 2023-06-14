@@ -7,7 +7,7 @@
     "dev": "vite --host",
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
-    "server-api:": "node server.js"
+    "server-api": "node server.js"
   },
   "dependencies": {
     "@chenfengyuan/vue-qrcode": "^2.0.0",

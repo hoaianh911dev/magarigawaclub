@@ -39,14 +39,14 @@ export default {
             routeName: this.$route.name,
             isTripBook: 1,
             formInput: {
-                bookes: []
-            },
-            dateBook: this.$route.params.date || new Date()
+                bookes: [],
+                dateBook: this.$route.params.date || new Date()
+            }
         }
     },
     computed: {
         formatDate() {
-            const date = new Date(this.dateBook)
+            const date = new Date(this.formInput.dateBook)
             return `${date.getFullYear()}.${date.getMonth()+1}.${date.getDate()} ${dayOfWeeks[date.getDay()]}`
         },
     },

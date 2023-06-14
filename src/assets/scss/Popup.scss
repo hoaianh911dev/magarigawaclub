@@ -8,10 +8,10 @@ $border-color: #646464;
     --bs-gutter-y: 0;
 }
 .popup {
-    max-height: calc(100vh - 190px);
+    max-height: calc(100svh - 190px);
     overflow: hidden;
     .content-popup {
-        max-height: calc(100vh - 250px);
+        max-height: calc(100svh - 250px);
         overflow: auto;
     }
     .friend-item {

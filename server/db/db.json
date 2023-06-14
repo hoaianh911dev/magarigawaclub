@@ -1,0 +1,88 @@
+{
+    "booking": [],
+    "schedule-trip": [{
+        "id": "ST0001",
+        "name": "COURSE CLEANING・座学",
+        "status": "close",
+        "maxquantity": 100,
+        "fromtime": "08:00",
+        "totime": "08:20",
+        "location": "1"
+    },
+    {
+        "id": "ST0002",
+        "name": "Morning A",
+        "status": "booking",
+        "maxquantity": 100,
+        "fromtime": "09:00",
+        "totime": "09:40",
+        "location": "1"
+    },
+    {
+        "id": "ST0003",
+        "name": "Morning B",
+        "status": "booking",
+        "maxquantity": 100,
+        "fromtime": "09:40",
+        "totime": "10:20",
+        "location": "2"
+    },
+    {
+        "id": "ST0004",
+        "name": "Morning A",
+        "status": "booking",
+        "maxquantity": 100,
+        "fromtime": "10:20",
+        "totime": "11:00",
+        "location": "1"
+    },
+    {
+        "id": "ST0005",
+        "name":"Morning B",
+        "status": "booking",
+        "maxquantity": 100,
+        "fromtime": "11:00",
+        "totime": "11:40",
+        "location": "2"
+    },
+    {
+        "id": "ST0006",
+        "name": "Mix 20min",
+        "status": "booking",
+        "maxquantity": 100,
+        "fromtime": "11:40",
+        "totime": "12:00",
+        "location": "1"
+    },
+    {
+        "id": "ST0007",
+        "name": "COURSE CLEANING・座学",
+        "status": "close",
+        "fromtime": "12:00",
+        "totime": "12:20",
+        "location": "1"
+    },
+    {
+        "id": "ST0008",
+        "name": "Beginner",
+        "status": "booking",
+        "fromtime": "12:20",
+        "totime": "13:00",
+        "location": "1"
+    },
+    {
+        "id": "ST0009",
+        "name": "Family",
+        "status": "booking",
+        "fromtime": "12:20",
+        "totime": "13:00",
+        "location": "2"
+    }, 
+    {
+        "id": "ST0010",
+        "name": "Afternoon A",
+        "status": "booking",
+        "fromtime": "13:00",
+        "totime": "13:40"
+    }]
+}

@@ -5,79 +5,25 @@
             <label class="title-input col-span-5">{{ $t('book.lblDate') }}</label>
             <div class="custome_date col-span-7">
                 <el-date-picker
-                v-model="formInput.date"
+                v-model="date"
                 type="date"
                 format="YYYY.M.DD ddd" 
-                :disabled-date="disabledDate" 
-                />
+                :disabled-date="disabledDate" />
             </div>
         </div>
         <div class="group-input grid grid-cols-12">
             <label class="title-input col-span-5">{{$t('book.lblNumberPeople')}}</label>
-            <input class="col-span-7"/>
+            <input class="col-span-7 number" v-model="formInput.quantity" @input="validate"
+            maxlength="2"/>
         </div>
-        <div class="show-more">
-            <a class="btnMore" @click="isVisibleMore=!isVisibleMore">
-                <span v-if="!isVisibleMore">▲ {{$t('groupButton.btnMore')}}</span>
-                <span v-if="isVisibleMore">▼ {{$t('groupButton.btnMore')}}</span>
-            </a>
-        </div>
-        <div class="content-more" v-if="isVisibleMore">
-            <div class="group-input grid grid-cols-12">
-                <label class="col-span-5 title-input">{{$t('book.lblWeek')}}</label>
-                <div class="col-span-7 grid grid-cols-12">
-                    <label class="group-checkbox col-span-4">MON
-                        <input type="checkbox">
-                        <span class="custome-checkbox"></span>
-                    </label>
-                    <label class="group-checkbox col-span-4">TUE
-                        <input type="checkbox">
-                        <span class="custome-checkbox"></span>
-                    </label>
-                    <label class="group-checkbox col-span-4">WEB
-                        <input type="checkbox">
-                        <span class="custome-checkbox"></span>
-                    </label>
-                    <label class="group-checkbox col-span-4">THU
-                        <input type="checkbox">
-                        <span class="custome-checkbox"></span>
-                    </label>
-                    <label class="group-checkbox col-span-8">FRI
-                        <input type="checkbox">
-                        <span class="custome-checkbox"></span>
-                    </label>
-                    <label class="group-checkbox col-span-4">SAT
-                        <input type="checkbox">
-                        <span class="custome-checkbox"></span>
-                    </label>
-                    <label class="group-checkbox col-span-4">SUN
-                        <input type="checkbox">
-                        <span class="custome-checkbox"></span>
-                    </label>
-                </div>
-            </div>
-            <div class="group-input grid grid-cols-12">
-                <label class="col-span-5 title-input">{{$t('book.lblCategory')}}</label>
-                <select class="col-span-7">
-                    <option v-for="item in arrType" :value="item" :key="item">{{ item }}</option>
-                </select>
-            </div>
-            <div class="group-input grid grid-cols-12">
-                <label class="col-span-5 title-input">{{$t('book.selfDriving')}}</label>
-                <label class="group-checkbox col-span-7" style="margin-bottom: 0px;">{{$t('book.lblPossible')}}
-                    <input type="checkbox">
-                    <span class="custome-checkbox"></span>
-                </label>
-            </div>
-        </div>
-        <div class="group-button">
-            <button>{{$t('groupButton.btnSearch')}}</button>
+        <div class="group-button mt-30">
+            <button @click="formInput.dateBook = date">{{  $t('groupButton.btnSearch') }}</button>
         </div>
     </div>
     <div class="line"></div>
     <div class="text-note">
         <p>{{ $t('book.tripNote1') }}</p>
-        <p>※{{ $t('book.tripNote2') }}</p>
+        <p>※ {{ $t('book.tripNote2') }}</p>
     </div>
     <div class="form-calendar">
         <div class="custom-header">
@@ -90,38 +36,38 @@
                         <th>{{ item }}</th>
                         <div hidden>{{ currentTime = item }}</div>
                         <template v-for="data in calculatorTimeSpan" :key="data">
-                            <td v-if="calculatorTimeSpan.findIndex(x => x.countColumn === 3) > -1" :rowspan="data.rowSpan"
+                            <td v-if="calculatorTimeSpan.findIndex(x => x.status === 'close') > -1" :rowspan="data.rowSpan"
                                 colspan="2">
-                                <div class=" status statusCleaning">{{ data.content }}</div>
+                                <div class=" status statusCleaning">{{ data.name }}</div>
                             </td> 
                             <template v-else-if="calculatorTimeSpan.length === 2">
-                                <td :rowspan="data.rowSpan" v-if="data.countColumn === 1 || data.countColumn === 2">
+                                <td :rowspan="data.rowSpan" v-if="data.location === '1' || data.location === '2'">
                                     <div class=" status statusChoose" 
                                     @click="hanldeAddSelect(data)" :class="{'statusSelected' : data.selected}">
-                                        {{data.content}}
+                                        {{data.name}}
                                         <br >
-                                        {{ data.fromTime }} - {{ data.toTime }}
+                                        {{ data.fromtime }} - {{ data.totime }}
                                     </div>
                                 </td>
                             </template>
                             <template v-else>
-                                <td :rowspan="data.countColumn === 1 ? data.rowSpan : 1">
+                                <td :rowspan="data.location === '1' ? data.rowSpan : 1">
                                     <div :class="{
-                                        'status statusChoose': data.countColumn === 1,
-                                        'statusSelected' : data.countColumn === 1 && data.selected
+                                        'status statusChoose': data.location === '1',
+                                        'statusSelected' : data.location === '1' && data.selected
                                     }"
-                                    @click="data.countColumn === 1 ? hanldeAddSelect(data) : ''">
-                                        <div>{{ data.countColumn === 1 ? data.content : '' }}</div>
-                                        {{ data.countColumn === 1 ? data.fromTime +' -' : '' }} {{ data.countColumn === 1 ? data.toTime : "" }}
+                                    @click="data.location === '1' ? hanldeAddSelect(data) : ''">
+                                        <div>{{ data.location === '1' ? data.name : '' }}</div>
+                                        {{ data.location === '1' ? data.fromtime +' -' : '' }} {{ data.location === "1" ? data.totime : "" }}
                                     </div>
                                 </td>
-                                <td :rowspan="data.countColumn === 2 ? data.rowSpan : 1">
+                                <td :rowspan="data.location === '2' ? data.rowSpan : 1">
                                     <div :class="{
-                                        'status statusChoose': data.countColumn === 2,
+                                        'status statusChoose': data.location === '2',
                                         'statusSelected': data.selected}"
-                                    @click="data.countColumn === 2 ? hanldeAddSelect(data) : ''">
-                                        <div>{{ data.countColumn === 2 ? data.content : '' }}</div>
-                                        {{ data.countColumn === 2 ? data.fromTime +' -' : "" }} {{ data.countColumn === 2 ? data.toTime : '' }}
+                                    @click="data.location === '2' ? hanldeAddSelect(data) : ''">
+                                        <div>{{ data.location === '2' ? data.name : '' }}</div>
+                                        {{ data.location === '2' ? data.fromtime +' -' : "" }} {{ data.location === '2' ? data.totime : '' }}
                                     </div>
                                 </td>
                             </template> 
@@ -142,103 +88,25 @@
 </template>
 
 <script lang="ts">
-
 import { ElDatePicker } from 'element-plus'
 import { arrTime } from '../../constants/default'
+import { useFormEnter } from '../../hooks/useFormEnter'
+import { getListScheduleTrip } from '../../hooks/useBookingApi'
+import { ResponseCode } from '../../enums/response'
+import { TScheduleTrip } from '../../types/schedule-trip'
 
 export default {
     
     components: {
         ElDatePicker,
     },  
-    data() {
+    emits: ['submitBookHandler'],
+    data: () => {
         return {
-            isVisibleMore: false,
-            arrType: ['', 'Type1', 'Type2'],
             arrTime: arrTime,
             currentTime: '',
-            lstData: [
-                {
-                    id: 1,
-                    fromTime: '08:00',
-                    toTime: '08:20',
-                    countColumn: 3, 
-                    content: 'COURSE CLEANING・座学',
-                    selected: false
-                },
-                {
-                    id: 2,
-                    fromTime: '09:00',
-                    toTime: '09:40',
-                    countColumn: 1,
-                    content: 'Morning A',
-                    selected: false
-                }, 
-                {
-                    id: 3,
-                    fromTime: '09:40',
-                    toTime: '10:20',
-                    countColumn: 2,
-                    content: 'Morning B',
-                    selected: false
-                }, 
-                {
-                    id: 4,
-                    fromTime: '10:20',
-                    toTime: '11:00',
-                    countColumn: 1,
-                    content: 'Morning A',
-                    selected: false
-                }, 
-                {
-                    id: 5,
-                    fromTime: '11:00',
-                    toTime: '11:40',
-                    countColumn: 2,
-                    content: 'Morning B',
-                    selected: false
-                }, 
-                {
-                    id: 6,
-                    fromTime: '11:40',
-                    toTime: '12:00',
-                    countColumn: 1,
-                    content: 'Mix 20min',
-                    selected: false
-                }, 
-                {
-                    id: 7,
-                    fromTime: '12:00',
-                    toTime: '12:20',
-                    countColumn: 3,
-                    content: 'COURSE CLEANING・座学',
-                    selected: false
-                }, 
-                {
-                    id: 8,
-                    fromTime: '12:20',
-                    toTime: '13:00',
-                    countColumn: 1,
-                    content: 'Beginner',
-                    selected: false
-                }, 
-                {
-                    id: 9,
-                    fromTime: '12:20',
-                    toTime: '13:00',
-                    countColumn: 2,
-                    content: 'Family',
-                    selected: false
-                }, 
-                {
-                    id: 10,
-                    fromTime: '13:00',
-                    toTime: '13:40',
-                    countColumn: 1,
-                    content: 'Afternoon A',
-                    selected: false
-                }, 
-            ],
+            lstData: [],
+            date: null
         }
     },
     props: {
@@ -247,20 +115,24 @@ export default {
     },
     computed: {
         calculatorTimeSpan() {
-            const lstData = this.lstData.map(function(item) {
-
-                const startTime = new Date(`2023-01-01 ${item.fromTime}`)
-                const endTime = new Date(`2023-01-01 ${item.toTime}`)
+            const lstData = this.lstData.map(function(item:TScheduleTrip) {
+                const startTime = new Date(`2023-01-01 ${item.fromtime}`)
+                const endTime = new Date(`2023-01-01 ${item.totime}`)
                 const timeDifference = endTime - startTime
                 const hours = timeDifference/(3600*1000)
+                console.log(hours)
 
                 return {
                     ...item,
                     rowSpan: hours / (20/60) 
                 }
             })
-            return lstData.filter(data => data.fromTime === this.currentTime)
+            return lstData.filter(data => data.fromtime === this.currentTime)
         },
+    },
+    async created() {
+        this.date = this.formInput.dateBook
+        await this.loadScheduleTrip()
     },
     methods: {
         disabledDate(date) {
@@ -282,8 +154,16 @@ export default {
         handleSubmit() {
             this.$emit('submitBookHandler')
         },
-    },
-
+        validate(event) {
+            useFormEnter(event)
+        },
+        async loadScheduleTrip() {
+            const response = await getListScheduleTrip()
+            if(response.status === ResponseCode.Ok) {
+                this.lstData = response.data
+            }
+        }
+    }
 }
 </script>
 
