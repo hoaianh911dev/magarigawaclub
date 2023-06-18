@@ -84,5 +84,33 @@
         "status": "booking",
         "fromtime": "13:00",
         "totime": "13:40"
-    }]
+    }],
+    "vehicle-info": [
+        {
+            "id": "V0001",
+            "userid": "3",
+            "name": "AB",
+            "maker": "Honda",
+            "modelyear": "2023",
+            "category": "1",
+            "status": "New"
+        }
+    ],
+    "category": [
+        {
+            "id": "1",
+            "name": "Số",
+            "type": "CategoryVehicle"
+        },
+        {
+            "id": "2",
+            "name": "Ga",
+            "type": "CategoryVehicle"
+        },
+        {
+            "id": "3",
+            "name": "Xe tay côn",
+            "type": "CategoryVehicle"
+        }
+    ]
 }

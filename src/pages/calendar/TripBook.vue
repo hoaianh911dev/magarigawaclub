@@ -39,7 +39,7 @@ export default {
             routeName: this.$route.name,
             isTripBook: 1,
             formInput: {
-                bookes: [],
+                booking: [],
                 dateBook: this.$route.params.date || new Date()
             }
         }

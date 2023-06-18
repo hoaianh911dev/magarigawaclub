@@ -37,7 +37,7 @@ import useAuth from '../../hooks/useAuth'
 export default {
     data() {
         return {
-            errors: {},
+        errors: {},
             form: {},
             PATH: PATH
         }
@@ -51,7 +51,7 @@ export default {
                     icon: 'success',
                     text: MSG.SUCCESS.S_0003
                 }).then(() => { 
-                    setUser(JSON.stringify({email: this.form.email, 'accessToken': response.data.access_token}))
+                    setUser(JSON.stringify({email: this.form.email, 'accessToken': response.data.access_token, 'id': response.data.id}))
                     this.$router.push(PATH.home.url)
                 })
             } else {

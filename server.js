@@ -50,14 +50,15 @@ function verifyToken(token) {
 }
 
 //check if the user exists in db
-function isAuthenticated({email, password}) {
-    return userDb.users.findIndex(user => user.email === email && user.password === password) !== -1
+function getUserByEmailPassword({email, password}) {
+    return userDb.users.find(user => user.email === email && user.password === password)
 }
 
 server.post('/auth/login', (req, res) => {
     
     const {email, password} = req.body
-    if( isAuthenticated({email, password}) === false) {
+    const user = getUserByEmailPassword({email, password})
+    if(!user) {
         const status = ResponseCode.UnAuthorized
         const code = ResponseCode.UnAuthorized
         const message = ResponseMessage.UnAuthorized
@@ -66,7 +67,8 @@ server.post('/auth/login', (req, res) => {
     }
     const access_token = createToken({email, password})
     const code = ResponseCode.Ok
-    res.status(200).json({code, access_token})
+    const id = user.id
+    res.status(200).json({code, access_token, id})
 })
 
 server.get('/auth/checkEmailExist', (req, res) => {

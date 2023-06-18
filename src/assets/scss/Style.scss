@@ -8,6 +8,11 @@ svg {
 a {
     cursor: pointer;
 }
+button:disabled {
+    cursor: not-allowed;
+    background-color: gray !important;
+    color: rgb(211, 210, 210);
+}
 #app {
     position: relative;
 }

@@ -102,7 +102,8 @@
         "building": "Building",
         "accommodation": "Accommodation",
         "lblFacility": "Facility",
-        "facilityNote": "Please select your preferred time."
+        "facilityNote": "Please select your preferred time.",
+        "lblMinute": "minute"
     },
     "member": {
        "regularMember": "Regular member",

@@ -1,6 +1,7 @@
 export default function useAuth() {
     const user = JSON.parse(localStorage.getItem('user'))
     const accessToken = user?.accessToken
+    const userId = user?.id
     const setUser = function(user: any) {
         localStorage.setItem("user", user)
         window.dispatchEvent( new Event('storage') )
@@ -9,5 +10,5 @@ export default function useAuth() {
         localStorage.removeItem("user")
         window.dispatchEvent( new Event('storage') )
     }
-    return {accessToken, setUser, removeUser, user}
+    return {accessToken, setUser, removeUser, user, userId}
 }

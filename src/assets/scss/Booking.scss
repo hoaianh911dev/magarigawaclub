@@ -75,10 +75,12 @@
                 }
                 .statusCleaning {
                     background-color: #B4B4B4;
+                    cursor: not-allowed;
                 }
                 .statusChoose {
                     background-color: white;
                     margin: 0px 7px 0px 0px;
+                    cursor: pointer;
                 }
                 .statusSelected {
                     background-color: #3696C8;

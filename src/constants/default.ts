@@ -28,8 +28,15 @@ export const arrTime = [
 ]
 
 export const arrTypeUser = [
-    '',
-    '会員本人',
-    'ゲスト',
-    '友達(他の会員)'
+    {
+        "key": "1",
+        "value": "Thành viên"
+    }, {
+        "key": "2",
+        "value": "Khách mời"
+    },
+    {
+        "key": "3",
+        "value": "Bạn bè (các thành viên khác)"
+    }
 ]
