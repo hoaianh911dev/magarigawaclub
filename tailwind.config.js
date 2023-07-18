@@ -152,6 +152,10 @@ const opacity = {
     '0.72': '0.72',
     100: '1'
 }
+
+const fill = {
+    black: 'black'
+}
   
 
 module.exports = {
@@ -170,6 +174,7 @@ module.exports = {
         fontSize,
         spacing,
         opacity,
+        fill: fill,
         backgroundOpacity: theme => theme('opacity'),
         textOpacity: theme => theme('opacity'),
         borderOpacity: theme => theme('opacity'),

@@ -87,6 +87,7 @@
 </template>
 <script lang="ts">
 import { PATH } from '../../constants/path'
+import useLocalStorage from '../../hooks/useLocalStorage'
 export default {
     data() {
         return {
@@ -96,7 +97,7 @@ export default {
     methods: {
         switcherLanguage(lang) {
             this.$i18n.locale = lang
-            localStorage.setItem('language', lang)
+            useLocalStorage().setLanguage(lang)
         }
     },
 }

@@ -78,7 +78,7 @@
 </template>
 
 <script lang="ts">
-import { PATH } from '../../constants/PATH'
+import { PATH } from '../../constants/path'
 export default {
     data() {
         return {
@@ -95,4 +95,4 @@ export default {
 
 <style lang="scss">
 @import '../../assets/scss/Member.scss';
-</style>
+</style>../../constants/path

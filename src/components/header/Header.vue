@@ -43,8 +43,8 @@
 <script lang="ts">
 
 import DropdownItem from './DropdownItem.vue'
-import useAuth from '../../hooks/useAuth'
 import { PATH } from '../../constants/path'
+import useLocalStorage from '../../hooks/useLocalStorage'
 
 export default {
     name: 'Header',
@@ -67,9 +67,8 @@ export default {
 
     methods: {
         logout() {
-            const { removeUser } = useAuth()
             this.showDropdown = false
-            removeUser()
+            useLocalStorage().removeUser()
         },
         closeDropdown() {
             this.showDropdown = false

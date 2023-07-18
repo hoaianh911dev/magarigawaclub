@@ -24,42 +24,72 @@
             </div>
         </div>
     </section>
+    <Loading v-if="isLoading"></Loading>
 </template>
 
 <script lang="ts">
 
+//layout
+import Loading from '../../components/loading/Loading.vue'
+//const
 import { ResponseCode } from '../../enums/response'
-import { MSG } from '../../constants/mesage'
 import { PATH } from '../../constants/path'
-import { login } from '../../hooks/useAuthApi'
-import useAuth from '../../hooks/useAuth'
+//hooks
+import useLocalStorage  from '../../hooks/useLocalStorage'
+import useNotification from '../../hooks/useNotification'
+import { useMutation, useQueryClient } from 'vue-query'
+//service
+import { login } from '../../services/userService'
 
 export default {
+    components: {
+        Loading
+    },
+    setup() {
+
+        const notify = useNotification()
+        const storage = useLocalStorage()
+        const queryClient = useQueryClient()
+
+        const { mutate, isLoading } = useMutation(login, {
+            onSuccess: () => {
+                queryClient.invalidateQueries("user")
+            },
+        })
+
+        return { 
+            notify,
+            storage,
+            mutate,
+            isLoading
+        }
+    },
     data() {
         return {
-        errors: {},
-            form: {},
-            PATH: PATH
+            errors: {},
+            form: {
+                email: '',
+                password: ''
+            },
+            PATH: PATH,
         }
     },
     methods: {
         async SubmitForm() {
-            const { setUser } = useAuth()
-            const response = await login(this.form.email, this.form.password)
-            if(response.data.code === ResponseCode.Ok) {
-                this.$swal({
-                    icon: 'success',
-                    text: MSG.SUCCESS.S_0003
-                }).then(() => { 
-                    setUser(JSON.stringify({email: this.form.email, 'accessToken': response.data.access_token, 'id': response.data.id}))
-                    this.$router.push(PATH.home.url)
-                })
-            } else {
-                this.$swal({
-                    icon: 'error',
-                    text: MSG.ERROR.E_0001
-                })
-            }
+            this.mutate({email: this.form.email, password: this.form.password}, {
+                onSuccess: (data) => {
+                   if(data.code === ResponseCode.Ok) {
+                        this.notify.nofifySuccess("S_0003")
+                        this.storage.setUser(JSON.stringify({email: this.form.email, 'accessToken': data.access_token, 'id': data.id}))
+                        this.$router.push(PATH.home.url)
+                    } else {
+                        this.notify.notifyError("E_0001")
+                    }
+                },
+                onError: () => {
+                    this.notify.notifyError("E_0005")
+                }
+            })
         }
     }
 }

@@ -55,7 +55,7 @@
 </template>
 
 <script lang="ts">
-import { PATH } from '../../constants/PATH'
+import { PATH } from '../../constants/path'
 import ThumbGallery from '../../components/image/ThumbGallery.vue'
 export default {
     components: {
@@ -82,4 +82,4 @@ export default {
 
 <style lang="scss">
 @import '../../assets/scss/Member.scss';
-</style>
+</style>../../constants/path

@@ -28,17 +28,44 @@
             </div>
         </div>
      </section>
+     <Loading v-if="isLoading"></Loading>
 </template>
 
 <script lang="ts">
 
+//layout
+import Loading from '../../components/loading/Loading.vue'
+//const
 import { PATH } from '../../constants/path'
-import useFormValidation from '../../hooks/useFormValidation'
-import { MSG } from "../../constants/mesage"
 import { ResponseCode } from '../../enums/response'
-import { updatePassword } from '../../hooks/useAuthApi'
+import getMSG from "../../constants/message"
+//hooks
+import useFormValidation from '../../hooks/useFormValidation'
+import useNotification from '../../hooks/useNotification'
+import { useMutation, useQueryClient } from 'vue-query'
+//service
+import { updatePassword } from '../../services/userService'
 
 export default {
+    components: {
+        Loading
+    },
+    setup() {
+        const queryClient = useQueryClient()
+        const notify = useNotification()
+
+        const { mutate: mutateUpdayePass, isLoading } = useMutation(updatePassword,{
+            onSuccess: () => {
+                queryClient.invalidateQueries('password')
+            }
+        })
+
+        return {
+            mutateUpdayePass,
+            isLoading,
+            notify
+        }
+    },
     data() {
         return {
             form: {},
@@ -51,30 +78,28 @@ export default {
         async submitForm() {
             this.errors = useFormValidation()
             //check password confirm
-            if(this.form.confirmNewPassword != this.form.newPassword) 
-                this.errors.confirmPassword = MSG.ERROR.E_0004
-
-            if (Object.keys(this.errors).length > 0) return
+            if(this.form.confirmNewPassword != this.form.newPassword) {
+                this.errors.confirmPassword = getMSG("E_0004")
+            }
+            if (Object.keys(this.errors).length > 0 || (this.form.confirmNewPassword != this.form.newPassword)) return
 
             try {
-                let response = await updatePassword(this.id, this.form.confirmNewPassword)
-                if(response.data.code === ResponseCode.Ok) {
-                    this.$swal({
-                        icon: 'success',
-                        text: MSG.SUCCESS.S_0002
-                    }).then(() => { this.$router.push(PATH.login.url) })
-                } else {
-                    this.$swal({
-                        icon: 'error',
-                        text: MSG.ERROR.E_0005
-                    })
-                }
+                this.mutateUpdayePass({id: this.id, password: this.form.confirmNewPassword}, {
+                    onSuccess: (data) => {
+                        if(data.code === ResponseCode.Ok) {
+                            this.notify.nofifySuccess("S_0002")
+                            this.$router.push(PATH.login.url)
+                        } else {
+                            this.notify.notifyError("E_0005")
+                        }
+                    },
+                    onError: () => {
+                        this.notify.notifyError("E_0005")
+                    }
+                })
             }
             catch(error) {
-                this.$swal({
-                    icon: 'error',
-                    text: MSG.ERROR.E_0005
-                })
+                this.notify.notifyError("E_0005")
             }
         }
     },

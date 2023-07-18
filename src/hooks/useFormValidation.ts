@@ -1,4 +1,4 @@
-import { MSG } from "../constants/mesage"
+import getMSG from "../constants/message"
 let regxMail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
 let regxPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/
 
@@ -13,7 +13,7 @@ export default function useFormValidation() {
         if(!element.value || element.value.trim().length === 0) {
             const nameControl = element.getAttribute('nameControl')
             name = element.name
-            if(name !== '') errors[name] = MSG.getMSG([nameControl], MSG.ERROR.E_0002)
+            if(name !== '') errors[name] = getMSG("E_0002", [nameControl])
         }
     })
     //check format email
@@ -23,7 +23,7 @@ export default function useFormValidation() {
         if(!regxMail.test(element.value) && element.value) {
             const nameControl = element.getAttribute('nameControl')
             name = element.name
-            if(name !== '') errors[name] = MSG.getMSG([nameControl], MSG.ERROR.E_0003)
+            if(name !== '') errors[name] = getMSG("E_0003", [nameControl])
         }
     })
     //check format password
@@ -33,7 +33,7 @@ export default function useFormValidation() {
         if(!regxPassword.test(element.value) && element.value) {
             const nameControl = element.getAttribute('nameControl')
             name = element.name
-            if(name !== '') errors[name] = MSG.getMSG([nameControl], MSG.ERROR.E_0007)
+            if(name !== '') errors[name] = getMSG("E_0007", [nameControl])
         }
     })
 

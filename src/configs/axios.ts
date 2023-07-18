@@ -1,7 +1,7 @@
 
 import axios from 'axios'
 import { BASE_URL_API } from '../constants/default'
-import useAuth from '../hooks/useAuth'
+import useLocalStorage from '../hooks/useLocalStorage'
 
 const instance = axios.create({
     baseURL: BASE_URL_API,
@@ -12,7 +12,7 @@ const instance = axios.create({
 
 instance.interceptors.request.use(
     (config) => {
-        const {accessToken} = useAuth()
+        const accessToken = useLocalStorage().accessToken
         const authorization = "Bearer " + accessToken
         if(accessToken) {
             config.headers["authorization"] = authorization

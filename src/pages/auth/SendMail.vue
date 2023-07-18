@@ -25,21 +25,58 @@
             </div>
         </div>
     </section>
+    <Loading v-if="isLoading"></Loading>
 </template>
 
 <script lang="ts">
-
-import { PATH } from '../../constants/path';
-import useFormValidation from '../../hooks/useFormValidation'
+//layout
+import Loading from '../../components/loading/Loading.vue'
+//const
 import { ResponseCode } from '../../enums/response'
-import { MSG } from '../../constants/mesage'
-import { checkEmailExist, sendMailResetPassword } from '../../hooks/useAuthApi'
+import { PATH } from '../../constants/path'
+import getMSG from '../../constants/message'
+//hooks
+import useFormValidation from '../../hooks/useFormValidation'
+import useNotification from '../../hooks/useNotification'
+import { useMutation, useQueryClient } from 'vue-query'
+//service
+import { checkEmailExist, sendMailResetPassword } from '../../services/userService'
 
 export default {
+    components: {
+        Loading
+    },
+    setup() {
+
+        const queryClient = useQueryClient()
+        const notify = useNotification()
+        
+
+        const { mutate: mutateCheckMail, isLoading: loadingCheckMail } = useMutation(checkEmailExist,{
+            onSuccess: () => {
+                queryClient.invalidateQueries('email')
+            }
+        })
+
+        const { mutate: mutateSendMail, isLoading: loadingSendMail} = useMutation(sendMailResetPassword)
+
+        const isLoading = loadingCheckMail || loadingSendMail
+
+        return {
+            mutateCheckMail,
+            mutateSendMail,
+            isLoading,
+            notify
+        }
+    },
     data() {
         return {
-            form: {},
-            errors: {},
+            form: {
+                email: ''
+            },
+            errors: {
+                email: ''
+            },
             PATH: PATH
         }
     },
@@ -48,30 +85,33 @@ export default {
             this.errors = useFormValidation()
             if (Object.keys(this.errors).length > 0) return
             try {
-                let response = await checkEmailExist(this.form.email)
-                if(response.data.code === ResponseCode.Ok) {
-                    const id = response.data.id
-                    response = await sendMailResetPassword(id)
-                    if(response.data.code === ResponseCode.Ok) {
-                        this.$swal({
-                            icon: 'success',
-                            text: MSG.SUCCESS.S_0001
-                        })
-                    } else {
-                        this.$swal({
-                            icon: 'error',
-                            text: MSG.ERROR.E_0005
-                        })
+                this.mutateCheckMail({email: this.form.email}, {
+                    onSuccess: (data) => {
+                        if(data.code === ResponseCode.Ok) {
+                            const id = data.id
+                            this.mutateSendMail({id}, {
+                                onSuccess: (data) => {
+                                    if(data.code === ResponseCode.Ok) {
+                                        this.notify.nofifySuccess('S_0001')
+                                    } else {
+                                        this.notify.notifyError('E_0005')
+                                    }
+                                },
+                                onError: () => {
+                                    this.notify.notifyError("E_0005")
+                                }
+                            })
+                        } else {
+                            this.errors.email = getMSG("E_0006", ["Email"])
+                        }
+                    },
+                    onError: () => {
+                        this.notify.notifyError("E_0005")
                     }
-                } else {
-                    this.errors.email = MSG.getMSG(["Email"], MSG.ERROR.E_0006)
-                }
+                })
             }
             catch(error) {
-                this.$swal({
-                    icon: 'error',
-                    text: MSG.ERROR.E_0005
-                })
+                this.notify.notifyError('E_0005')
             }
         },
     },

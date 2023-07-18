@@ -2,6 +2,8 @@
 
 import MainLayout from './layouts/MainLayout.vue'
 import AuthLayout from './layouts/AuthLayout.vue'
+import useLocalStorage from './hooks/useLocalStorage'
+import { VueQueryDevTools } from 'vue-query/devtools'
 
 export default {
     components: {
@@ -14,11 +16,11 @@ export default {
         }
     },
     created() {
-        this.isUserLogined = JSON.parse(localStorage.getItem('user'))
+        this.isUserLogined = useLocalStorage().user
     },
     mounted() {
-        window.addEventListener('storage', () => {
-            this.isUserLogined = JSON.parse(localStorage.getItem('user'))
+        window.addEventListener('userstorage', () => {
+            this.isUserLogined = useLocalStorage().user
         })
     },
 
@@ -27,7 +29,8 @@ export default {
 
 <template>
  <MainLayout v-if="isUserLogined"></MainLayout>
- <AuthLayout v-else></AuthLayout>
+ <AuthLayout></AuthLayout>
+ <VueQueryDevTools :initialIsOpen="true"></VueQueryDevTools>
 </template>
 
 <style scoped>
