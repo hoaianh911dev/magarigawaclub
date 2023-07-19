@@ -116,6 +116,7 @@ button:disabled {
     .el-input__inner {
       font-size: 16px;
       text-align: center;
+      border-width: 0px !important;
     }
 }
 .show-more {

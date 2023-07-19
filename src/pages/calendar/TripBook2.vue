@@ -96,13 +96,12 @@ export default {
         
         const { data: lstVehicle, isLoading: loadingVehicle } = useQuery([EQueryKey.vertical, userId], () => getListVehicleInforByUser({userId: userId}))
        
-        const { data: lstCustomer, isLoading: loadingCustomer, isFetching } = useQuery([EQueryKey.customer, userId], {
+        const { data: lstCustomer, isLoading: loadingCustomer } = useQuery([EQueryKey.customer, userId], {
             enabled: false, //set enable to false initially to prevent automatic fetching
         })
-        console.log('isFetching',isFetching)
 
         const handleChangeType = (item) => {
-            // queryClient.resetQueries([EQueryKey.customer, userId])
+            queryClient.resetQueries([EQueryKey.customer, userId])
             item.customer = null
             if(item.typeCustomer === ETypeCustomer.Friend) {
                 queryClient.prefetchQuery([EQueryKey.customer, userId], () => getListFriendByUserId({userId: userId}))
@@ -111,7 +110,7 @@ export default {
             } 
         }
         onBeforeMount(() => {
-            // queryClient.resetQueries([EQueryKey.customer, userId])
+            queryClient.resetQueries([EQueryKey.customer, userId])
         })
 
         return {
@@ -119,7 +118,7 @@ export default {
             isLoading: loadingVehicle || loadingCustomer,
             userId,
             lstVehicle,
-            lstUser: !isFetching ? {} : lstCustomer,
+            lstUser: lstCustomer,
             handleChangeType,
             PATH
         }
