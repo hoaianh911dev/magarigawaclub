@@ -75,8 +75,8 @@
         "totalAmount": "Total Amount",
         "checkin": "Checkin date and time",
         "checkout": "Checkout date and time",
-        "noteOtherGuest": "Vehicle reservation registration",
-        "noteOtherGuest2": "Please fill in the information for unregistered guests.",
+        "noteOtherGuest": "Please fill in the information for unregistered guests.",
+        "noteOtherGuest1": "Please make sure customers are 15 years or older",
         "fullName": "Full name",
         "birthday": "Birthday"
     },
@@ -91,6 +91,7 @@
         "tripNote1": "Please select your preferred driving slot",
         "tripNote2": "Multiple selections allowed",
         "lblVehicle": "Vehicle",
+        "lblTypeCustomer": "Type customer",
         "lblCustomer": "Customer",
         "sttBooked": "Booked",
         "lblTime": "Time",

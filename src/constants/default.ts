@@ -2,6 +2,8 @@ export const DEFAULT_TITLE = 'MAGARIGAWACLUB'
 
 export const BASE_URL_API = `${location.protocol}//${location.hostname}:3000/`
 
+export const DEFAUT_LANGUAGE = 'vi'
+
 export const arrPeople = [
     '',
     '1人',
@@ -29,14 +31,14 @@ export const arrTime = [
 
 export const arrTypeUser = [
     {
+        "key": "",
+        "value": ""
+    },
+    {
         "key": "1",
         "value": "Thành viên"
     }, {
         "key": "2",
         "value": "Khách mời"
-    },
-    {
-        "key": "3",
-        "value": "Bạn bè (các thành viên khác)"
     }
 ]

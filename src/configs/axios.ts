@@ -1,6 +1,8 @@
 
 import axios from 'axios'
+//const
 import { BASE_URL_API } from '../constants/default'
+//hooks
 import useLocalStorage from '../hooks/useLocalStorage'
 
 const instance = axios.create({

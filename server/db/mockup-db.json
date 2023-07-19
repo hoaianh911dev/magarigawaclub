@@ -84,5 +84,51 @@
         "status": "booking",
         "fromtime": "13:00",
         "totime": "13:40"
-    }]
+    }],
+    "vehicle-info": [
+        {
+            "id": "V0001",
+            "userid": "3",
+            "name": "AB",
+            "maker": "Honda",
+            "modelyear": "2023",
+            "category": "1",
+            "status": "New"
+        }
+    ],
+    "category": [
+        {
+            "id": "1",
+            "name": "Số",
+            "type": "CategoryVehicle"
+        },
+        {
+            "id": "2",
+            "name": "Ga",
+            "type": "CategoryVehicle"
+        },
+        {
+            "id": "3",
+            "name": "Xe tay côn",
+            "type": "CategoryVehicle"
+        }
+    ],
+    "customers": [
+        {
+            "id": "C0001",
+            "fullname": "Trương Thị Hoài Ánh",
+            "birthday": "09/11/1998",
+            "cityid": "001",
+            "districtid": "001",
+            "addressfull": "hcm,pn",
+            "phonenumber": "0977441281",
+            "userid": 3
+        }
+    ],
+    "friends": [
+        {
+            "userid": 3,
+            "friendid": 1
+        }
+    ]
 }

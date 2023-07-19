@@ -31,7 +31,7 @@
                                 colspan="2">
                                 <div class=" status statusCleaning">{{ data.name }}</div>
                             </td> 
-                            <template v-else-if="calculatorTimeSpan(item).length === 2">
+                            <template v-else-if="calculatorTimeSpan(item)?.length === 2">
                                 <td :rowspan="data.rowSpan" v-if="data.location === '1' || data.location === '2'">
                                     <div class=" status statusChoose" 
                                     @click="hanldeAddSelect(data)" :class="{'statusSelected' : isStatusSelected(data)}">
@@ -65,7 +65,7 @@
                                 </td>
                             </template> 
                         </template>
-                        <template v-if="calculatorTimeSpan(item).length === 0">
+                        <template v-if="calculatorTimeSpan(item)?.length === 0">
                             <td></td>
                             <td></td>
                         </template>
@@ -78,34 +78,48 @@
         <button
             @click="handleSubmit" :disabled="formInput.booking.length === 0 || !formInput.dateBook">{{$t('groupButton.btnContinue')}}</button>
     </div>
+    <Loading v-if="isLoading"></Loading>
 </template>
 
 <script lang="ts">
+
+//layout
+import Loading from '../../components/loading/Loading.vue'
 import { ElDatePicker } from 'element-plus'
+//const
 import { arrTime } from '../../constants/default'
-import { getListScheduleTrip } from '../../hooks/useBookingApi'
-import { ResponseCode } from '../../enums/response'
 import { TScheduleTrip } from '../../types/schedule-trip'
+//hooks
+import { useQuery } from 'vue-query'
+//service
+import { getListScheduleTrip } from '../../services/bookService'
 
 export default {
     
     components: {
         ElDatePicker,
+        Loading
     },  
     emits: ['submitBookHandler'],
+    setup(props) {
+        const date = props.formInput.dateBook
+        
+        const { data: lstData, isLoading } = useQuery("schedule-trip", getListScheduleTrip)
+
+        return {
+            date,
+            lstData,
+            isLoading
+        }
+    },
     data: () => {
         return {
-            arrTime: arrTime,
-            lstData: []
+            arrTime: arrTime
         }
     },
     props: {
         formInput: Object,
         formatDate: String
-    },
-    async created() {
-        this.date = this.formInput.dateBook
-        await this.loadScheduleTrip()
     },
     methods: {
         disabledDate(date) {
@@ -125,20 +139,14 @@ export default {
         handleSubmit() {
             this.$emit('submitBookHandler')
         },
-        async loadScheduleTrip() {
-            const response = await getListScheduleTrip()
-            if(response.status === ResponseCode.Ok) {
-                this.lstData = response.data
-            }
-        }  ,
         isStatusSelected(data) {
             return (
                 this.formInput.booking.findIndex((x) => x.id === data.id) > -1
             );
         },
         calculatorTimeSpan(time) {
-            const lstData = this.lstData.filter(data => data.fromtime === time)
-            return lstData.map(function(item:TScheduleTrip) {
+            const lstData = this.lstData?.filter(data => data.fromtime === time)
+            return lstData?.map(function(item:TScheduleTrip) {
                 const startTime = new Date(`2023-01-01 ${item.fromtime}`)
                 const endTime = new Date(`2023-01-01 ${item.totime}`)
                 const timeDifference = endTime - startTime

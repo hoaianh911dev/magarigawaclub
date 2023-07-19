@@ -19,12 +19,12 @@
 </template>
 
 <script lang="ts">
-
+//layout
 import TypeTabBooking from '../../components/tabs/TypeTabBooking.vue'
 import StatusTabBooking from '../../components/tabs/StatusTabBooking.vue'
 import TripBook1 from './TripBook1.vue'
 import TripBook2 from './TripBook2.vue'
-
+//constant
 import { dayOfWeeks } from '../../constants/default'
 
 export default {

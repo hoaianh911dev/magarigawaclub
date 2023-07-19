@@ -1,8 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { nextTick } from 'vue'
-
+//const
 import { PATH } from '../constants/path'
 import { DEFAULT_TITLE } from '../constants/default'
+//hooks
+import useLocalStorage from '../hooks/useLocalStorage'
 
 const Login = () => import('../pages/auth/Login.vue')
 const NotFound = () => import('../pages/not found/NotFound.vue')
@@ -249,7 +251,7 @@ router.afterEach(to => {
 router.beforeEach((to, from, next) => {
     const isAuthencation = to.meta.isAuthencation
     if(isAuthencation) {
-        const isUserLogined = JSON.parse(localStorage.getItem('user'))
+        const isUserLogined = useLocalStorage().user
         if (!isUserLogined) {
             next({ name: PATH.unauthorization.name })
         } 

@@ -1,4 +1,3 @@
-
 import fs from 'fs'
 import jsonServer from 'json-server'
 import bodyParser from 'body-parser'
@@ -14,6 +13,7 @@ const server = jsonServer.create()
 const router = jsonServer.router('./server/db/db.json')
 const fileName = './server/db/users.json'
 const userDb = JSON.parse(fs.readFileSync(fileName))
+const data = JSON.parse(fs.readFileSync('./server/db/db.json'))
 
 const email = new Email({
     message: {
@@ -130,6 +130,33 @@ server.use(/^(?!\/auth).*$/, (req, res, next) => {
         const message = ResponseMessage.AccessTokenNotValid
         res.status(status).json({code, message})
     }
+})
+
+server.get('/friends', (req, res) => {
+    const { userid } = req.query
+    const friends = data.friends.map(friend => {
+        if(friend.userid === parseInt(userid)) {
+            const user = userDb.users.find(user => user.id === friend.friendid)
+            return {
+                fullname: user?.name,
+                userid: user?.id
+            }
+        }
+    })
+    res.json(friends)
+})
+
+server.post('/customers', (req, res) => {
+    
+    const customers = router.db.get('customers')
+    const lastCustomer = customers.value().slice(-1)[0]
+    const lastIdCustomer = lastCustomer ? parseInt(lastCustomer.id.slice(1)) : 0
+    const newIdCustomer = `C${lastIdCustomer + 1}`
+
+    const newCustomer = { ...req.body, id: newIdCustomer }
+    customers.push(newCustomer).write()
+
+    res.json(newCustomer)
 })
 
 server.use(router)

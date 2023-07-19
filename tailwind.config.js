@@ -115,6 +115,7 @@ const spacing = {
     500: '500px',
     '95%': '95%',
     'auto': 'auto',
+    '0!': "0px !important"
 }
 
 const borderWidth = {

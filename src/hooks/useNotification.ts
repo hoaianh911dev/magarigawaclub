@@ -15,10 +15,10 @@ export default function useNotification() {
         })
     }
 
-    const nofifySuccess = (code) => {
+    const nofifySuccess = (code, arrName?) => {
         return Swal.fire({
             icon: 'success',
-            text: getMSG(code),
+            text: getMSG(code, arrName),
             toast: true,
             position: 'top-end',
             timer: 3000,

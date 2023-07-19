@@ -63,7 +63,6 @@ export default {
         const setThumbsSwiper = (swiper) => {
             swiperRef.value = swiper;
         }
-        
 
         return {
             modules: [Thumbs, Navigation, Autoplay],

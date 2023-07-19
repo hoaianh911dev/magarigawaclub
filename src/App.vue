@@ -29,7 +29,7 @@ export default {
 
 <template>
  <MainLayout v-if="isUserLogined"></MainLayout>
- <AuthLayout></AuthLayout>
+ <AuthLayout v-else></AuthLayout>
  <VueQueryDevTools :initialIsOpen="true"></VueQueryDevTools>
 </template>
 

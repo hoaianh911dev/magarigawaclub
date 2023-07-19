@@ -15,8 +15,9 @@
 </template>
 
 <script lang="ts">
-
+//layout
 import FooterItem from './FooterItem.vue'
+//const
 import { PATH } from '../../constants/path'
 
 export default {

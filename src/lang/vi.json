@@ -75,8 +75,8 @@
         "totalAmount": "Tổng số tiền",
         "checkin": "Ngày giờ nhận phòng",
         "checkout": "Ngày giờ trả phòng",
-        "noteOtherGuest": "Đăng ký đặt chỗ phương tiện",
-        "noteOtherGuest2": "Vui lòng điền thông tin cho khách chưa đăng ký.",
+        "noteOtherGuest": "Vui lòng điền thông tin cho khách chưa đăng ký.",
+        "noteOtherGuest1": "Vui lòng chắc chắn khách hàng từ 15 tuổi trở lên",
         "fullName": "Họ và tên",
         "birthday": "Ngày sinh"
     },
@@ -91,6 +91,7 @@
         "tripNote1": "Vui lòng chọn khung thời gian lái xe mong muốn của bạn.",
         "tripNote2": "Có thể chọn nhiều.",
         "lblVehicle": "Phương tiện",
+        "lblTypeCustomer": "Loại khách hàng",
         "lblCustomer": "Khách",
         "sttBooked": "Đã đặt",
         "lblTime": "Thời gian",

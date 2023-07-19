@@ -41,9 +41,11 @@
 </template>
 
 <script lang="ts">
-
+//layout
 import DropdownItem from './DropdownItem.vue'
+//const
 import { PATH } from '../../constants/path'
+//hooks
 import useLocalStorage from '../../hooks/useLocalStorage'
 
 export default {

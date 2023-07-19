@@ -61,7 +61,8 @@ export default {
             notify,
             storage,
             mutate,
-            isLoading
+            isLoading,
+            PATH
         }
     },
     data() {
@@ -70,8 +71,7 @@ export default {
             form: {
                 email: '',
                 password: ''
-            },
-            PATH: PATH,
+            }
         }
     },
     methods: {

@@ -11,6 +11,7 @@ const MESSAGE_VI = {
     S_0001: 'Link cập nhật mật khẩu đã được gửi tới mail của bạn',
     S_0002: 'Cập nhật thành công',
     S_0003: 'Đăng nhập thành công! Chào mừng bạn đến với MAGARIGAWA CLUB',
+    S_0004: 'Tạo {0} thành công',
     // infor
     I_0001: 'Link cập nhật mật khẩu đã được gửi tới mail của bạn',
 }
@@ -27,8 +28,17 @@ const MESSAGE_EN = {
     S_0001: 'The password reset link has been sent to your email',
     S_0002: 'Update success',
     S_0003: 'Logged in successfully! Welcome to MAGARIGAWA CLUB',
+    S_0004: 'Create {0} successful',
     // infor
     I_0001: 'The password reset link has been sent to your email'
+}
+
+const NAME_FORM_EN = {
+    N0001: "customer"
+}
+
+const NAME_FORM_VI = {
+    N0001: "khách hàng"
 }
 
 //Get message
@@ -39,7 +49,8 @@ export default function getMSG (Code, StrArr?) {
    
     if (StrArr) {
         StrArr.forEach(function (value, index) {
-            message = message.replace("{" + index + "}", value);
+            let name = lang === 'en' ? `${NAME_FORM_EN[value]}` : `${NAME_FORM_VI[value]}`
+            message = message.replace("{" + index + "}", name);
         });
     }
 

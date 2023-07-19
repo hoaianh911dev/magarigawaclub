@@ -1,8 +1,7 @@
 import { createI18n } from 'vue-i18n'
 import viMessage from '../lang/vi.json'
 import enMessage from '../lang/en.json'
-
-const DEFAUT_LANGUAGE = 'vi'
+import { DEFAUT_LANGUAGE } from '../constants/default'
 
 const messages = {
     vi: viMessage,
