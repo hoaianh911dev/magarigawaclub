@@ -6,9 +6,11 @@
                     <a class="absolute inset-y-0 btnBack items-center flex" @click="$router.go(-1)" v-if="isBtnBack">
                         <i class="fa-solid fa-chevron-left"></i>
                     </a>
-                    <router-link class="flex-1 flex justify-between" to="/">
+                    <div class="flex-1 flex justify-center">
+                        <router-link  to="/">
                         <img width="150" class="m-auto" src="/img/logo.svg" alt="Magarigawa">
                     </router-link>
+                    </div>
                     <div class="absolute inset-y-0 right-0 flex items-center">
                         <button class="flex" type="button" ref="dropdown"
                         @click="showDropdown = !showDropdown">
