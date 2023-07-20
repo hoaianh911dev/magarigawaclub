@@ -1,3 +1,4 @@
 export default {
-    friend: 'friends'
+    friend: 'friends',
+    unfriend: 'unfriends'
 }

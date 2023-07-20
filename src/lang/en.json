@@ -78,7 +78,10 @@
         "noteOtherGuest": "Please fill in the information for unregistered guests.",
         "noteOtherGuest1": "Please make sure customers are 15 years or older",
         "fullName": "Full name",
-        "birthday": "Birthday"
+        "birthday": "Birthday",
+        "tlFriend": "List of friends",
+        "tlUnFriend": "List of non-friends",
+        "lblNotMember": "No members"
     },
     "book": {
         "titleBook": "Book",

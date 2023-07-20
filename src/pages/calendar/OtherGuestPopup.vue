@@ -110,7 +110,7 @@ export default {
                 onSuccess: (newData) => {
                    if(newData) {
                         this.notify.nofifySuccess("S_0004", ["N0001"])
-                        this.queryClient.setQueryData([EQueryKey.customer, this.userId], (oldData) => [...oldData, newData])
+                        this.queryClient.invalidateQueries([EQueryKey.customer, this.userId])
                     } else {
                         this.notify.notifyError("E_0005")
                     }

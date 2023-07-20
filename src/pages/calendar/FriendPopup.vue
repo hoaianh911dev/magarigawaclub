@@ -2,21 +2,30 @@
     <el-dialog v-model="diglogVisible" :before-close="handleClose">
         <div class="popup popup_friend">
             <div class="content-popup">
-                <div v-for="item in getListArrMemberIsFriend" :key="item" 
-                class="friend-item" @click="item.FLG_FRIEND = 0">
-                ★ {{ item.NAME }}
+                <h5 class="title">{{ $t('popup.tlFriend') }}</h5>
+                <div class="lst_friend">
+                    <div v-for="item in lstFriend" :key="item.userid" 
+                    class="friend-item" @click="handleFriend(item, 'friend')">
+                    ★ {{ item.fullname }}
+                    </div>
+                    <div v-if="lstFriend.length == 0">{{ $t('popup.lblNotMember') }}</div>
                 </div>
+                
                 <div class="group-input grid grid-cols-12 my-3">
                     <div class="col-span-8">
                         <input v-model="txtSearch"/>
                     </div>
                     <div class="col-span-4">
-                        <button @click="search">{{$t('groupButton.btnSearch')}}</button>
+                        <button @click="handleSearch">{{$t('groupButton.btnSearch')}}</button>
                     </div>
                 </div>
-                <div v-for="item in getListArrMemberNotFriend" :key="item" 
-                class="friend-item" @click="item.FLG_FRIEND = 1">
-                    ☆ {{ item.NAME }}
+                <h5 class="title mt-10">{{ $t('popup.tlUnFriend') }}</h5>
+                <div class="lst_friend">
+                    <div v-for="item in lstUnFriend" :key="item" 
+                    class="friend-item" @click="handleFriend(item, 'unfriend')">
+                        ☆ {{ item.fullname }}
+                    </div>
+                    <div v-if="lstUnFriend.length == 0">{{ $t('popup.lblNotMember') }}</div>
                 </div>
             </div>
             
@@ -25,69 +34,59 @@
             </div>
         </div>
     </el-dialog>
+    <Loading v-if="isLoading"></Loading>
 </template>
 
 <script>
-
-import { ElDialog } from 'element-plus';
+import { ref } from 'vue'
+//layout
+import { ElDialog } from 'element-plus'
+import Loading from '../../components/loading/Loading.vue'
+//const
+import { EQueryKey } from '../../enums/query-key'
+//hooks
+import useNotification from '../../hooks/useNotification'
+import { useMutation, useQueryClient, useQuery } from 'vue-query'
+//service
+import { getListUnfriendByUserId, getListFriendByUserId, updateFriend } from '../../services/friendService'
 
 export default {
     components: {
-        ElDialog
+        ElDialog,
+        Loading
     },
     props: {
-        isShowPopupFriend: Boolean
+        isShowPopupFriend: Boolean,
+        userId: String
+    },
+    setup(props) {
+        const notify = useNotification()
+        const queryClient = useQueryClient()
+        let txtSearch = ref('')
+
+        const { data: lstUnFriend, isLoading: loadingUnFriend } = useQuery([EQueryKey.UnFriend, props.userId, txtSearch.value], () => getListUnfriendByUserId({userId: props.userId, nameSearch: txtSearch.value}))
+        const { data: lstFriend, isLoading: loadingFriend } = useQuery([EQueryKey.Friend, props.userId], () => getListFriendByUserId({userId: props.userId}))
+        const { mutate: mutateUpdateFriend, loadingUpdate } = useMutation(updateFriend)
+
+        const handleSearch = () => {
+            queryClient.refetchQueries([EQueryKey.UnFriend, props.userId, txtSearch.value], () => getListUnfriendByUserId({userId: props.userId, nameSearch: txtSearch.value}))
+        }
+
+        return {
+            notify,
+            isLoading: loadingFriend || loadingUnFriend || loadingUpdate,
+            queryClient,
+            lstFriend,
+            lstUnFriend,
+            mutateUpdateFriend,
+            txtSearch,
+            handleSearch
+        }
     },
      
     data() {
         return {
-            diglogVisible: false,
-            arrMember: [
-                {
-                    NAME: '山田太郎',
-                    FLG_FRIEND: 1 
-                },
-                {
-                    NAME: '鈴木一郎',
-                    FLG_FRIEND: 1
-                }, 
-                {
-                    NAME: '佐藤次郎',
-                    FLG_FRIEND: 1
-                },
-                {
-                    NAME: '高橋三郎',
-                    FLG_FRIEND: 1
-                },
-                {
-                    NAME: '鈴木直道',
-                    FLG_FRIEND: 0
-                },
-                {
-                    NAME: '三村慎吾',
-                    FLG_FRIEND: 0,
-                },
-                {
-                    NAME: '増田卓也',
-                    FLG_FRIEND: 0
-                },
-                {
-                    NAME: '井村かおり',
-                    FLG_FRIEND: 0
-                },
-                {
-                    NAME: '佐竹信久',
-                    FLG_FRIEND: 0
-                },
-                {
-                    NAME: '吉村美恵子',
-                    FLG_FRIEND: 0
-                },
-                {
-                    NAME: '堀内孝雄',
-                    FLG_FRIEND: 0
-                }
-            ],
+            diglogVisible: false
         }
     },
 
@@ -96,19 +95,33 @@ export default {
             this.diglogVisible = newValue
         }
     },
-
-    computed: {
-        getListArrMemberIsFriend() {
-            return this.arrMember.filter(m => m.FLG_FRIEND === 1)
-        },
-        getListArrMemberNotFriend() {
-            return this.arrMember.filter(m => m.FLG_FRIEND === 0)
-        }
-    },
     methods: {
         handleClose() {
             this.$emit("closeDialog")
-        }
+        },
+
+        async handleFriend(friend, nameHandle) {
+            let codeMess = nameHandle === 'friend' ? "Q_0002" : "Q_0001"
+            const result = await this.notify.notifyQuestion(codeMess, [friend.fullname])
+            if(result.isConfirmed) {
+                this.mutateUpdateFriend({userId: this.userId, friendId: friend.userid}, {
+                    onSuccess: (newData) => {
+                        if(newData) {
+                            codeMess = nameHandle === 'friend' ? "S_0006" : "S_0005"
+                            this.notify.nofifySuccess(codeMess, ["N0002"])
+                            this.queryClient.invalidateQueries([EQueryKey.Friend, this.userId])
+                            this.queryClient.invalidateQueries([EQueryKey.UnFriend, this.userId])
+                        } else {
+                            this.notify.notifyError("E_0005")
+                        }
+                    },
+                    onError: () => {
+                        this.notify.notifyError("E_0005")
+                    }
+                })
+            }
+        },
+
     }
 }
 

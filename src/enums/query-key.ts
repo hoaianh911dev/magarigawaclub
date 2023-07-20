@@ -1,5 +1,6 @@
 export enum EQueryKey {
-    friend = "friend",
-    customer = "customer",
-    vertical = "vertical"
+    Friend = "friend",
+    UnFriend = "unfriends",
+    Customer = "customer",
+    Vertical = "vertical"
 }

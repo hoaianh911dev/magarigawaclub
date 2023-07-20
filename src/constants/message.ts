@@ -12,8 +12,13 @@ const MESSAGE_VI = {
     S_0002: 'Cập nhật thành công',
     S_0003: 'Đăng nhập thành công! Chào mừng bạn đến với MAGARIGAWA CLUB',
     S_0004: 'Tạo {0} thành công',
+    S_0005: 'Thêm {0} thành công',
+    S_0006: 'Xóa {0} thành công',
     // infor
     I_0001: 'Link cập nhật mật khẩu đã được gửi tới mail của bạn',
+    // question
+    Q_0001: 'Bạn có muốn thêm {0} thành bạn bè?',
+    Q_0002: 'Bạn có muốn xóa {0} khỏi danh sách bạn bè?'
 }
 const MESSAGE_EN = {
     // error
@@ -29,16 +34,23 @@ const MESSAGE_EN = {
     S_0002: 'Update success',
     S_0003: 'Logged in successfully! Welcome to MAGARIGAWA CLUB',
     S_0004: 'Create {0} successful',
+    S_0005: 'Successfully added {0}',
+    S_0006: 'Successfully removed {0}',
     // infor
-    I_0001: 'The password reset link has been sent to your email'
+    I_0001: 'The password reset link has been sent to your email',
+    // question
+    Q_0001: 'Do you want to add {0} as a friend?',
+    Q_0002: 'Do you want to remove {0} from your friends list?'
 }
 
 const NAME_FORM_EN = {
-    N0001: "customer"
+    N0001: "customer",
+    N0002: "friend"
 }
 
 const NAME_FORM_VI = {
-    N0001: "khách hàng"
+    N0001: "khách hàng",
+    N0002: "bạn bè"
 }
 
 //Get message
@@ -50,8 +62,10 @@ export default function getMSG (Code, StrArr?) {
     if (StrArr) {
         StrArr.forEach(function (value, index) {
             let name = lang === 'en' ? `${NAME_FORM_EN[value]}` : `${NAME_FORM_VI[value]}`
-            message = message.replace("{" + index + "}", name);
-        });
+            if(name != "undefined")
+                message = message.replace("{" + index + "}", name)
+            else message = message.replace("{" + index + "}", value)
+        })
     }
 
     return message

@@ -78,7 +78,10 @@
         "noteOtherGuest": "Vui lòng điền thông tin cho khách chưa đăng ký.",
         "noteOtherGuest1": "Vui lòng chắc chắn khách hàng từ 15 tuổi trở lên",
         "fullName": "Họ và tên",
-        "birthday": "Ngày sinh"
+        "birthday": "Ngày sinh",
+        "tlFriend": "Danh sách bạn bè",
+        "tlUnFriend": "Danh sách không phải bạn bè",
+        "lblNotMember": "Không có thành viên"
     },
     "book": {
         "titleBook": "Đặt chỗ",

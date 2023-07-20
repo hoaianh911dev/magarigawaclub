@@ -52,6 +52,7 @@
         </div>
     </div>
     <FriendPopup :isShowPopupFriend="isShowPopupFriend"
+    :userId="userId"
     @closeDialog="() => isShowPopupFriend = false"></FriendPopup>
     <OtherGuestPopup :isShowPopupOtherGuest="isShowPopupOtherGuest"
     :userId="userId"
@@ -94,23 +95,23 @@ export default {
         const queryClient = useQueryClient()
         const { userId } = storage
         
-        const { data: lstVehicle, isLoading: loadingVehicle } = useQuery([EQueryKey.vertical, userId], () => getListVehicleInforByUser({userId: userId}))
+        const { data: lstVehicle, isLoading: loadingVehicle } = useQuery([EQueryKey.Vertical, userId], () => getListVehicleInforByUser({userId: userId}))
        
-        const { data: lstCustomer, isLoading: loadingCustomer } = useQuery([EQueryKey.customer, userId], {
+        const { data: lstCustomer, isLoading: loadingCustomer } = useQuery([EQueryKey.Customer, userId], () => getListCustomerByManagerId({managerid: userId}), {
             enabled: false, //set enable to false initially to prevent automatic fetching
         })
 
         const handleChangeType = (item) => {
-            queryClient.resetQueries([EQueryKey.customer, userId])
+            queryClient.resetQueries([EQueryKey.Customer, userId])
             item.customer = null
             if(item.typeCustomer === ETypeCustomer.Friend) {
-                queryClient.prefetchQuery([EQueryKey.customer, userId], () => getListFriendByUserId({userId: userId}))
+                queryClient.prefetchQuery([EQueryKey.Customer, userId], () => getListFriendByUserId({userId: userId}))
             } else if(item.typeCustomer === ETypeCustomer.Customer) {
-                queryClient.prefetchQuery([EQueryKey.customer, userId], () => getListCustomerByManagerId({managerid: userId}))
+                queryClient.prefetchQuery([EQueryKey.Customer, userId], () => getListCustomerByManagerId({managerid: userId}))
             } 
         }
         onBeforeMount(() => {
-            queryClient.resetQueries([EQueryKey.customer, userId])
+            queryClient.resetQueries([EQueryKey.Customer, userId])
         })
 
         return {

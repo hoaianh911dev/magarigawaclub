@@ -14,10 +14,20 @@ $border-color: #646464;
         max-height: calc(100svh - 250px);
         overflow: auto;
     }
+    .lst_friend {
+        height: 150px;
+        overflow: auto;
+    }
+    .title {
+        font-size: 16px;
+        font-weight: 600;
+        font-family:'Times New Roman', Times, serif;
+        text-transform: uppercase;
+    }
     .friend-item {
         color: $bg-main;
-        padding: 0.5rem 1rem;
-        border-bottom: 1px solid;
+        padding: 0.5rem 0rem;
+        border-bottom: 1px solid #848484;
     }
     .group-input {
         margin-top: 10px;

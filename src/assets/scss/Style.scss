@@ -48,7 +48,7 @@ button:disabled {
     input, select {
         width: 100%;
         border-radius: 5px;
-        height: 45px;
+        height: 40px;
         outline: none;
         color: $black;
         padding: 10px;
@@ -62,7 +62,7 @@ button:disabled {
     }
     .el-input {
         width: 100%;
-        height: 42px;
+        height: 40px;
     }
     .el-input__inner {
         font-size: 16px;
@@ -111,7 +111,7 @@ button:disabled {
 .custome_date {
     .el-input {
       width: 100%;
-      height: 42px;
+      height: 40px;
     }
     .el-input__inner {
       font-size: 16px;
@@ -247,4 +247,8 @@ button:disabled {
     a {
         cursor: pointer;
     }
+}
+//swapper
+.el-overlay {
+    z-index: 1 !important;
 }

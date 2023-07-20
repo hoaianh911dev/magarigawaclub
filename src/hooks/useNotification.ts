@@ -3,6 +3,10 @@ import Swal from 'sweetalert2';
 
 export default function useNotification() {
 
+    const lang = localStorage.getItem('language')
+    const buttonConfirm = lang === 'en' ? "Yes" : "Có"
+    const buttonDeny = lang === 'en' ? "Cancel" : "Không"
+
     const notifyError = (code) => {
         Swal.fire({
             icon: 'error',
@@ -27,8 +31,20 @@ export default function useNotification() {
         })
     }
 
+    const notifyQuestion = async (code, arrName?) => {
+        return await Swal.fire({
+            icon: 'question',
+            text: getMSG(code, arrName),
+            showConfirmButton: true,
+            confirmButtonText: buttonConfirm,
+            showDenyButton: true,
+            denyButtonText: buttonDeny
+        })
+    }
+
     return {
         notifyError,
-        nofifySuccess
+        nofifySuccess,
+        notifyQuestion
     }
 }

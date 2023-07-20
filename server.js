@@ -7,13 +7,13 @@ import jwt from 'jsonwebtoken'
 import Email from 'email-templates'
 
 import { ResponseCode, ResponseMessage } from './server/enums/response.js'
+import helper from './server/helper.js'
 
 const server = jsonServer.create()
 
 const router = jsonServer.router('./server/db/db.json')
 const fileName = './server/db/users.json'
 const userDb = JSON.parse(fs.readFileSync(fileName))
-const data = JSON.parse(fs.readFileSync('./server/db/db.json'))
 
 const email = new Email({
     message: {
@@ -134,17 +134,59 @@ server.use(/^(?!\/auth).*$/, (req, res, next) => {
 
 server.get('/friends', (req, res) => {
     const { userid } = req.query
-    const friends = data.friends.map(friend => {
+    const friendIds =  router.db.get('friends').map(friend => {
         if(friend.userid === parseInt(userid)) {
-            const user = userDb.users.find(user => user.id === friend.friendid)
-            return {
-                fullname: user?.name,
-                userid: user?.id
-            }
+            return friend.friendid
+        }
+    })
+    let friends = userDb.users.filter(user => friendIds.includes(user.id) == true)
+    friends = friends?.map(friend => {
+        return {
+            fullname: friend.name,
+            userid: friend.id
         }
     })
     res.json(friends)
 })
+
+server.get('/unfriends', (req, res) => {
+    const { userid, nameSearch } = req.query
+    const friendIds = router.db.get('friends').map(friend => {
+        if(friend.userid === parseInt(userid)) {
+            return friend.friendid
+        }
+    })
+    let unfriends = null
+    if(nameSearch) {
+        unfriends = userDb.users.filter(user => friendIds.includes(user.id) == false && 
+                                    helper().formatUnsigned(user.name).toLowerCase().includes( helper().formatUnsigned(nameSearch).toLowerCase()))
+    } else {
+        unfriends = userDb.users.filter(user => friendIds.includes(user.id) == false)
+    }
+    unfriends = unfriends?.map(unfriend => {
+        return {
+            fullname: unfriend.name,
+            userid: unfriend.id
+        }
+    })
+    res.json(unfriends)
+})
+
+server.put('/friends', (req, res) => {
+    const { userid } = req.query
+    const { friendid } = req.body
+    let dbFriends = router.db.get('friends')
+    const indexFriend = dbFriends.findIndex(friend => friend.userid === parseInt(userid) && friend.friendid === parseInt(friendid))
+    if(indexFriend > -1) {
+        let valueFriends = dbFriends.value()
+        valueFriends.splice(indexFriend, 1)
+        router.db.set('friends', valueFriends).write();
+    } else {
+        dbFriends.push({userid: parseInt(userid), friendid}).write()
+    }
+    res.json({userid: parseInt(userid), friendid})
+})
+
 
 server.post('/customers', (req, res) => {
     

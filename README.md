@@ -47,6 +47,8 @@ pug
 + Make your application more maintainable and easier to build new features without worrying about wiring up new server state data sources
 + Make your application feel faster and more responsive than ever before
 + Help you save on bandwidth and increase memory performance
+=> How it works: fetching available data immediately(not wait call API). However, API is called implicit to update data
++ invalidateQueries('list-items'): update data new from API
 **Devtools Vue-Query**
 + They help visualize all of the inner workings of Vue Query and will likely save you hours of debugging if you find yourself in a pinch
 + Require: devtools
