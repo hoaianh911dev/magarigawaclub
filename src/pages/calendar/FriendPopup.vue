@@ -69,7 +69,7 @@ export default {
         const { mutate: mutateUpdateFriend, loadingUpdate } = useMutation(updateFriend)
 
         const handleSearch = () => {
-            queryClient.refetchQueries([EQueryKey.UnFriend, props.userId, txtSearch.value], () => getListUnfriendByUserId({userId: props.userId, nameSearch: txtSearch.value}))
+            queryClient.invalidateQueries([EQueryKey.UnFriend, props.userId, '']);
         }
 
         return {
@@ -111,6 +111,7 @@ export default {
                             this.notify.nofifySuccess(codeMess, ["N0002"])
                             this.queryClient.invalidateQueries([EQueryKey.Friend, this.userId])
                             this.queryClient.invalidateQueries([EQueryKey.UnFriend, this.userId])
+                            this.queryClient.invalidateQueries([EQueryKey.Customer, this.userId])
                         } else {
                             this.notify.notifyError("E_0005")
                         }
