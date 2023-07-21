@@ -196,6 +196,7 @@ button:disabled {
     .choosed_date {
         background: $bg-trip;
         height: 50%;
+        color: white;
     }
     .booking-stay, .booking-facility, .booking-trip {
         cursor: pointer;

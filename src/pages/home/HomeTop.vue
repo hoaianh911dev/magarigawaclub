@@ -227,7 +227,7 @@
 <script lang="ts">
 
 import ThumbGallaryVue from '../../components/image/ThumbGallery.vue'
-import { arrPeople, dayOfWeeks } from '../../constants/default'
+import { arrNumber, dayOfWeeks } from '../../constants/default'
 import Loading from '../../components/loading/Loading.vue'
 
 import { ElDatePicker, ElCalendar } from 'element-plus'
@@ -245,7 +245,7 @@ export default {
             lstImage: ['/img/banner1.jpg',
                         'https://thietkehaithanh.com/wp-content/uploads/2023/02/banner-card-tutorial-photoshop.jpg'],
             tabActiveIndex: 1,
-            arrPeople: arrPeople,
+            arrPeople: arrNumber,
             disabledDate(time) {
                 return time.getTime() < Date.now()
             },

@@ -43,21 +43,15 @@
                 <div :data-day="data.day"
                 :disabled = "new Date(data.day).setHours(0, 0, 0, 0) < new Date().setHours(0, 0, 0, 0) "
                 style="height: 100%"
-                @click="handleAddDate(data.day)">
+                @click="new Date(data.day).setHours(0, 0, 0, 0) >= new Date().setHours(0, 0, 0, 0) ? handleAddDate(data.day) : ''"
+                :class="{'choosed_date': handleSelected(data.day)}">
                     {{ data.day.split('-').slice(2)[0] }}
-                    <div v-for="item in listData" :key="item"
-                    :class="{ 'booking-trip' : item.day == data.day && item.status == 1,
-                            'booking-stay': item.day == data.day && item.status == 2,
-                            'booking-facility': item.day == data.day && item.status == 3}"
-                            >{{ item.day == data.day && item.status == 1 ? $t('groupButton.btnTrip') : 
-                    item.day == data.day && item.status == 2 ? $t('groupButton.btnStay') : 
-                    item.day == data.day && item.status == 3 ? $t('groupButton.btnFacility') : ''}}</div>
                 </div>
             </template>
         </el-calendar>
         <div class="group-button submit-form">
             <button @click="this.$emit('submitStayBookHandler', {numberStayBook: 2})"
-            :disabled="!formInput.numberPeople || !formInput.numberRoom">{{$t('groupButton.btnContinue')}}</button>
+            :disabled="!formInput.numberPeople || !formInput.numberRoom || !formInput.checkin || !formInput.checkout">{{$t('groupButton.btnContinue')}}</button>
         </div>
     </div>
 </template>
@@ -97,21 +91,7 @@ export default {
     data() {
         return {
             arrNumber: arrNumber,
-            dayOfWeeks: dayOfWeeks,
-            listData: [
-                {
-                    "status" : 1,
-                    "day": '2023-05-15'
-                },
-                {
-                    "status" : 2,
-                    "day": '2023-05-15'
-                },
-                {
-                    "status": 3,
-                    "day": "2023-05-13"
-                }
-            ],
+            dayOfWeeks: dayOfWeeks
         }
     },
     methods: {
@@ -119,10 +99,25 @@ export default {
             return this.helper.formatYM(val)
         },
         handleAddDate(day) {
-            if(!this.formInput.checkin) {
-                // this.formInput.checkin = this.helper
+            if(this.formInput.checkout) {
+                this.formInput.checkin = ''
+                this.formInput.checkout = ''
             }
-            console.log('day', day)
+            if(!this.formInput.checkin ) {
+                this.formInput.checkin = this.helper.formatDateYMD(day)
+            } else if(this.formInput.checkin <= this.helper.formatDateYMD(day)){
+                this.formInput.checkout = this.helper.formatDateYMD(day)
+            } else {
+                this.formInput.checkin = this.helper.formatDateYMD(day)
+            }
+        },
+        handleSelected(day) {
+            if(new Date(this.formInput.checkin).setHours(0,0,0) == new Date(day).setHours(0,0,0)) {
+                return true
+            } else if(new Date(this.formInput.checkin).setHours(0,0,0) < new Date(day).setHours(0,0,0) && new Date(this.formInput.checkout).setHours(0,0,0) >= new Date(day).setHours(0,0,0)) {
+                return true
+            }
+            return false
         }
     },
 }
