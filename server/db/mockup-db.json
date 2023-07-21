@@ -1,7 +1,7 @@
 {
     "booking": [],
     "schedule-trip": [{
-        "id": "ST0001",
+        "id": "ST1",
         "name": "COURSE CLEANING・座学",
         "status": "close",
         "maxquantity": 100,
@@ -10,7 +10,7 @@
         "location": "1"
     },
     {
-        "id": "ST0002",
+        "id": "ST2",
         "name": "Morning A",
         "status": "booking",
         "maxquantity": 100,
@@ -19,7 +19,7 @@
         "location": "1"
     },
     {
-        "id": "ST0003",
+        "id": "ST3",
         "name": "Morning B",
         "status": "booking",
         "maxquantity": 100,
@@ -28,7 +28,7 @@
         "location": "2"
     },
     {
-        "id": "ST0004",
+        "id": "ST4",
         "name": "Morning A",
         "status": "booking",
         "maxquantity": 100,
@@ -37,7 +37,7 @@
         "location": "1"
     },
     {
-        "id": "ST0005",
+        "id": "ST5",
         "name":"Morning B",
         "status": "booking",
         "maxquantity": 100,
@@ -46,7 +46,7 @@
         "location": "2"
     },
     {
-        "id": "ST0006",
+        "id": "ST6",
         "name": "Mix 20min",
         "status": "booking",
         "maxquantity": 100,
@@ -55,7 +55,7 @@
         "location": "1"
     },
     {
-        "id": "ST0007",
+        "id": "ST7",
         "name": "COURSE CLEANING・座学",
         "status": "close",
         "fromtime": "12:00",
@@ -63,7 +63,7 @@
         "location": "1"
     },
     {
-        "id": "ST0008",
+        "id": "ST8",
         "name": "Beginner",
         "status": "booking",
         "fromtime": "12:20",
@@ -71,7 +71,7 @@
         "location": "1"
     },
     {
-        "id": "ST0009",
+        "id": "ST9",
         "name": "Family",
         "status": "booking",
         "fromtime": "12:20",
@@ -79,7 +79,7 @@
         "location": "2"
     }, 
     {
-        "id": "ST0010",
+        "id": "ST10",
         "name": "Afternoon A",
         "status": "booking",
         "fromtime": "13:00",
@@ -87,7 +87,7 @@
     }],
     "vehicle-info": [
         {
-            "id": "V0001",
+            "id": "V1",
             "userid": "3",
             "name": "AB",
             "maker": "Honda",
@@ -115,7 +115,7 @@
     ],
     "customers": [
         {
-            "id": "C0001",
+            "id": "C1",
             "fullname": "Trương Thị Hoài Ánh",
             "birthday": "09/11/1998",
             "cityid": "001",
@@ -129,6 +129,17 @@
         {
             "userid": 3,
             "friendid": 1
+        }
+    ],
+    "bookings": [
+        {
+            "id": "adbabs",
+            "customerid": "C1",
+            "vehicleid": "V1",
+            "typecustomer": "1",
+            "scheduletripid": "ST1",
+            "createddate": "09/11/1998",
+            "status": "booked"
         }
     ]
 }
