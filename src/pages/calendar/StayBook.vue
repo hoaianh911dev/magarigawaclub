@@ -6,7 +6,8 @@
             <div class="tab-content">
                 <div class="tab-panel">
                     <StayBook1 v-if="isStayBook === 1"
-                    @submitStayBookHandler="submitStayBookHandler"></StayBook1>
+                    @submitStayBookHandler="submitStayBookHandler"
+                    :formInput="formInput"></StayBook1>
                     <StayBook2 v-if="isStayBook === 2"
                     :formInput="formInput"
                     @submitStayBookHandler="submitStayBookHandler"></StayBook2>
@@ -38,11 +39,7 @@ export default {
         return {
             routeName: this.$route.name,
             isStayBook: 1,
-            formInput: {
-                dayStart: '2023/05/26',
-                dayEnd: '2023/05/27',
-                roomCount: 2
-            }
+            formInput: {}
         }
     },
     methods: {

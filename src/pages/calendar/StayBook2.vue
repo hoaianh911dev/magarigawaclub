@@ -69,7 +69,7 @@
 
 <script lang="ts">
 import { ElDatePicker } from 'element-plus'
-import { arrPeople, dayOfWeeks } from '../../constants/default'
+import { arrNumber, dayOfWeeks } from '../../constants/default'
 
 export default {
     components: {
@@ -77,7 +77,7 @@ export default {
     },
     data() {
         return {
-            arrPeople: arrPeople,
+            arrPeople: arrNumber,
             roomSelected: 0,
             typeRoom: [
                 {

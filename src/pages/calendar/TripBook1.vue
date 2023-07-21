@@ -18,7 +18,7 @@
         <p>※ {{ $t('book.tripNote2') }}</p>
     </div>
     <div class="form-calendar">
-        <div class="custom-header">
+        <div class="custom-header custom-header-trip">
             {{ formatDate }}
         </div>
         <div class="calendar-time">

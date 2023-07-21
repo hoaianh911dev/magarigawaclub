@@ -19,7 +19,7 @@ const app = createApp(App)
 app.use(router)
 app.use(i18n)
 app.use(VueSweetalert2)
-app.use(VueQueryPlugin);
+app.use(VueQueryPlugin)
 
 app.component('font-awesome-icon', FontAwesomeIcon)
 app.component(VueQrcode.name, VueQrcode)

@@ -4,18 +4,18 @@ export const BASE_URL_API = `${location.protocol}//${location.hostname}:3000/`
 
 export const DEFAUT_LANGUAGE = 'vi'
 
-export const arrPeople = [
+export const arrNumber = [
     '',
-    '1人',
-    '2人',
-    '3人',
-    '4人',
-    '5人',
-    '6人',
-    '7人',
-    '8人',
-    '9人',
-    '10人'
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+    '8',
+    '9',
+    '10'
 ]
 
 export const dayOfWeeks = [

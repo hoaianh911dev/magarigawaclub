@@ -83,7 +83,7 @@
 
 <script lang="ts">
 import { ElDatePicker } from 'element-plus'
-import { arrPeople, dayOfWeeks, arrTypeUser } from '../../constants/default'
+import { arrNumber, dayOfWeeks, arrTypeUser } from '../../constants/default'
 import FriendPopup from './FriendPopup.vue'
 import OtherGuestPopup from './OtherGuestPopup.vue'
 
@@ -95,7 +95,7 @@ export default {
     },
     data() {
         return {
-            arrPeople: arrPeople,
+            arrPeople: arrNumber,
             roomSelected: 0,
             typeRoom: [
                 {
