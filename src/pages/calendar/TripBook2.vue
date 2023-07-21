@@ -72,7 +72,7 @@ import { arrTypeUser } from '../../constants/default'
 import { ETypeCustomer } from '../../enums/type-customer'
 import { EQueryKey } from '../../enums/query-key'
 import { PATH } from '../../constants/path'
-import { ETypeBooking } from '../../enums/type-booking'
+import { ETypeBooking } from '../../enums/booking'
 //hooks
 import useLocalStorage from '../../hooks/useLocalStorage'
 import useHelper from '../../hooks/useHelper'
@@ -171,4 +171,4 @@ export default {
 
 <style lang="scss">
 @import '../../assets/scss/Booking.scss';
-</style>
+</style>../../enums/booking

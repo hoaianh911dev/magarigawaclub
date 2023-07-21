@@ -15,3 +15,7 @@ export const createBooking = async (params) => {
     const res = await axios.post(`${bookingEndpoint.booking}`, { ...params })
     return res.data
 }
+export const getListBookingByStatus = async (params) => {
+    const res = await axios.get(`${bookingEndpoint.booking}?status=${params.status}&userid=${params.userid}&typeBook=${params.typeBook}`)
+    return res.data
+}

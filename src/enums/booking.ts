@@ -3,3 +3,7 @@ export enum ETypeBooking {
     Stay = "02",
     Facility = "03"
 }
+
+export enum EStatusBooking {
+    Booked = 'booked'
+}
