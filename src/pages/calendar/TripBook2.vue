@@ -39,7 +39,8 @@
                     <div class="col-span-8">
                         <select class="col-12" v-model="item.customer">
                             <option></option>
-                            <option v-for="item in lstUser" :value="item.userid" :key="item">{{ item.fullname }}</option>
+                            <option v-for="item in (item.typeCustomer === ETypeCustomer.Customer ? lstCustomer : (item.typeCustomer === ETypeCustomer.Friend ? lstFriend : null))" 
+                            :value="item.userid" :key="item">{{ item.fullname }}</option>
                         </select>
                     </div>
                 </div>
@@ -73,12 +74,11 @@ import { EQueryKey } from '../../enums/query-key'
 import { PATH } from '../../constants/path'
 //hooks
 import useLocalStorage from '../../hooks/useLocalStorage'
-import { useQuery, useQueryClient } from 'vue-query'
+import { useQuery } from 'vue-query'
 //service
 import { getListVehicleInforByUser } from '../../services/bookService'
 import { getListCustomerByManagerId } from '../../services/customerService'
 import { getListFriendByUserId } from '../../services/friendService'
-import { onBeforeMount } from 'vue'
 
 export default {
     components: {
@@ -92,36 +92,28 @@ export default {
     },
     setup() {
         const storage = useLocalStorage()  
-        const queryClient = useQueryClient()
         const { userId } = storage
         
         const { data: lstVehicle, isLoading: loadingVehicle } = useQuery([EQueryKey.Vertical, userId], () => getListVehicleInforByUser({userId: userId}))
        
-        const { data: lstCustomer, isLoading: loadingCustomer } = useQuery([EQueryKey.Customer, userId], () => getListCustomerByManagerId({managerid: userId}), {
-            enabled: false, //set enable to false initially to prevent automatic fetching
-        })
+        const { data: lstCustomer, isLoading: loadingCustomer } = useQuery([EQueryKey.Customer, userId], () => getListCustomerByManagerId({managerid: userId}))
+
+        const { data: lstFriend, isLoading: loadingFriend } = useQuery([EQueryKey.Friend, userId], () => getListFriendByUserId({userId: userId}))
 
         const handleChangeType = (item) => {
-            queryClient.resetQueries([EQueryKey.Customer, userId])
             item.customer = null
-            if(item.typeCustomer === ETypeCustomer.Friend) {
-                queryClient.prefetchQuery([EQueryKey.Customer, userId], () => getListFriendByUserId({userId: userId}))
-            } else if(item.typeCustomer === ETypeCustomer.Customer) {
-                queryClient.prefetchQuery([EQueryKey.Customer, userId], () => getListCustomerByManagerId({managerid: userId}))
-            } 
         }
-        onBeforeMount(() => {
-            queryClient.resetQueries([EQueryKey.Customer, userId])
-        })
 
         return {
             storage,
-            isLoading: loadingVehicle || loadingCustomer,
+            isLoading: loadingVehicle || loadingCustomer || loadingFriend,
             userId,
             lstVehicle,
-            lstUser: lstCustomer,
+            lstCustomer,
+            lstFriend,
             handleChangeType,
-            PATH
+            PATH,
+            ETypeCustomer
         }
     },
     data() {
