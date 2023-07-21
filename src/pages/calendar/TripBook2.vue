@@ -49,7 +49,7 @@
         <div class="group-button">
             <button 
                 :disabled="(formInput.booking.filter(x => x.vehicle && x.customer)).length < formInput.booking.length"
-                @click="this.$router.push(PATH.tripConfirm.url)">{{$t('groupButton.btnSave')}}</button>
+                @click="handleSubmit">{{$t('groupButton.btnSave')}}</button>
         </div>
     </div>
     <FriendPopup :isShowPopupFriend="isShowPopupFriend"
@@ -72,11 +72,14 @@ import { arrTypeUser } from '../../constants/default'
 import { ETypeCustomer } from '../../enums/type-customer'
 import { EQueryKey } from '../../enums/query-key'
 import { PATH } from '../../constants/path'
+import { ETypeBooking } from '../../enums/type-booking'
 //hooks
 import useLocalStorage from '../../hooks/useLocalStorage'
-import { useQuery } from 'vue-query'
+import useHelper from '../../hooks/useHelper'
+import useNotification from '../../hooks/useNotification'
+import { useQuery, useMutation, useQueryClient } from 'vue-query'
 //service
-import { getListVehicleInforByUser } from '../../services/bookService'
+import { getListVehicleInforByUser, createBooking } from '../../services/bookService'
 import { getListCustomerByManagerId } from '../../services/customerService'
 import { getListFriendByUserId } from '../../services/friendService'
 
@@ -92,13 +95,18 @@ export default {
     },
     setup() {
         const storage = useLocalStorage()  
+        const helper = useHelper()
+        const notify = useNotification()
+        const queryClient = useQueryClient()
         const { userId } = storage
         
         const { data: lstVehicle, isLoading: loadingVehicle } = useQuery([EQueryKey.Vertical, userId], () => getListVehicleInforByUser({userId: userId}))
        
-        const { data: lstCustomer, isLoading: loadingCustomer } = useQuery([EQueryKey.Customer, userId], () => getListCustomerByManagerId({managerid: userId}))
+        const { data: lstCustomer, isLoading: loadingCustomer } = useQuery([EQueryKey.Customer, userId], () => getListCustomerByManagerId({userid: userId}))
 
         const { data: lstFriend, isLoading: loadingFriend } = useQuery([EQueryKey.Friend, userId], () => getListFriendByUserId({userId: userId}))
+
+        const { mutate: mutateCreateBooking, isLoading: loadingCreate } = useMutation(createBooking)
 
         const handleChangeType = (item) => {
             item.customer = null
@@ -106,14 +114,17 @@ export default {
 
         return {
             storage,
-            isLoading: loadingVehicle || loadingCustomer || loadingFriend,
+            isLoading: loadingVehicle || loadingCustomer || loadingFriend || loadingCreate,
             userId,
             lstVehicle,
             lstCustomer,
             lstFriend,
             handleChangeType,
-            PATH,
-            ETypeCustomer
+            ETypeCustomer,
+            mutateCreateBooking,
+            helper,
+            notify,
+            queryClient
         }
     },
     data() {
@@ -124,6 +135,36 @@ export default {
         }
     },
     methods: {
+        handleSubmit() {
+            let lstBookingNew = []
+            this.formInput.booking?.forEach(booking => {
+                let bookingNew = {
+                    customerid: booking.customer,
+                    vehicleid: booking.vehicle,
+                    typecustomer: booking.typeCustomer,
+                    scheduletripid: booking.id,
+                    status: "booked",
+                    userid: this.userId,
+                    orderdate: this.helper.formatDateYMD(this.formInput.dateBook),
+                    typeBook: ETypeBooking.Trip
+                }
+                lstBookingNew.push(bookingNew)
+            });
+            this.mutateCreateBooking(lstBookingNew, {
+                onSuccess: (newData) => {
+                    if(newData) {
+                        this.notify.nofifySuccess("S_0004", ["N0003"])
+                        this.queryClient.invalidateQueries([EQueryKey.TripBooked, this.userId])
+                        this.$router.push(PATH.tripConfirm.url)
+                    } else {
+                        this.notify.notifyError("E_0005")
+                    }
+                },
+                onError: () => {
+                    this.notify.notifyError("E_0005")
+                }
+            })
+        }
     },
 }
 </script>

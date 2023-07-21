@@ -45,12 +45,14 @@ const MESSAGE_EN = {
 
 const NAME_FORM_EN = {
     N0001: "customer",
-    N0002: "friend"
+    N0002: "friend",
+    N0003: "order"
 }
 
 const NAME_FORM_VI = {
     N0001: "khách hàng",
-    N0002: "bạn bè"
+    N0002: "bạn bè",
+    N0003: "đơn hàng"
 }
 
 //Get message
