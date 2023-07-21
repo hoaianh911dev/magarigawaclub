@@ -21,8 +21,9 @@
                         />
                     </div>
                 </div>
-                <div class="group-button pb-0!">
-                    <button @click="handleSaveCustomer" :disabled="!form.birthday || !form.fullName">{{$t('groupButton.btnSave')}}</button>
+                <div class="group-input grid pb-0! pt-20">
+                    <button @click="handleSaveCustomer" :disabled="!form.birthday || !form.fullName"
+                    class="submit">{{$t('groupButton.btnSave')}}</button>
                 </div>
             </div>
         </div>
