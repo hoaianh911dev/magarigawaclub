@@ -5,5 +5,6 @@ export enum ETypeBooking {
 }
 
 export enum EStatusBooking {
-    Booked = 'booked'
+    Booked = 'booked',
+    Completed = 'completed'
 }

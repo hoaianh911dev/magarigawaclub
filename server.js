@@ -245,27 +245,27 @@ server.get('/bookings', (req, res) => {
     const dbCustomer = router.db.get('customers')
     const dbScheduleTrip = router.db.get('schedule-trip')
 
-    let lstBooking = dbBooking.map(booking => {
-        if(booking.status === status && booking.userid === parseInt(userid)) {
-            let fullname = ""
-            if(ETypeCustomer.Customer === booking.typecustomer) {
-                let customer = dbCustomer.value().find(cus => cus.id == booking.customerid)
-                fullname = customer.fullname
-            } else {
-                let customer = userDb.users.find(user => user.id == booking.customerid)
-                fullname = customer.name
-            }
-            let scheduleTrip = dbScheduleTrip.value().find(schedule => schedule.id == booking.scheduletripid)
-            return {
-                id: booking.id,
-                nameScheduleTrip: scheduleTrip?.name,
-                fromtime: scheduleTrip?.fromtime,
-                totime: scheduleTrip?.totime,
-                price: scheduleTrip?.price,
-                day: booking.orderdate,
-                fullname
-            }
+    let bookings = dbBooking.filter(booking => booking.status === status && booking.userid === parseInt(userid))
+    let lstBooking = bookings.map(booking => {
+        let fullname = ""
+        if(ETypeCustomer.Customer === booking.typecustomer) {
+            let customer = dbCustomer.value().find(cus => cus.id == booking.customerid)
+            fullname = customer.fullname
+        } else {
+            let customer = userDb.users.find(user => user.id == booking.customerid)
+            fullname = customer.name
         }
+        let scheduleTrip = dbScheduleTrip.value().find(schedule => schedule.id == booking.scheduletripid)
+        return {
+            id: booking.id,
+            nameScheduleTrip: scheduleTrip?.name,
+            fromtime: scheduleTrip?.fromtime,
+            totime: scheduleTrip?.totime,
+            price: scheduleTrip?.price,
+            day: booking.orderdate,
+            fullname
+        }
+
     })
 
     res.json(lstBooking)

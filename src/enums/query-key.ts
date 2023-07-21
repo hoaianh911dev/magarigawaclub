@@ -3,5 +3,6 @@ export enum EQueryKey {
     UnFriend = "unfriends",
     Customer = "customer",
     Vertical = "vertical",
-    TripBooked = "trip-booked"
+    TripBooked = "trip-booked",
+    TripCompleted = "trip-completed"
 }
