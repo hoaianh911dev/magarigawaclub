@@ -89,6 +89,7 @@ import { ElDatePicker } from 'element-plus'
 //const
 import { arrTime } from '../../constants/default'
 import { TScheduleTrip } from '../../types/schedule-trip'
+import { EQueryKey } from '../../enums/query-key'
 //hooks
 import { useQuery } from 'vue-query'
 //service
@@ -104,7 +105,7 @@ export default {
     setup(props) {
         const date = props.formInput.dateBook
         
-        const { data: lstData, isLoading } = useQuery("schedule-trip", getListScheduleTrip)
+        const { data: lstData, isLoading } = useQuery(EQueryKey.ScheduleTrip, getListScheduleTrip)
 
         return {
             date,

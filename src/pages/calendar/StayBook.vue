@@ -39,7 +39,8 @@ export default {
         return {
             routeName: this.$route.name,
             isStayBook: 1,
-            formInput: {}
+            formInput: {
+            }
         }
     },
     methods: {

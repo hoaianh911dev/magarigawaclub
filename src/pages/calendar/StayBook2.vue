@@ -7,6 +7,7 @@
                 type="date"
                 format="YYYY.M.DD ddd" 
                 disabled="true"
+                v-model="formInput.checkin"
                 />
             </div>
             <label class="col-span-5 title-input"></label>
@@ -19,22 +20,23 @@
                 type="date"
                 format="YYYY.M.DD ddd"
                 disabled="true"
+                v-model="formInput.checkout"
                 />
             </div>
         </div>
         <div class="group-input grid grid-cols-12">
             <label class="title-input col-span-5">{{ $t('book.lblNumberPeople') }}</label>
             <div class="col-span-7">
-                <select class="col-12" disabled="true">
-                    <option v-for="item in arrPeople" :value="item" :key="item">{{ item }}</option>
+                <select class="col-12" disabled="true" v-model="formInput.numberPeople">
+                    <option v-for="item in arrNumber" :value="item" :key="item">{{ item }}</option>
                 </select>
             </div>
         </div>
         <div class="group-input grid grid-cols-12">
             <label class="title-input col-span-5">{{ $t('book.lblRoomCount') }}</label>
             <div class="col-span-7">
-                <select class="col-12" disabled>
-                    <option v-for="item in arrPeople" :value="item" :key="item">{{ item }}</option>
+                <select class="col-12" disabled v-model="formInput.numberRoom">
+                    <option v-for="item in arrNumber" :value="item" :key="item">{{ item }}</option>
                 </select>
             </div>
         </div>
@@ -53,7 +55,7 @@
                 <h5 class="title-date">
                     {{$t('book.accommodation')}} {{ dateInfor.Date.getDate()}}/{{dateInfor.Date.getMonth() + 1}}
                 </h5>
-                <div v-for="room in typeRoom" :key="room.id" class="text-center mb-10">
+                <div v-for="room in lstTypeRoom" :key="room.id" class="text-center mb-10">
                     <button class="btn_typeRoom" :class="{'active': room.id == dateInfor.TypeRoom}"
                     @click="dateInfor.TypeRoom = room.id">
                     {{ room.name }}</button>
@@ -62,32 +64,47 @@
         </div>
         <div class="group-button">
             <button
-            @click="this.$emit('submitStayBookHandler', {numberStayBook: 3})">{{$t('groupButton.btnContinue')}}</button>
+            @click="this.$emit('submitStayBookHandler', {numberStayBook: 3})"
+         
+            >{{$t('groupButton.btnContinue')}}</button>
         </div>
     </div>
+    <Loading v-if="isLoading"></Loading>
 </template>
 
 <script lang="ts">
+//layout
 import { ElDatePicker } from 'element-plus'
-import { arrNumber, dayOfWeeks } from '../../constants/default'
+import Loading from '../../components/loading/Loading.vue'
+//const
+import { ECategory } from '../../enums/category'
+import { arrNumber } from '../../constants/default'
+import { EQueryKey } from '../../enums/query-key'
+//hooks
+import { useQuery } from 'vue-query'
+//service
+import { getListTypeRoomByType } from '../../services/bookService'
 
 export default {
     components: {
-        ElDatePicker
+        ElDatePicker,
+        Loading
     },
+
+    setup() {
+
+        const { data: lstTypeRoom, isLoading } = useQuery([EQueryKey.Category, ECategory.CategoryRoom], () => getListTypeRoomByType({type: ECategory.CategoryRoom}))
+
+        return {
+            lstTypeRoom,
+            isLoading
+        }
+    },
+
     data() {
         return {
-            arrPeople: arrNumber,
-            roomSelected: 0,
-            typeRoom: [
-                {
-                    id: 1,
-                    name: 'タイプA'
-                },{
-                    id: 2,
-                    name: 'タイプB'
-                }
-            ],
+            arrNumber: arrNumber,
+            roomSelected: 0
         }
     },
     props: {
@@ -95,24 +112,24 @@ export default {
     },
     computed: {
         loadDateInfor() {
-            this.dataInforRoom = []
-            const startDate = new Date(this.formInput.dayStart)
-            const endDate = new Date(this.formInput.dayEnd)
-            
+            this.formInput.dataInforRoom = []
+            const startDate = new Date(this.formInput.checkin)
+            const endDate = new Date(this.formInput.checkout)
+
             let currentDate = new Date(startDate)
 
             while(currentDate < endDate) {
-                for(let i = 0; i < this.formInput.roomCount; i++) {
-                    if(!this.dataInforRoom[i]) this.dataInforRoom[i] = []
-                    this.dataInforRoom[i].push({
+                for(let i = 0; i < this.formInput.numberRoom; i++) {
+                    if(!this.formInput.dataInforRoom[i]) this.formInput.dataInforRoom[i] = []
+                    this.formInput.dataInforRoom[i].push({
                         Date: new Date(currentDate),
-                        TypeRoom: '1'
+                        TypeRoom: this.lstTypeRoom ? this.lstTypeRoom[0].id : ''
                     })
                 }
                 currentDate.setDate(currentDate.getDate() + 1)
             }
 
-            return this.dataInforRoom
+            return this.formInput.dataInforRoom
         }
     }
 }

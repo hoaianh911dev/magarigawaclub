@@ -9,6 +9,11 @@ svg {
 a {
     cursor: pointer;
 }
+input:disabled, select:disabled {
+    background-color: $bg-control-disable;
+    color: $text-control-disable !important;
+    opacity: 1;
+}
 button:disabled {
     cursor: not-allowed;
     background-color: gray !important;

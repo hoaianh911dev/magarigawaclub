@@ -108,7 +108,7 @@
       "status": "New"
     }
   ],
-  "category": [
+  "categories": [
     {
       "id": "1",
       "name": "Số",
@@ -123,6 +123,25 @@
       "id": "3",
       "name": "Xe tay côn",
       "type": "CategoryVehicle"
+    },
+    {
+      "id": "TR1",
+      "name": "Phòng tiêu chuẩn",
+      "type": "CategoryRoom"
+    }, {
+      "id": "TR2",
+      "name": "Phòng đôi",
+      "type": "CategoryRoom"
+    },
+    {
+      "id": "TR3",
+      "name": "Phòng Vip1",
+      "type": "CategoryRoom"
+    },
+    {
+      "id": "TR4",
+      "name": "Phòng Vip2",
+      "type": "CategoryRoom"
     }
   ],
   "customers": [
@@ -147,6 +166,10 @@
     {
       "userid": 3,
       "friendid": 1
+    },
+    {
+      "userid": 3,
+      "friendid": 2
     }
   ],
   "bookings": [
@@ -155,7 +178,7 @@
       "vehicleid": "V1",
       "typecustomer": "1",
       "scheduletripid": "ST2",
-      "status": "booked",
+      "status": "completed",
       "userid": 3,
       "orderdate": "07/21/2023",
       "typeBook": "01",

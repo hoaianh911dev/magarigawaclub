@@ -4,5 +4,7 @@ export enum EQueryKey {
     Customer = "customer",
     Vertical = "vertical",
     TripBooked = "trip-booked",
-    TripCompleted = "trip-completed"
+    TripCompleted = "trip-completed",
+    Category = "categories",
+    ScheduleTrip = "schedule-trip"
 }
