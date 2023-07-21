@@ -1,134 +1,178 @@
 {
     "booking": [],
-    "schedule-trip": [{
-        "id": "ST0001",
+    "schedule-trip": [
+      {
+        "id": "ST1",
         "name": "COURSE CLEANING・座学",
         "status": "close",
         "maxquantity": 100,
         "fromtime": "08:00",
         "totime": "08:20",
-        "location": "1"
-    },
-    {
-        "id": "ST0002",
+        "location": "1",
+        "price": "12"
+      },
+      {
+        "id": "ST2",
         "name": "Morning A",
         "status": "booking",
         "maxquantity": 100,
         "fromtime": "09:00",
         "totime": "09:40",
-        "location": "1"
-    },
-    {
-        "id": "ST0003",
+        "location": "1",
+        "price": "11"
+      },
+      {
+        "id": "ST3",
         "name": "Morning B",
         "status": "booking",
         "maxquantity": 100,
         "fromtime": "09:40",
         "totime": "10:20",
-        "location": "2"
-    },
-    {
-        "id": "ST0004",
+        "location": "2",
+        "price": "10"
+      },
+      {
+        "id": "ST4",
         "name": "Morning A",
         "status": "booking",
         "maxquantity": 100,
         "fromtime": "10:20",
         "totime": "11:00",
-        "location": "1"
-    },
-    {
-        "id": "ST0005",
-        "name":"Morning B",
+        "location": "1",
+        "price": "15"
+      },
+      {
+        "id": "ST5",
+        "name": "Morning B",
         "status": "booking",
         "maxquantity": 100,
         "fromtime": "11:00",
         "totime": "11:40",
-        "location": "2"
-    },
-    {
-        "id": "ST0006",
+        "location": "2",
+        "price": "16"
+      },
+      {
+        "id": "ST6",
         "name": "Mix 20min",
         "status": "booking",
         "maxquantity": 100,
         "fromtime": "11:40",
         "totime": "12:00",
-        "location": "1"
-    },
-    {
-        "id": "ST0007",
+        "location": "1",
+        "price": "10"
+      },
+      {
+        "id": "ST7",
         "name": "COURSE CLEANING・座学",
         "status": "close",
         "fromtime": "12:00",
         "totime": "12:20",
-        "location": "1"
-    },
-    {
-        "id": "ST0008",
+        "location": "1",
+        "price": "12"
+      },
+      {
+        "id": "ST8",
         "name": "Beginner",
         "status": "booking",
         "fromtime": "12:20",
         "totime": "13:00",
-        "location": "1"
-    },
-    {
-        "id": "ST0009",
+        "location": "1",
+        "price": "15"
+      },
+      {
+        "id": "ST9",
         "name": "Family",
         "status": "booking",
         "fromtime": "12:20",
         "totime": "13:00",
-        "location": "2"
-    }, 
-    {
-        "id": "ST0010",
+        "location": "2",
+        "price": "16"
+      },
+      {
+        "id": "ST10",
         "name": "Afternoon A",
         "status": "booking",
         "fromtime": "13:00",
-        "totime": "13:40"
-    }],
+        "totime": "13:40",
+        "price": "20"
+      }
+    ],
     "vehicle-info": [
-        {
-            "id": "V0001",
-            "userid": "3",
-            "name": "AB",
-            "maker": "Honda",
-            "modelyear": "2023",
-            "category": "1",
-            "status": "New"
-        }
+      {
+        "id": "V1",
+        "userid": "3",
+        "name": "AB",
+        "maker": "Honda",
+        "modelyear": "2023",
+        "category": "1",
+        "status": "New"
+      }
     ],
     "category": [
-        {
-            "id": "1",
-            "name": "Số",
-            "type": "CategoryVehicle"
-        },
-        {
-            "id": "2",
-            "name": "Ga",
-            "type": "CategoryVehicle"
-        },
-        {
-            "id": "3",
-            "name": "Xe tay côn",
-            "type": "CategoryVehicle"
-        }
+      {
+        "id": "1",
+        "name": "Số",
+        "type": "CategoryVehicle"
+      },
+      {
+        "id": "2",
+        "name": "Ga",
+        "type": "CategoryVehicle"
+      },
+      {
+        "id": "3",
+        "name": "Xe tay côn",
+        "type": "CategoryVehicle"
+      }
     ],
     "customers": [
-        {
-            "id": "C0001",
-            "fullname": "Trương Thị Hoài Ánh",
-            "birthday": "09/11/1998",
-            "cityid": "001",
-            "districtid": "001",
-            "addressfull": "hcm,pn",
-            "phonenumber": "0977441281",
-            "userid": 3
-        }
+      {
+        "id": "C1",
+        "fullname": "Trương Thị Hoài Ánh",
+        "birthday": "09/11/1998",
+        "cityid": "001",
+        "districtid": "001",
+        "addressfull": "hcm,pn",
+        "phonenumber": "0977441281",
+        "userid": 3
+      },
+      {
+        "fullname": "ahasgahg",
+        "birthday": "01/01/1998",
+        "userid": 3,
+        "id": "C2"
+      }
     ],
     "friends": [
-        {
-            "userid": 3,
-            "friendid": 1
-        }
+      {
+        "userid": 3,
+        "friendid": 1
+      }
+    ],
+    "bookings": [
+      {
+        "customerid": 1,
+        "vehicleid": "V1",
+        "typecustomer": "1",
+        "scheduletripid": "ST2",
+        "status": "booked",
+        "userid": 3,
+        "orderdate": "07/21/2023",
+        "typeBook": "01",
+        "id": 1,
+        "createddate": "07/21/2023, 01:37 PM"
+      },
+      {
+        "customerid": "C1",
+        "vehicleid": "V1",
+        "typecustomer": "2",
+        "scheduletripid": "ST3",
+        "status": "booked",
+        "userid": 3,
+        "orderdate": "07/21/2023",
+        "typeBook": "01",
+        "id": 2,
+        "createddate": "07/21/2023, 01:37 PM"
+      }
     ]
-}
+  }

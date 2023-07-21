@@ -42,6 +42,7 @@ import { ResponseCode } from '../../enums/response'
 //hooks
 import useNotification from '../../hooks/useNotification'
 import useLocalStorage  from '../../hooks/useLocalStorage'
+import useHelper from '../../hooks/useHelper'
 import { useMutation, useQueryClient } from 'vue-query'
 //service
 import { createCustomer } from '../../services/customerService'
@@ -61,6 +62,7 @@ export default {
         const notify = useNotification()
         const storage = useLocalStorage()
         const queryClient = useQueryClient()
+        const helper = useHelper()
 
         const { mutate: mutateCreateCustomer, isLoading } = useMutation(createCustomer)
 
@@ -69,7 +71,8 @@ export default {
             mutateCreateCustomer,
             isLoading,
             storage,
-            queryClient
+            queryClient,
+            helper
         }
 
     },
@@ -103,15 +106,14 @@ export default {
         },
 
         handleSaveCustomer() {
-
-            const options = { year: "numeric", month: "2-digit", day: "2-digit" };
-            let birthday = (new Date(this.form.birthday)).toLocaleDateString("en-US", options)
+            
+            let birthday = this.helper.formatDateYMD(this.form.birthday)
 
             this.mutateCreateCustomer({fullname: this.form.fullName, birthday, userid: this.storage.userId}, {
                 onSuccess: (newData) => {
                    if(newData) {
                         this.notify.nofifySuccess("S_0004", ["N0001"])
-                        this.queryClient.invalidateQueries([EQueryKey.customer, this.userId])
+                        this.queryClient.invalidateQueries([EQueryKey.Customer, this.userId])
                     } else {
                         this.notify.notifyError("E_0005")
                     }

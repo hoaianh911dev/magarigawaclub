@@ -7,6 +7,7 @@ import jwt from 'jsonwebtoken'
 import Email from 'email-templates'
 
 import { ResponseCode, ResponseMessage } from './server/enums/response.js'
+import { ETypeCustomer } from './server/enums/type-customer.js'
 import helper from './server/helper.js'
 
 const server = jsonServer.create()
@@ -172,6 +173,21 @@ server.get('/unfriends', (req, res) => {
     res.json(unfriends)
 })
 
+server.get('/customers', (req, res) => {
+    
+    const { userid } = req.query
+
+    const customers = router.db.get('customers').map(customer => {
+        if(customer.userid === parseInt(userid)) {
+            return {
+                fullname: customer.fullname,
+                userid: customer.id
+            }
+        }
+    })
+    res.json(customers)
+})
+
 server.put('/friends', (req, res) => {
     const { userid } = req.query
     const { friendid } = req.body
@@ -187,7 +203,6 @@ server.put('/friends', (req, res) => {
     res.json({userid: parseInt(userid), friendid})
 })
 
-
 server.post('/customers', (req, res) => {
     
     const customers = router.db.get('customers')
@@ -199,6 +214,61 @@ server.post('/customers', (req, res) => {
     customers.push(newCustomer).write()
 
     res.json(newCustomer)
+})
+
+server.post('/bookings', (req, res) => {
+
+    const bookings = router.db.get('bookings')
+    const lastBooking = bookings.value().slice(-1)[0]
+    const lastIdBooking = lastBooking ? lastBooking.id : 0
+    let newIdBooking = lastIdBooking + 1
+
+    const lstBooking = Object.values(req.body)
+
+    const options = { year: "numeric", month: "2-digit", day: "2-digit", hour: '2-digit', minute: '2-digit' }
+    const nowDate = (new Date()).toLocaleDateString("en-US", options)
+
+    lstBooking?.forEach(element => {
+        const newBooking = { ...element, id: newIdBooking, createddate: nowDate }
+        bookings.push(newBooking).write()
+        newIdBooking ++
+    });
+
+    res.json(lstBooking)
+
+})
+
+server.get('/bookings', (req, res) => {
+
+    const { status, userid, typeBook } = req.query
+    const dbBooking = router.db.get('bookings')
+    const dbCustomer = router.db.get('customers')
+    const dbScheduleTrip = router.db.get('schedule-trip')
+
+    let bookings = dbBooking.filter(booking => booking.status === status && booking.userid === parseInt(userid))
+    let lstBooking = bookings.map(booking => {
+        let fullname = ""
+        if(ETypeCustomer.Customer === booking.typecustomer) {
+            let customer = dbCustomer.value().find(cus => cus.id == booking.customerid)
+            fullname = customer.fullname
+        } else {
+            let customer = userDb.users.find(user => user.id == booking.customerid)
+            fullname = customer.name
+        }
+        let scheduleTrip = dbScheduleTrip.value().find(schedule => schedule.id == booking.scheduletripid)
+        return {
+            id: booking.id,
+            nameScheduleTrip: scheduleTrip?.name,
+            fromtime: scheduleTrip?.fromtime,
+            totime: scheduleTrip?.totime,
+            price: scheduleTrip?.price,
+            day: booking.orderdate,
+            fullname
+        }
+
+    })
+
+    res.json(lstBooking)
 })
 
 server.use(router)

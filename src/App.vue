@@ -3,7 +3,6 @@
 import MainLayout from './layouts/MainLayout.vue'
 import AuthLayout from './layouts/AuthLayout.vue'
 import useLocalStorage from './hooks/useLocalStorage'
-import { VueQueryDevTools } from 'vue-query/devtools'
 
 export default {
     components: {
@@ -30,7 +29,6 @@ export default {
 <template>
  <MainLayout v-if="isUserLogined"></MainLayout>
  <AuthLayout v-else></AuthLayout>
- <VueQueryDevTools :initialIsOpen="true"></VueQueryDevTools>
 </template>
 
 <style scoped>
