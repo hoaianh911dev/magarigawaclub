@@ -20,7 +20,7 @@ export default function useHelper() {
     return {
         formatUnsigned,
         formatDateYMD,
-        formatDateYMDHM
+        formatDateYMDHM,
         formatYM
     }
 }
