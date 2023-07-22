@@ -30,7 +30,7 @@
                     <div class="col-span-8">
                         <select class="col-12" v-model="item.typeCustomer"
                         v-on:change="handleChangeType(item)">
-                            <option v-for="item in arrTypeUser" :value="item.key" :key="item">{{ item.value }}</option>
+                            <option v-for="typeUser in arrTypeUser" :value="typeUser.key" :key="typeUser.key">{{ item.value }}</option>
                         </select>
                     </div>
                 </div>
@@ -39,8 +39,8 @@
                     <div class="col-span-8">
                         <select class="col-12" v-model="item.customer">
                             <option></option>
-                            <option v-for="item in (item.typeCustomer === ETypeCustomer.Customer ? lstCustomer : (item.typeCustomer === ETypeCustomer.Friend ? lstFriend : null))" 
-                            :value="item.userid" :key="item">{{ item.fullname }}</option>
+                            <option v-for="user in (item.typeCustomer === ETypeCustomer.Customer ? lstCustomer : (item.typeCustomer === ETypeCustomer.Friend ? lstFriend : null))" 
+                            :value="user.userid" :key="user">{{ user.fullname }}</option>
                         </select>
                     </div>
                 </div>

@@ -1,5 +1,5 @@
 <template>
-    <el-dialog v-model="diglogVisible" :before-close="handleClose">
+    <el-dialog v-model="diglogVisible" :before-close="handleClose" v-if="diglogVisible">
         <div class="popup popup_otherGuest">
             <div class="content-popup">
                 <p class="mt-2">{{ $t('popup.noteOtherGuest') }}</p>
@@ -31,14 +31,12 @@
     <Loading v-if="isLoading"></Loading>
 </template>
 
-<script>
+<script lang="ts">
 //layout
 import Loading from '../../components/loading/Loading.vue'
 import { ElDialog, ElDatePicker } from 'element-plus'
 //const
-import { dayOfWeeks } from '../../constants/default'
 import { EQueryKey } from '../../enums/query-key'
-import { ResponseCode } from '../../enums/response'
 //hooks
 import useNotification from '../../hooks/useNotification'
 import useLocalStorage  from '../../hooks/useLocalStorage'
@@ -55,9 +53,9 @@ export default {
     },
     props: {
         isShowPopupOtherGuest: Boolean,
-        userId: String
+        userId: Number
     },
-    setup(props) {
+    setup() {
 
         const notify = useNotification()
         const storage = useLocalStorage()
@@ -80,9 +78,13 @@ export default {
         return {
             diglogVisible: false,
             birthday: '',
-            form: {}
+            form: {
+                fullName: '',
+                birthday: ''
+            }
         }
     },
+    emits: ['closeDialog'],
     watch: {
         isShowPopupOtherGuest(newValue) {
             this.diglogVisible = newValue

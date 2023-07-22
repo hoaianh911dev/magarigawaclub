@@ -15,7 +15,7 @@
                 </div>
             </div>
         </div>
-        <el-dialog v-model="diglogVisible">
+        <el-dialog v-model="diglogVisible" v-if="diglogVisible">
             <div class="popup popup_friend">
                 <div class="content-popup">
                     <div>

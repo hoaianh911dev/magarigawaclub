@@ -150,7 +150,7 @@ export default {
             return lstData?.map(function(item:TScheduleTrip) {
                 const startTime = new Date(`2023-01-01 ${item.fromtime}`)
                 const endTime = new Date(`2023-01-01 ${item.totime}`)
-                const timeDifference = endTime - startTime
+                const timeDifference = endTime.getTime() - startTime.getTime()
                 const hours = timeDifference/(3600*1000)
 
                 return {

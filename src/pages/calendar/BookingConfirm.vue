@@ -72,7 +72,7 @@ import TypeTabBooking from '../../components/tabs/TypeTabBooking.vue'
 import BookingDetailPopup from './BookingDetailPopup.vue'
 import { dayOfWeeks } from '../../constants/default'
 
-import { ElDatePicker, ElCalendar, ElButton, ElButtonGroup, ElDialog } from 'element-plus'
+import { ElCalendar, ElButton, ElButtonGroup, ElDialog } from 'element-plus'
 import { ref } from 'vue'
 
 export default {
@@ -106,7 +106,7 @@ export default {
                 }
             ],
             isShowPopup: false,
-            statusCurrent: '',
+            statusCurrent: 0,
             isShowPopupType: false
         }
     },

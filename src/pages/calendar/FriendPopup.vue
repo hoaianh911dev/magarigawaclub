@@ -1,5 +1,5 @@
 <template>
-    <el-dialog v-model="diglogVisible" :before-close="handleClose">
+    <el-dialog v-model="diglogVisible" :before-close="handleClose" v-if="diglogVisible">
         <div class="popup popup_friend">
             <div class="content-popup">
                 <h5 class="title">{{ $t('popup.tlFriend') }}</h5>
@@ -37,7 +37,7 @@
     <Loading v-if="isLoading"></Loading>
 </template>
 
-<script>
+<script lang="ts">
 import { ref } from 'vue'
 //layout
 import { ElDialog } from 'element-plus'
@@ -57,8 +57,9 @@ export default {
     },
     props: {
         isShowPopupFriend: Boolean,
-        userId: String
+        userId: Number
     },
+    emits: ['closeDialog'],
     setup(props) {
         const notify = useNotification()
         const queryClient = useQueryClient()
@@ -66,7 +67,7 @@ export default {
 
         const { data: lstUnFriend, isLoading: loadingUnFriend } = useQuery([EQueryKey.UnFriend, props.userId, txtSearch.value], () => getListUnfriendByUserId({userId: props.userId, nameSearch: txtSearch.value}))
         const { data: lstFriend, isLoading: loadingFriend } = useQuery([EQueryKey.Friend, props.userId], () => getListFriendByUserId({userId: props.userId}))
-        const { mutate: mutateUpdateFriend, loadingUpdate } = useMutation(updateFriend)
+        const { mutate: mutateUpdateFriend, isLoading: loadingUpdate } = useMutation(updateFriend)
 
         const handleSearch = () => {
             queryClient.invalidateQueries([EQueryKey.UnFriend, props.userId, '']);
