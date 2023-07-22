@@ -29,7 +29,8 @@ export default {
             default: '',
             type: String
         }
-    }
+    },
+    emits: ['updateType']
 
 }
 </script>

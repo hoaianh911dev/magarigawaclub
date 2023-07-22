@@ -30,7 +30,7 @@
                     <div class="col-span-8">
                         <select class="col-12" v-model="item.typeCustomer"
                         v-on:change="handleChangeType(item)">
-                            <option v-for="typeUser in arrTypeUser" :value="typeUser.key" :key="typeUser.key">{{ item.value }}</option>
+                            <option v-for="typeUser in arrTypeUser" :value="typeUser.key" :key="typeUser.key">{{ typeUser.value }}</option>
                         </select>
                     </div>
                 </div>
@@ -72,7 +72,7 @@ import { arrTypeUser } from '../../constants/default'
 import { ETypeCustomer } from '../../enums/type-customer'
 import { EQueryKey } from '../../enums/query-key'
 import { PATH } from '../../constants/path'
-import { ETypeBooking } from '../../enums/booking'
+import { ETypeBooking, EStatusBooking } from '../../enums/booking'
 //hooks
 import useLocalStorage from '../../hooks/useLocalStorage'
 import useHelper from '../../hooks/useHelper'
@@ -143,9 +143,9 @@ export default {
                     vehicleid: booking.vehicle,
                     typecustomer: booking.typeCustomer,
                     scheduletripid: booking.id,
-                    status: "booked",
+                    status: EStatusBooking.Booked,
                     userid: this.userId,
-                    orderdate: this.helper.formatDateYMD(this.formInput.dateBook),
+                    orderdate: this.helper.formatDateDMYString(this.formInput.dateBook),
                     typeBook: ETypeBooking.Trip
                 }
                 lstBookingNew.push(bookingNew)

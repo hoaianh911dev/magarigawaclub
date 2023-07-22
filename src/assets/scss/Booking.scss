@@ -148,3 +148,13 @@
         width: 100%;
     }
 }
+.form-book {
+    .group-building {
+        div:nth-child(3n+2) {
+            text-align: center;
+        }
+        div:nth-child(3n+3) {
+            text-align: right;
+        }
+    }
+}

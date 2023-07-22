@@ -109,7 +109,7 @@ export default {
 
         handleSaveCustomer() {
             
-            let birthday = this.helper.formatDateYMD(this.form.birthday)
+            let birthday = this.helper.formatDateDMYString(this.form.birthday)
 
             this.mutateCreateCustomer({fullname: this.form.fullName, birthday, userid: this.storage.userId}, {
                 onSuccess: (newData) => {

@@ -6,7 +6,7 @@
                 <el-date-picker
                 type="date"
                 format="YYYY.M.DD ddd" 
-                disabled="true"
+                :disabled="true"
                 v-model="formInput.checkin"
                 />
             </div>
@@ -19,7 +19,7 @@
                 <el-date-picker
                 type="date"
                 format="YYYY.M.DD ddd"
-                disabled="true"
+                :disabled="true"
                 v-model="formInput.checkout"
                 />
             </div>
@@ -42,9 +42,9 @@
         </div>
     </div>
     <div class="form-book">
-        <div class="group-input grid grid-cols-12 mb-10">
+        <div class="group-input group-building grid grid-cols-12 mb-10">
             <div v-for="(dateInfor, index) in loadDateInfor" :key="dateInfor" 
-            class="col-span-4 mb-2">
+            class="col-span-4 mb-10">
                 <button class="btn_inforRoom"
                 :class="{'active': index == roomSelected}"
                 @click="roomSelected=index">{{$t('book.building')}} {{ index+1 }}</button>
@@ -64,9 +64,8 @@
         </div>
         <div class="group-button">
             <button
-            @click="this.$emit('submitStayBookHandler', {numberStayBook: 3})"
-         
-            >{{$t('groupButton.btnContinue')}}</button>
+            @click="this.$emit('submitStayBookHandler', {numberStayBook: 3})">
+            {{$t('groupButton.btnContinue')}}</button>
         </div>
     </div>
     <Loading v-if="isLoading"></Loading>
@@ -82,39 +81,48 @@ import { arrNumber } from '../../constants/default'
 import { EQueryKey } from '../../enums/query-key'
 //hooks
 import { useQuery } from 'vue-query'
+import useHelper from '../../hooks/useHelper'
 //service
 import { getListTypeRoomByType } from '../../services/bookService'
 
 export default {
+
     components: {
         ElDatePicker,
         Loading
     },
 
+    props: {
+        formInput: Object
+    },
+
+    emits: ['submitStayBookHandler'],
+
     setup() {
+        const helper = useHelper()
 
         const { data: lstTypeRoom, isLoading } = useQuery([EQueryKey.Category, ECategory.CategoryRoom], () => getListTypeRoomByType({type: ECategory.CategoryRoom}))
 
         return {
+            helper,
             lstTypeRoom,
-            isLoading
+            isLoading,
+            arrNumber
         }
+        
     },
 
     data() {
         return {
-            arrNumber: arrNumber,
             roomSelected: 0
         }
     },
-    props: {
-        formInput: Object
-    },
+
     computed: {
         loadDateInfor() {
             this.formInput.dataInforRoom = []
-            const startDate = new Date(this.formInput.checkin)
-            const endDate = new Date(this.formInput.checkout)
+            const startDate = new Date(this.helper.formatDateMDY(this.formInput.checkin))
+            const endDate = new Date(this.helper.formatDateMDY(this.formInput.checkout))
 
             let currentDate = new Date(startDate)
 

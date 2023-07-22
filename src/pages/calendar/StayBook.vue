@@ -37,11 +37,14 @@ export default {
     },
     data() {
         return {
-            routeName: this.$route.name,
+            routeName: '',
             isStayBook: 1,
             formInput: {
             }
         }
+    },
+    created() {
+        this.routeName = this.$route.name
     },
     methods: {
         submitStayBookHandler(data) {

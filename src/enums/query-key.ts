@@ -5,6 +5,7 @@ export enum EQueryKey {
     Vertical = "vertical",
     TripBooked = "trip-booked",
     TripCompleted = "trip-completed",
+    StayBooked = "stay-booked",
     Category = "categories",
     ScheduleTrip = "schedule-trip"
 }

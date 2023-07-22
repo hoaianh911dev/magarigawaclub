@@ -70,6 +70,7 @@ export default {
         ElButton,
         ElButtonGroup
     },  
+    emits: ['submitStayBookHandler'],
 
     setup() {
         const helper = useHelper()
@@ -104,17 +105,20 @@ export default {
                 this.formInput.checkout = ''
             }
             if(!this.formInput.checkin ) {
-                this.formInput.checkin = this.helper.formatDateYMD(day)
-            } else if(this.formInput.checkin <= this.helper.formatDateYMD(day)){
-                this.formInput.checkout = this.helper.formatDateYMD(day)
+                this.formInput.checkin = this.helper.formatDateDMYString(day)
+            } else if(this.formInput.checkin <= this.helper.formatDateDMYString(day)){
+                this.formInput.checkout = this.helper.formatDateDMYString(day)
             } else {
-                this.formInput.checkin = this.helper.formatDateYMD(day)
+                this.formInput.checkin = this.helper.formatDateDMYString(day)
             }
         },
         handleSelected(day) {
-            if(new Date(this.formInput.checkin).setHours(0,0,0) == new Date(day).setHours(0,0,0)) {
+            let formatDateCheckin = this.helper.formatDateMDY(this.formInput.checkin)
+            let formatDateCheckout = this.helper.formatDateMDY(this.formInput.checkout)
+
+            if(new Date(formatDateCheckin).setHours(0,0,0) == new Date(day).setHours(0,0,0)) {
                 return true
-            } else if(new Date(this.formInput.checkin).setHours(0,0,0) < new Date(day).setHours(0,0,0) && new Date(this.formInput.checkout).setHours(0,0,0) >= new Date(day).setHours(0,0,0)) {
+            } else if(new Date(formatDateCheckin).setHours(0,0,0) < new Date(day).setHours(0,0,0) && new Date(formatDateCheckout).setHours(0,0,0) >= new Date(day).setHours(0,0,0)) {
                 return true
             }
             return false

@@ -128,7 +128,8 @@
       "id": "TR1",
       "name": "Phòng tiêu chuẩn",
       "type": "CategoryRoom"
-    }, {
+    },
+    {
       "id": "TR2",
       "name": "Phòng đôi",
       "type": "CategoryRoom"
@@ -180,10 +181,10 @@
       "scheduletripid": "ST2",
       "status": "completed",
       "userid": 3,
-      "orderdate": "07/21/2023",
+      "orderdate": "21/07/2023",
       "typeBook": "01",
       "id": 1,
-      "createddate": "07/21/2023, 01:37 PM"
+      "createddate": "21/07/2023, 01:37 PM"
     },
     {
       "customerid": "C1",
@@ -192,10 +193,54 @@
       "scheduletripid": "ST3",
       "status": "booked",
       "userid": 3,
-      "orderdate": "07/21/2023",
+      "orderdate": "21/07/2023",
       "typeBook": "01",
       "id": 2,
-      "createddate": "07/21/2023, 01:37 PM"
+      "createddate": "21/07/2023, 01:37 PM"
+    },
+    {
+      "customerid": "C1",
+      "typecustomer": "2",
+      "status": "booked",
+      "userid": 3,
+      "orderdate": "23/07/2023",
+      "typeroom": "TR1",
+      "typeBook": "02",
+      "id": 3,
+      "createddate": "23/07/2023, 01:32"
+    },
+    {
+      "customerid": "C1",
+      "typecustomer": "2",
+      "status": "booked",
+      "userid": 3,
+      "orderdate": "24/07/2023",
+      "typeroom": "TR1",
+      "typeBook": "02",
+      "id": 4,
+      "createddate": "23/07/2023, 01:32"
+    },
+    {
+      "customerid": 1,
+      "typecustomer": "1",
+      "status": "booked",
+      "userid": 3,
+      "orderdate": "23/07/2023",
+      "typeroom": "TR1",
+      "typeBook": "02",
+      "id": 5,
+      "createddate": "23/07/2023, 01:32"
+    },
+    {
+      "customerid": 1,
+      "typecustomer": "1",
+      "status": "booked",
+      "userid": 3,
+      "orderdate": "24/07/2023",
+      "typeroom": "TR1",
+      "typeBook": "02",
+      "id": 6,
+      "createddate": "23/07/2023, 01:32"
     }
   ]
 }

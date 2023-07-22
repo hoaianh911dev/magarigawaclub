@@ -36,13 +36,16 @@ export default {
     },
     data() {
         return {
-            routeName: this.$route.name,
+            routeName: '',
             isTripBook: 1,
             formInput: {
                 booking: [],
                 dateBook: this.$route.params.date || new Date()
             }
         }
+    },
+    created() {
+        this.routeName = this.$route.name
     },
     computed: {
         formatDate() {

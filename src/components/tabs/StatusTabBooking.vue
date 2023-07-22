@@ -24,7 +24,7 @@
     </div>
 </template>
 
-<script>
+<script lang="ts">
 
     export default {
         props: {
@@ -39,6 +39,7 @@
                 type: String
             }
         },
+        emits: ['updateNameActive'],
         methods: {
             changeRoute(nameRouteLast) {
                 if(this.routeName.toLowerCase().includes('stay')) {

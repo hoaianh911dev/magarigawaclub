@@ -226,7 +226,7 @@ server.post('/bookings', (req, res) => {
     const lstBooking = Object.values(req.body)
 
     const options = { year: "numeric", month: "2-digit", day: "2-digit", hour: '2-digit', minute: '2-digit' }
-    const nowDate = (new Date()).toLocaleDateString("en-US", options)
+    const nowDate = (new Date()).toLocaleDateString("en-GB", options)
 
     lstBooking?.forEach(element => {
         const newBooking = { ...element, id: newIdBooking, createddate: nowDate }
