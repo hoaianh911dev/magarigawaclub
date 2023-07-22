@@ -19,7 +19,12 @@
         z-index: 1030;
     }
     .dropdown_menu {
-        max-height: calc(100svh - 56px);
+        max-height: calc(100svh - $height-top-sm);
         overflow: auto;
+        position: fixed;
+        top: $height-top-sm;
+        left: 0;
+        background: black;
+        width: 100%;
     }
 }
