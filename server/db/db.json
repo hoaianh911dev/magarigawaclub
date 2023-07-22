@@ -127,22 +127,26 @@
     {
       "id": "TR1",
       "name": "Phòng tiêu chuẩn",
-      "type": "CategoryRoom"
+      "type": "CategoryRoom",
+      "price": "11"
     },
     {
       "id": "TR2",
       "name": "Phòng đôi",
-      "type": "CategoryRoom"
+      "type": "CategoryRoom",
+      "price": "11"
     },
     {
       "id": "TR3",
       "name": "Phòng Vip1",
-      "type": "CategoryRoom"
+      "type": "CategoryRoom",
+      "price": "11"
     },
     {
       "id": "TR4",
       "name": "Phòng Vip2",
-      "type": "CategoryRoom"
+      "type": "CategoryRoom",
+      "price": "11"
     }
   ],
   "customers": [
@@ -182,7 +186,7 @@
       "status": "completed",
       "userid": 3,
       "orderdate": "21/07/2023",
-      "typeBook": "01",
+      "typebook": "01",
       "id": 1,
       "createddate": "21/07/2023, 01:37 PM"
     },
@@ -194,7 +198,7 @@
       "status": "booked",
       "userid": 3,
       "orderdate": "21/07/2023",
-      "typeBook": "01",
+      "typebook": "01",
       "id": 2,
       "createddate": "21/07/2023, 01:37 PM"
     },
@@ -205,7 +209,7 @@
       "userid": 3,
       "orderdate": "23/07/2023",
       "typeroom": "TR1",
-      "typeBook": "02",
+      "typebook": "02",
       "id": 3,
       "createddate": "23/07/2023, 01:32"
     },
@@ -216,29 +220,29 @@
       "userid": 3,
       "orderdate": "24/07/2023",
       "typeroom": "TR1",
-      "typeBook": "02",
+      "typebook": "02",
       "id": 4,
       "createddate": "23/07/2023, 01:32"
     },
     {
       "customerid": 1,
       "typecustomer": "1",
-      "status": "booked",
+      "status": "completed",
       "userid": 3,
       "orderdate": "23/07/2023",
       "typeroom": "TR1",
-      "typeBook": "02",
+      "typebook": "02",
       "id": 5,
       "createddate": "23/07/2023, 01:32"
     },
     {
       "customerid": 1,
       "typecustomer": "1",
-      "status": "booked",
+      "status": "completed",
       "userid": 3,
       "orderdate": "24/07/2023",
       "typeroom": "TR1",
-      "typeBook": "02",
+      "typebook": "02",
       "id": 6,
       "createddate": "23/07/2023, 01:32"
     }

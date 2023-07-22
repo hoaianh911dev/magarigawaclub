@@ -240,12 +240,13 @@ server.post('/bookings', (req, res) => {
 
 server.get('/bookings', (req, res) => {
 
-    const { status, userid, typeBook } = req.query
+    const { status, userid, typebook } = req.query
     const dbBooking = router.db.get('bookings')
     const dbCustomer = router.db.get('customers')
     const dbScheduleTrip = router.db.get('schedule-trip')
+    const dbCategory = router.db.get('categories')
 
-    let bookings = dbBooking.filter(booking => booking.status === status && booking.userid === parseInt(userid))
+    let bookings = dbBooking.filter(booking => booking.status === status && booking.userid === parseInt(userid) && booking.typebook === typebook) 
     let lstBooking = bookings.map(booking => {
         let fullname = ""
         if(ETypeCustomer.Customer === booking.typecustomer) {
@@ -256,14 +257,16 @@ server.get('/bookings', (req, res) => {
             fullname = customer.name
         }
         let scheduleTrip = dbScheduleTrip.value().find(schedule => schedule.id == booking.scheduletripid)
+        let categories = dbCategory.value().find(cat => cat.id === booking.typeroom)
         return {
             id: booking.id,
             nameScheduleTrip: scheduleTrip?.name,
             fromtime: scheduleTrip?.fromtime,
             totime: scheduleTrip?.totime,
-            price: scheduleTrip?.price,
+            price: scheduleTrip?.price || categories?.price,
             day: booking.orderdate,
-            fullname
+            fullname,
+            nameRoom: categories?.name
         }
 
     })

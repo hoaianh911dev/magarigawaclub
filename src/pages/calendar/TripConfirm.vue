@@ -55,9 +55,9 @@ import { ElDialog } from 'element-plus'
 //hooks
 import useLocalStorage from '../../hooks/useLocalStorage'
 import { useQuery } from 'vue-query'
-import { ETypeBooking, EStatusBooking } from '../../enums/booking'
 //const
 import { EQueryKey } from '../../enums/query-key'
+import { ETypeBooking, EStatusBooking } from '../../enums/booking'
 //service
 import { getListBookingByStatus } from '../../services/bookService'
 
@@ -80,10 +80,13 @@ export default {
     },
     data() {
         return {
-            routeName: this.$route.name,
+            routeName: '',
             diglogVisible: false,
             bookedItem: null
         }
+    },
+    created() {
+        this.routeName = this.$route.name
     },
 }
 

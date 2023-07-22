@@ -146,7 +146,7 @@ export default {
                     status: EStatusBooking.Booked,
                     userid: this.userId,
                     orderdate: this.helper.formatDateDMYString(this.formInput.dateBook),
-                    typeBook: ETypeBooking.Trip
+                    typebook: ETypeBooking.Trip
                 }
                 lstBookingNew.push(bookingNew)
             });

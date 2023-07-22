@@ -6,18 +6,19 @@
             <div class="tab-content">
                 <div class="tab-panel">
                     <div class="wrapper lst_booked">
-                        <div class="lst_item" v-for="item in lst_booked" @click="diglogVisible=true;bookedItem=item" :key="item">
+                        <div class="lst_item" v-for="item in lstCompleted" @click="diglogVisible=true;bookedItem=item" :key="item">
                             <button class="status_finish isStay">{{$t('book.sttCompleted')}}</button>
-                            <span>{{item.content}}</span>
+                            <span>{{item.nameRoom}}</span>
                             <div class="item_calendar">{{item.day}}</div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <el-dialog v-model="diglogVisible">
+        <el-dialog v-model="diglogVisible" v-if="diglogVisible">
             <div class="popup popup_friend">
                 <div class="content-popup">
+                    <div>{{ bookedItem.nameRoom }}</div>
                     <div>
                         {{ bookedItem.content }}
                     </div>
@@ -25,7 +26,7 @@
                         {{$t('book.lblDate')}}: {{ bookedItem.day }}
                     </div>
                     <div>
-                        {{$t('popup.customer')}}1: {{ bookedItem.customer }}
+                        {{$t('popup.customer')}}: {{ bookedItem.fullname }}
                     </div>
                     <br>
                     <div>
@@ -38,52 +39,50 @@
             </div>
         </el-dialog>
     </section>
+    <Loading v-if="isLoading"></Loading>
 </template>
 
 <script lang="ts">
-
+//layout
+import Loading from '../../components/loading/Loading.vue'
 import TypeTabBooking from '../../components/tabs/TypeTabBooking.vue'
 import StatusTabBooking from '../../components/tabs/StatusTabBooking.vue'
 import { ElDialog } from 'element-plus'
+//hooks
+import useLocalStorage from '../../hooks/useLocalStorage'
+import { useQuery } from 'vue-query'
+//const
+import { EQueryKey } from '../../enums/query-key'
+import { ETypeBooking, EStatusBooking } from '../../enums/booking'
+//service
+import { getListBookingByStatus } from '../../services/bookService'
 
 export default {
     components: {
         TypeTabBooking,
         StatusTabBooking,
-        ElDialog
+        ElDialog,
+        Loading
+    },
+    setup() {
+        const storage = useLocalStorage() 
+        const { userId } = storage
+        const { data: lstCompleted, isLoading } = useQuery([EQueryKey.StayCompleted, userId], () => getListBookingByStatus({status: EStatusBooking.Completed, userid: userId, typeBook: ETypeBooking.Stay}))
+
+        return {
+            lstCompleted,
+            isLoading
+        }
     },
     data() {
         return {
-            routeName: this.$route.name,
+            routeName: '',
             diglogVisible: false,
-            bookedItem: null,
-            lst_booked: [
-                {
-                    day: '2023.4.15 sat',
-                    content: '大人2人/1泊/1室[夕食・朝食付き]',
-                    customer: 'Ánh',
-                    price: 12
-                },
-                {
-                    day: '2023.4.16 mon',
-                    content: '大人1人/2泊/2室[夕食・朝食付き]',
-                    customer: 'Thương',
-                    price: 12
-                },
-                {
-                    day: '2023.4.15 sat',
-                    content: '大人2人/1泊/1室[夕食・朝食付き]',
-                    customer: 'Ánh',
-                    price: 12
-                },
-                {
-                    day: '2023.4.16 mon',
-                    content: '大人1人/2泊/2室[夕食・朝食付き]',
-                    customer: 'Thương',
-                    price: 12
-                },
-            ],
+            bookedItem: null
         }
+    },
+    created() {
+        this.routeName = this.$route.name
     },
 }
 </script>

@@ -17,7 +17,7 @@ export const createBooking = async (params) => {
     return res.data
 }
 export const getListBookingByStatus = async (params) => {
-    const res = await axios.get(`${bookingEndpoint.booking}?status=${params.status}&userid=${params.userid}&typeBook=${params.typeBook}`)
+    const res = await axios.get(`${bookingEndpoint.booking}?status=${params.status}&userid=${params.userid}&typebook=${params.typeBook}`)
     return res.data
 }
 export const getListTypeRoomByType = async (params) => {

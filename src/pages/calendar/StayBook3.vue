@@ -176,7 +176,7 @@ export default {
                         userid: this.userId,
                         orderdate: this.helper.formatDateDMYString(room[i].Date),
                         typeroom: room[i].TypeRoom,
-                        typeBook: ETypeBooking.Stay
+                        typebook: ETypeBooking.Stay
                     }
                     lstBookingNew.push(bookingNew)
                 }
