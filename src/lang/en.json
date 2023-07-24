@@ -107,7 +107,6 @@
         "lblMinute": "minute"
     },
     "member": {
-       "regularMember": "Regular member",
        "lblName": "Name",
        "lblBirthday": "Birthday",
        "lblAddress": "Address",

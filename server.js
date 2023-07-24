@@ -276,6 +276,14 @@ server.get('/bookings', (req, res) => {
     res.json(lstBooking)
 })
 
+server.get('/users', (req, res) => {
+    const { userid } = req.query
+
+    let user = userDb.users.find(element => element.id === parseInt(userid))
+
+    res.json(user)
+})
+
 server.use(router)
 
 server.listen(3000, () => {

@@ -11,5 +11,6 @@ export enum EQueryKey {
     FacilityCompleted = "facility-completed",
     Category = "categories",
     ScheduleTrip = "schedule-trip",
-    Notice = 'notices'
+    Notice = 'notices',
+    User = 'users',
 }

@@ -32,12 +32,20 @@ export default function useHelper() {
         return - 1
     }
 
+    const formatPhone = (text) => {
+        var matchPhone = text.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/)
+        if (text.length < 11)
+            return !matchPhone[2] ? matchPhone[1] : '(' + matchPhone[1] + ') ' + matchPhone[2] + (matchPhone[3] ? '-' + matchPhone[3] : '')
+        return text
+    }
+
     return {
         formatUnsigned,
         formatDateDMYString,
         formatDateDMYHM,
         formatDateMDY,
         formatYM,
-        lastFindIndex
+        lastFindIndex,
+        formatPhone
     }
 }
