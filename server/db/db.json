@@ -1,5 +1,4 @@
 {
-  "booking": [],
   "schedule-trip": [
     {
       "id": "ST1",
@@ -291,6 +290,15 @@
       "typefacility": "CF2",
       "id": 9,
       "createddate": "24/07/2023, 13:52"
+    }
+  ],
+  "notices": [
+    {
+      "id": "N1",
+      "created": "04/03/2023 14:00",
+      "title": "Chán",
+      "content": "1 2 ba bốn ngày",
+      "userid": 3
     }
   ]
 }
