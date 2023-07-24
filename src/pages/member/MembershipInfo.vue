@@ -1,70 +1,72 @@
 <template>
     <div class="section-main section-member">
+        <div class="title_main">
+            <h2>{{ $t('member.titleMemberInfor') }}</h2>
+        </div>
         <div class="form-input">
-            <h5 class="title-input-main">{{ $t("member.lblYourName") }}</h5>
             <div class="group-input grid grid-cols-12 gap-16">
-                <div class="col-span-6">
-                    <label class="title-input">{{ $t("member.lblSurname") }}</label>
-                    <input class="form-control required" :placeholder="$t('member.lblSurname')" 
-                    name="surname" :nameControl="$t('member.lblsurname')" v-model="form.surname"/>
-                </div>
-                <div class="col-span-6">
-                    <label class="title-input">{{ $t("member.lblName") }}</label>
-                    <input class="form-control required" :placeholder="$t('member.lblName')"
-                    name="firstname" :nameControl='$t("member.lblName") ' v-model="form.name"/>
+                <div class="col-span-12">
+                    <label class="title-input">{{$t("member.lblYourName")}}
+                        <span class="note">(*)</span>
+                    </label>
+                    <input class="form-control required" :placeholder="$t('member.lblYourName')" 
+                    name="fullname" :nameControl="$t('member.lblYourName')" v-model="form.fullname"/>
                 </div>
             </div>
-            <h5 class="title-input-main">{{ $t("member.lblAddress") }}</h5>
-            <div class="group-input grid grid-cols-12">
-                <div class="col-span-6">
-                    <label class="title-input">{{$t("member.lblZipCode")}}</label>
-                    <input class="form-control required number onebyte number" :placeholder="$t('member.lblZipCode')"
-                    name="zipcode" :nameControl='$t("member.lblpostcode")' v-model="form.zipcode"
-                    maxlength="7" autocomplete="off" inputmode="numeric"/>
-                </div>
-            </div>
-            <div class="group-input grid grid-cols-12">
-                <div class="col-span-6">
-                    <label class="title-input">{{$t("member.lblCity")}}</label>
-                    <select class="required col-12" name="city" 
-                    :nameControl='$t("member.lblCity")' v-model="form.city">
-                        <option v-for="item in lstCity" :key="item" :value="item">{{ item }}</option>
-                    </select>
+            <div class="group-input grid grid-cols-12 gap-16">
+                <div class="col-span-12">
+                    <label class="title-input">{{$t("member.lblEmail")}}
+                        <span class="note">(*) {{ $t('member.lblEmailNote') }}</span>
+                    </label>
+                    <input class="form-control required" :placeholder="$t('member.lblEmail')" 
+                    name="email" :nameControl="$t('member.lblEmail')" v-model="form.email"/>
                 </div>
             </div>
             <div class="group-input grid grid-cols-12">
                 <div class="col-span-12">
-                    <label class="title-input">{{$t("member.lblAddressDetail")}}</label>
+                    <label class="title-input">{{$t("member.lblAddress")}}</label>
                     <input class="form-control required" :placeholder="$t('member.lblAddressDetail')" 
                     name="city" :nameControl='$t("member.lblAddressDetail")' v-model="form.addressDetail"/>
                 </div>
             </div>
             <div class="group-input grid grid-cols-12">
                 <div class="col-span-12">
-                    <label class="title-input">{{$t("member.lblAddressHouse")}}</label>
-                    <input class="form-control required" :placeholder="$t('member.lblAddressHouse')" 
-                    name="city" :nameControl='$t("member.lblAddressHouse")' v-model="form.addressHouse"/>
-                </div>
-            </div>
-            <div class="group-input grid grid-cols-12">
-                <div class="col-span-12">
-                    <label class="title-input">{{$t("member.lblBuildingName")}}</label>
-                    <input class="form-control required" :placeholder="$t('member.lblBuildingName')" 
-                    name="city" :nameControl='$t("member.lblBuildingName")' v-model="form.buildingName"/>
-                </div>
-            </div>
-            <div class="group-input grid grid-cols-12">
-                <div class="col-span-12">
                     <label class="title-input">{{$t("member.lblPhoneNumber")}}</label>
                     <input class="form-control required" :placeholder="$t('member.lblPhoneNumber')" 
-                    name="city" :nameControl='$t("member.lblPhoneNumber")' v-model="form.phoneNumber"/>
+                    name="phoneNumber" :nameControl='$t("member.lblPhoneNumber")' v-model="form.phoneNumber"
+                    maxlength="10"/>
                 </div>
             </div>
             <div class="group-input grid grid-cols-12">
                 <div class="col-span-12">
-                    <label class="title-input">{{$t("member.lblBirthday")}}</label>
-                    <input class="form-control required" :placeholder="$t('member.lblBirthday')" 
-                    name="city" :nameControl='$t("member.lblBirthday")' v-model="form.birthday"/>
+                    <label class="title-input">{{$t("member.lblBirthday")}}
+                        <span class="note">(*) {{ $t('member.lblBirthdayNote') }}</span>
+                    </label>
+                    <el-date-picker
+                        type="date"
+                        format="DD/MM/YYYY" 
+                        v-model="form.birthday"
+                        :disabled-date="disabledDate" />
+                </div>
+            </div>
+            <div class="group-input grid grid-cols-12">
+                <div class="col-span-12">
+                    <label class="title-input">{{$t("member.lblAvatar")}}
+                        <span class="note">(*)</span>
+                    </label>
+                    <div class="drop-image" @click="handleUpload()"
+                    @dragover="handleDragOver"
+                    @dragleave="handleDragLeave"
+                    @drop="handleDrop">
+                        <input ref="file" type="file" accept="image/*"
+                        @change="fileChange"
+                        hidden />
+                        <div class="text-32 text-center" v-if="!avatar">
+                            <div>+</div>
+                            <div class="text-14">{{ $t('member.lblDragImage') }}</div>
+                        </div>
+                        <img :src="avatar" v-else />
+                    </div>
                 </div>
             </div>
             <div class="group-button">
@@ -75,13 +77,20 @@
 </template>
 
 <script lang="ts">
+//layout
+import { ElDatePicker } from 'element-plus'
 import { PATH } from '../../constants/path'
 export default {
+    components: {
+        ElDatePicker
+    },
     data() {
         return {
             form: {},
             lstCity: ['', 'City1'],
-            PATH: PATH
+            PATH: PATH,
+            isDragging: false,
+            avatar: ''
         }
     },
     methods: {
@@ -98,6 +107,37 @@ export default {
                 birthday: this.form.birthday
             }))
             this.$router.push(PATH.membershipConfirm.url)
+        },
+        handleUpload() {
+            this.$refs.file.click()
+        },
+        fileChange(e, isDrop = false) {
+            const file = isDrop ? e.dataTransfer.files[0] : e.target.files[0]
+            if(file) {
+                this.avatar = URL.createObjectURL(file)
+            }
+        },
+        handleDragOver(e) {
+            e.preventDefault()
+            this.isDragging = true
+        },
+        handleDragLeave() {
+            this.isDragging = false
+        },
+        handleDrop(e) {
+            e.preventDefault()
+            this.fileChange(e, true)
+            this.isDragging = true
+        },
+        disabledDate(date) {
+            const dayChoose = new Date(date)
+            const dayCurrent = new Date()
+
+            const yearChoose = dayChoose.getFullYear()
+            const yearCurrent = dayCurrent.getFullYear()
+   
+            if((yearCurrent - yearChoose) < 15) return true
+            return false
         }
     },
 }

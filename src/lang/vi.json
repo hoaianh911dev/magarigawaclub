@@ -111,7 +111,7 @@
         "lblBirthday": "Ngày sinh",
         "lblAddress": "Địa chỉ",
         "lblTel": "SĐT",
-        "lblYourName": "Tên bạn",
+        "lblYourName": "Họ và tên",
         "lblSurname": "Họ",
         "lblZipCode": "Mã vùng",
         "lblCity": "Tỉnh/ Thành phố",
@@ -139,6 +139,12 @@
         "titleCheckin": "Check in",
         "lblDateCheckin": "Ngày giờ",
         "lblPlan": "Kế hoạch",
-        "lbUsageHistory": "Lịch sử sử dụng"
+        "lbUsageHistory": "Lịch sử sử dụng",
+        "lblEmail": "Email",
+        "lblAvatar": "Ảnh đại diện",
+        "lblDragImage": "Kéo hoặc nhấn để tải ảnh",
+        "lblBirthdayNote": "Chắc chắn bạn trên 15 tuổi?",
+        "lblEmailNote": "Nhập đúng format: __@__.__",
+        "titleMemberInfor": "Thông tin thành viên"
     }
 }
