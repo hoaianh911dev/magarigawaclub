@@ -6,10 +6,12 @@
             <div class="tab-content">
                 <div class="tab-panel">
                     <div class="wrapper lst_booked">
-                        <div class="lst_item" v-for="item in lstBooked" @click="diglogVisible=true;bookedItem=item" :key="item">
+                        <div class="lst_item" v-for="item in getListBooked" @click="diglogVisible=true;bookedItem=item" :key="item">
                             <button>{{$t('book.sttBooked')}}</button>
                             <span>{{item.nameRoom}}</span>
-                            <div class="item_calendar">{{item.day}}</div>
+                            <div class="item_calendar">{{item.day}}
+                                <span v-if="item.totime">- {{ item.totime }}</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -24,6 +26,7 @@
                     </div>
                     <div>
                         {{$t('book.lblDate')}}: {{ bookedItem.day }}
+                        <span v-if="bookedItem.totime">- {{ bookedItem.totime }}</span>
                     </div>
                     <div>
                         {{$t('popup.customer')}}: {{ bookedItem.fullname }}
@@ -33,7 +36,9 @@
                         {{$t('popup.fee')}}: {{ bookedItem.price }}
                     </div>
                     <div class="total_price">
-                        {{$t('popup.totalAmount')}}: {{ bookedItem.price }}
+                        {{$t('popup.totalAmount')}}: 
+                        <span v-if="bookedItem.sum">{{ bookedItem.sum }}</span>
+                        <span v-else>{{ bookedItem.price }}</span>
                     </div>
                 </div>
             </div>
@@ -50,6 +55,7 @@ import StatusTabBooking from '../../components/tabs/StatusTabBooking.vue'
 import { ElDialog } from 'element-plus'
 //hooks
 import useLocalStorage from '../../hooks/useLocalStorage'
+import useHelper from '../../hooks/useHelper'
 import { useQuery } from 'vue-query'
 //const
 import { EQueryKey } from '../../enums/query-key'
@@ -66,10 +72,12 @@ export default {
     },
     setup() {
         const storage = useLocalStorage() 
+        const helper = useHelper()
         const { userId } = storage
         const { data: lstBooked, isLoading } = useQuery([EQueryKey.StayBooked, userId], () => getListBookingByStatus({status: EStatusBooking.Booked, userid: userId, typeBook: ETypeBooking.Stay}))
 
         return {
+            helper,
             lstBooked,
             isLoading
         }
@@ -84,6 +92,32 @@ export default {
     created() {
         this.routeName = this.$route.name
     },
+    computed: {
+        getListBooked() {
+            let newLstBooked = []
+            this.lstBooked?.forEach(element => {
+                let newElement = {...element}
+
+                let indexDay = this.helper.lastFindIndex(newLstBooked, x => x.nameRoom == element.nameRoom)
+                
+                if(indexDay === -1)  newLstBooked.push(newElement)
+                else {
+                    let fromtime = new Date(this.helper.formatDateMDY(newLstBooked[indexDay].day))
+                    let totime = new Date(this.helper.formatDateMDY(element.day))
+                    
+                    if(fromtime.getDate() + 1 === totime.getDate()) {
+                        newLstBooked[indexDay].totime = element.day
+                        newLstBooked[indexDay].sum = parseFloat(newLstBooked[indexDay].price) + parseFloat(element.price)
+                    } else {
+                        newLstBooked.push(newElement)
+                    }
+                    
+                }
+            });
+
+            return newLstBooked
+        }
+    }
 }
 </script>
 <style lang="scss">

@@ -25,11 +25,19 @@ export default function useHelper() {
             
     }
 
+    const lastFindIndex = (arr, condition) => {
+        for(let  i = arr.length - 1; i >= 0; i--) {
+            if (condition(arr[i]))  return i
+        }
+        return - 1
+    }
+
     return {
         formatUnsigned,
         formatDateDMYString,
         formatDateDMYHM,
         formatDateMDY,
-        formatYM
+        formatYM,
+        lastFindIndex
     }
 }

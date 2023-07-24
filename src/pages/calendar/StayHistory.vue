@@ -6,10 +6,12 @@
             <div class="tab-content">
                 <div class="tab-panel">
                     <div class="wrapper lst_booked">
-                        <div class="lst_item" v-for="item in lstCompleted" @click="diglogVisible=true;bookedItem=item" :key="item">
+                        <div class="lst_item" v-for="item in getListCompleted" @click="diglogVisible=true;bookedItem=item" :key="item">
                             <button class="status_finish isStay">{{$t('book.sttCompleted')}}</button>
                             <span>{{item.nameRoom}}</span>
-                            <div class="item_calendar">{{item.day}}</div>
+                            <div class="item_calendar">{{item.day}}
+                                <span v-if="item.totime">- {{ item.totime }}</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -24,6 +26,7 @@
                     </div>
                     <div>
                         {{$t('book.lblDate')}}: {{ bookedItem.day }}
+                        <span v-if="bookedItem.totime">- {{ bookedItem.totime }}</span>
                     </div>
                     <div>
                         {{$t('popup.customer')}}: {{ bookedItem.fullname }}
@@ -33,7 +36,9 @@
                         {{$t('popup.fee')}}: {{ bookedItem.price }}
                     </div>
                     <div class="total_price">
-                        {{$t('popup.totalAmount')}}: {{ bookedItem.price }}
+                        {{$t('popup.totalAmount')}}: 
+                        <span v-if="bookedItem.sum">{{ bookedItem.sum }}</span>
+                        <span v-else>{{ bookedItem.price }}</span>
                     </div>
                 </div>
             </div>
@@ -50,6 +55,7 @@ import StatusTabBooking from '../../components/tabs/StatusTabBooking.vue'
 import { ElDialog } from 'element-plus'
 //hooks
 import useLocalStorage from '../../hooks/useLocalStorage'
+import useHelper from '../../hooks/useHelper'
 import { useQuery } from 'vue-query'
 //const
 import { EQueryKey } from '../../enums/query-key'
@@ -66,10 +72,12 @@ export default {
     },
     setup() {
         const storage = useLocalStorage() 
+        const helper = useHelper()
         const { userId } = storage
         const { data: lstCompleted, isLoading } = useQuery([EQueryKey.StayCompleted, userId], () => getListBookingByStatus({status: EStatusBooking.Completed, userid: userId, typeBook: ETypeBooking.Stay}))
 
         return {
+            helper,
             lstCompleted,
             isLoading
         }
@@ -84,6 +92,31 @@ export default {
     created() {
         this.routeName = this.$route.name
     },
+    computed: {
+        getListCompleted() {
+            let newLstCompleted = []
+            this.lstCompleted?.forEach(element => {
+                let newElement = {...element}
+
+                let indexDay = this.helper.lastFindIndex(newLstCompleted, x => x.nameRoom == element.nameRoom)
+                
+                if(indexDay === -1)  newLstCompleted.push(newElement)
+                else {
+                    let fromtime = new Date(this.helper.formatDateMDY(newLstCompleted[indexDay].day))
+                    let totime = new Date(this.helper.formatDateMDY(element.day))
+                    
+                    if(fromtime.getDate() + 1 === totime.getDate()) {
+                        newLstCompleted[indexDay].totime = element.day
+                        newLstCompleted[indexDay].sum = parseFloat(newLstCompleted[indexDay].price) + parseFloat(element.price)
+                    } else {
+                        newLstCompleted.push(newElement)
+                    }
+                }
+            });
+
+            return newLstCompleted
+        }
+    }
 }
 </script>
 
