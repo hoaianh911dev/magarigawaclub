@@ -11,6 +11,7 @@
                             <span>{{item.nameScheduleTrip}}</span>
                             <div class="item_calendar">{{item.day}} {{ item.fromtime }} - {{ item.totime }}</div>
                         </div>
+                        <NoRecords v-if="lstCompleted.length == 0"></NoRecords>
                     </div>
                 </div>
             </div>
@@ -49,6 +50,7 @@
 <script lang="ts">
 //layout
 import Loading from '../../components/loading/Loading.vue'
+import NoRecords from '../../components/no_records/NoRecords.vue'
 import TypeTabBooking from '../../components/tabs/TypeTabBooking.vue'
 import StatusTabBooking from '../../components/tabs/StatusTabBooking.vue'
 import { ElDialog } from 'element-plus'
@@ -66,7 +68,8 @@ export default {
         TypeTabBooking,
         StatusTabBooking,
         ElDialog,
-        Loading
+        Loading,
+        NoRecords
     },
     setup() {
         const storage = useLocalStorage()  

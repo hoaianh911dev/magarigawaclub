@@ -7,7 +7,7 @@
                 <el-date-picker
                 v-model="formInput.dateBook"
                 type="date"
-                format="YYYY.M.DD ddd" 
+                format="DD/MM/YYYY" 
                 :disabled-date="disabledDate" />
             </div>
         </div>

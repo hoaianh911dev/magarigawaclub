@@ -32,11 +32,7 @@ export default {
         return {
             routeName: this.$route.name,
             isFacilityBook: 1,
-            formInput: {
-                date: '2023/03/03',
-                shisetsuId: "プライベートダイニング ",
-                time: '14:00 - 15:00'
-            }
+            formInput: {}
         }
     },
     methods: {

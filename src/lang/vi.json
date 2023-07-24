@@ -1,4 +1,7 @@
 {
+    "layout": {
+        "lblNoRecord": "Không có dữ liệu tìm thấy"
+    },
     "header": {
         "book": "Đặt trước",
         "bookingConfirm": "Xác Nhận Đặt Phòng",
@@ -45,7 +48,6 @@
         "btnSearch": "Tìm kiếm",
         "btnContinue": "Tiếp tục",
         "btnFriend": "Bạn bè",
-        "btnAddMember": "Thêm thành viên",
         "btnSave": "Lưu",
         "btnClose": "Đóng",
         "btnMembershipCard": "Thẻ thành viên",

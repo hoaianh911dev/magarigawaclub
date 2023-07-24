@@ -257,7 +257,7 @@ server.get('/bookings', (req, res) => {
             fullname = customer.name
         }
         let scheduleTrip = dbScheduleTrip.value().find(schedule => schedule.id == booking.scheduletripid)
-        let categories = dbCategory.value().find(cat => cat.id === booking.typeroom)
+        let categories = dbCategory.value().find(cat => cat.id === booking.typeroom || cat.id === booking.typefacility)
         return {
             id: booking.id,
             nameScheduleTrip: scheduleTrip?.name,
@@ -266,7 +266,9 @@ server.get('/bookings', (req, res) => {
             price: scheduleTrip?.price || categories?.price,
             day: booking.orderdate,
             fullname,
-            nameRoom: categories?.name
+            nameRoom: categories?.name,
+            nameFacility: categories?.name,
+            timeFacility: booking.time
         }
 
     })

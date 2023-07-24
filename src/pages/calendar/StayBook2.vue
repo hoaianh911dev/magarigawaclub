@@ -5,7 +5,7 @@
             <div class="col-span-7 custome_date">
                 <el-date-picker
                 type="date"
-                format="YYYY.M.DD ddd" 
+                format="DD/MM/YYYY" 
                 :disabled="true"
                 v-model="formInput.checkin"
                 />
@@ -18,7 +18,7 @@
             <div class="col-span-7 custome_date" style="margin-top:10px">
                 <el-date-picker
                 type="date"
-                format="YYYY.M.DD ddd"
+                format="DD/MM/YYYY"
                 :disabled="true"
                 v-model="formInput.checkout"
                 />
@@ -121,8 +121,8 @@ export default {
     computed: {
         loadDateInfor() {
             this.formInput.dataInforRoom = []
-            const startDate = new Date(this.helper.formatDateMDY(this.formInput.checkin))
-            const endDate = new Date(this.helper.formatDateMDY(this.formInput.checkout))
+            const startDate = new Date(this.formInput.checkin)
+            const endDate = new Date(this.formInput.checkout)
 
             let currentDate = new Date(startDate)
 

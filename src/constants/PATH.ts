@@ -32,7 +32,8 @@ export const PATH = {
     tripBook: {
         url: '/trip-book/:date?',
         name: 'TripBook',
-        title: 'Trip Book'
+        title: 'Trip Book',
+        type: 'trip'
     },
     tripConfirm: {
         url: '/trip-confirm',
@@ -47,7 +48,8 @@ export const PATH = {
     stayBook: {
         url: '/stay-book',
         name: 'StayBook',
-        title: 'Stay Book'
+        title: 'Stay Book',
+        type: 'stay'
     },
     stayConfirm: {
         url: '/stay-confirm',
@@ -62,7 +64,8 @@ export const PATH = {
     facilityBook: {
         url: '/facility-book',
         name: 'FacilityBook',
-        title: 'Facility Book'
+        title: 'Facility Book',
+        type: 'facility'
     },
     facilityConfirm: {
         url: '/facility-confirm',

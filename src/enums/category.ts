@@ -1,4 +1,5 @@
 export enum ECategory {
     CategoryVehicle = "CategoryVehicle",
-    CategoryRoom = "CategoryRoom"
+    CategoryRoom = "CategoryRoom",
+    CategoryFacility = "CategoryFacility"
 }

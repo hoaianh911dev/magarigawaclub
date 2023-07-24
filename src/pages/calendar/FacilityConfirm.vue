@@ -6,11 +6,12 @@
             <div class="tab-content">
                 <div class="tab-panel">
                     <div class="wrapper lst_booked">
-                        <div class="lst_item" v-for="item in lst_booked" @click="diglogVisible=true;bookedItem=item" :key="item">
+                        <div class="lst_item" v-for="item in lstBooking" @click="diglogVisible=true;bookedItem=item" :key="item">
                             <button>{{$t('book.sttBooked')}}</button>
-                            <span>{{item.content}}</span>
-                            <div class="item_calendar">{{item.day}} {{ item.time }}</div>
+                            <span>{{item.nameFacility}}</span>
+                            <div class="item_calendar">{{item.day}} {{ item.timeFacility }}</div>
                         </div>
+                        <NoRecords v-if="lstBooking.length == 0"></NoRecords>
                     </div>
                 </div>
             </div>
@@ -19,13 +20,13 @@
             <div class="popup popup_friend">
                 <div class="content-popup">
                     <div>
-                        {{ bookedItem.content }}
+                        {{ bookedItem.nameFacility }}
                     </div>
                     <div>
-                        {{$t('book.lblDate')}}: {{ bookedItem.day }}
+                        {{$t('book.lblDate')}}: {{ bookedItem.day }} {{ bookedItem.timeFacility }}
                     </div>
                     <div>
-                        {{$t('popup.customer')}}: {{ bookedItem.customer }}
+                        {{$t('popup.customer')}}: {{ bookedItem.fullname }}
                     </div>
                     <br>
                     <div>
@@ -38,56 +39,52 @@
             </div>
         </el-dialog>
     </section>
+    <Loading v-if="isLoading"></Loading>
 </template>
 
 <script lang="ts">
-
+//layout
+import Loading from '../../components/loading/Loading.vue'
+import NoRecords from '../../components/no_records/NoRecords.vue'
 import TypeTabBooking from '../../components/tabs/TypeTabBooking.vue'
 import StatusTabBooking from '../../components/tabs/StatusTabBooking.vue'
 import { ElDialog } from 'element-plus'
+//hooks
+import useLocalStorage from '../../hooks/useLocalStorage'
+import { useQuery } from 'vue-query'
+//const
+import { EQueryKey } from '../../enums/query-key'
+import { ETypeBooking, EStatusBooking } from '../../enums/booking'
+//service
+import { getListBookingByStatus } from '../../services/bookService'
 
 export default {
     components: {
         TypeTabBooking,
         StatusTabBooking,
-        ElDialog
+        ElDialog,
+        Loading,
+        NoRecords
+    },
+    setup() {
+        const storage = useLocalStorage()  
+        const { userId } = storage
+        const { data: lstBooking, isLoading } = useQuery([EQueryKey.FacilityBooked, userId], () => getListBookingByStatus({status: EStatusBooking.Booked, userid: userId, typeBook: ETypeBooking.Facility}))
+
+        return {
+            lstBooking,
+            isLoading
+        }
     },
     data() {
         return {
-            routeName: this.$route.name,
+            routeName: '',
             diglogVisible: false,
-            bookedItem: null,
-            lst_booked: [
-                {
-                    day: '2023.4.15 sat',
-                    content: 'テニスコート',
-                    customer: 'Ánh',
-                    time: '14:00 - 15:00',
-                    price: 12
-                },
-                {
-                    day: '2023.4.15 sat',
-                    content: 'テニスコート',
-                    customer: 'Thương',
-                    time: '14:00 - 15:00',
-                    price: 12
-                },
-                {
-                    day: '2023.4.15 sat',
-                    content: 'テニスコート',
-                    customer: 'Ánh',
-                    time: '14:00 - 15:00',
-                    price: 12
-                },
-                {
-                    day: '2023.4.15 sat',
-                    content: 'テニスコート',
-                    customer: 'Ánh',
-                    time: '14:00 - 15:00',
-                    price: 12
-                },
-            ],
+            bookedItem: null
         }
+    },
+    created() {
+        this.routeName = this.$route.name
     },
 }
 </script>

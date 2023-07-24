@@ -3,10 +3,7 @@
         <TypeTabBooking :routeName="routeName" :isBooking="true"
         :type="type" @updateType="updateType"></TypeTabBooking>
         <div class="tab-group">
-            <StatusTabBooking v-if="type" :routeName="routeName"
-            :tabNameActive="tabNameActive" :isBooking="true"
-            @updateNameActive="updateNameActive"></StatusTabBooking>
-            <div class="tab-content" :class="{'hidden_status': !type}">
+            <div class="tab-content hidden_status">
                 <div class="tab-panel">
                     <div class="form-calendar">
                         <div class="custome-header-calendar">
@@ -55,9 +52,9 @@
             <div class="popup popup_type">
                 <div class="content-popup">
                     <div class="text-center">
-                        <button class="btnType btnTypeTrip" @click="$router.push(`/trip-book/${dateType}`)">{{ $t('groupButton.btnTrip') }}</button>
-                        <button class="btnType btnTypeStay" @click="$router.push('/stay-book')">{{ $t('groupButton.btnStay') }}</button>
-                        <button class="btnType btnTypeFacility" @click="$router.push('/facility-book')">{{ $t('groupButton.btnFacility') }}</button>
+                        <button class="btnType btnTypeTrip" @click="$router.push(PATH.tripBook.url.replace(':date?', dateType))">{{ $t('groupButton.btnTrip') }}</button>
+                        <button class="btnType btnTypeStay" @click="$router.push(PATH.stayBook.url)">{{ $t('groupButton.btnStay') }}</button>
+                        <button class="btnType btnTypeFacility" @click="$router.push(PATH.facilityBook.url)">{{ $t('groupButton.btnFacility') }}</button>
                     </div>
                 </div>
             </div>
@@ -66,14 +63,17 @@
 </template>
 
 <script lang="ts">
-
+import { ref } from 'vue'
+//layout
 import StatusTabBooking from '../../components/tabs/StatusTabBooking.vue'
 import TypeTabBooking from '../../components/tabs/TypeTabBooking.vue'
 import BookingDetailPopup from './BookingDetailPopup.vue'
-import { dayOfWeeks } from '../../constants/default'
-
 import { ElCalendar, ElButton, ElButtonGroup, ElDialog } from 'element-plus'
-import { ref } from 'vue'
+//const
+import { dayOfWeeks } from '../../constants/default'
+import { PATH } from '../../constants/path'
+
+
 
 export default {
     components: {
@@ -119,6 +119,7 @@ export default {
             titlePage: 'CALENDAR',
             calendar,
             selectDate,
+            PATH
         };
     },
     methods: {
@@ -143,6 +144,16 @@ export default {
             }
             if (new Date(day).setHours(0, 0, 0, 0) < new Date().setHours(0, 0, 0, 0))
                 return
+            if(this.type == PATH.tripBook.type) {
+                this.$router.push(PATH.tripBook.url.replace(':date?', day))
+                return
+            } else if(this.type == PATH.stayBook.type) {
+                this.$router.push(PATH.stayBook.url)
+                return
+            } else if(this.type == PATH.facilityBook.type) {
+                this.$router.push(PATH.facilityBook.url)
+                return
+            }
             this.isShowPopupType = true
             this.dateType = day        
         },

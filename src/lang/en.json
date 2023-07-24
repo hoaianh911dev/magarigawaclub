@@ -1,4 +1,7 @@
 {
+    "layout": {
+        "lblNoRecord": "No records found"
+    },
     "header": {
         "book": "Book",
         "bookingConfirm": "Booking Confirm",
@@ -45,7 +48,6 @@
         "btnSearch": "Search",
         "btnContinue": "Continue",
         "btnFriend": "Friend",
-        "btnAddMember": "Add members",
         "btnSave": "Save",
         "btnClose": "Close",
         "btnMembershipCard": "Membership Card",

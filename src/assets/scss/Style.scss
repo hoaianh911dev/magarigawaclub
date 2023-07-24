@@ -245,15 +245,6 @@ button:disabled {
     min-width: 90px;
     padding: 7px 10px;
 }
-.add-guest {
-    text-align: center;
-    text-decoration: underline;
-    margin-top: 5px;
-    color: $bg-trip;
-    a {
-        cursor: pointer;
-    }
-}
 //swapper
 .el-overlay {
     z-index: 1 !important;

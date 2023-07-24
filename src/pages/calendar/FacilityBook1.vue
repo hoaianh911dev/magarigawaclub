@@ -5,28 +5,25 @@
             <div class="col-span-8 custome_date">
                 <el-date-picker
                 type="date"
-                format="YYYY.M.D ddd" 
+                format="DD/MM/YYYY" 
                 :disabled-date="disabledDate" 
+                v-model="formInput.dateBook"
                 />
             </div>
         </div>
-        <div class="group-input grid grid-cols-12">
+        <div class="group-input grid grid-cols-12 mb-10">
             <label class="col-span-4 title-input">{{$t('book.lblFacility')}}</label>
             <div class="col-span-8">
-                <select>
-                    <option v-for="item in lstShisetsu" :value="item" :key="item">{{ item }}</option>
+                <select v-model="formInput.category">
+                    <option v-for="item in lstCategoryFacility" :value="item" :key="item.id">{{ item.name }}</option>
                 </select>
             </div>
-        </div>
-        <div class="group-button">
-            <button class="btnSearch"
-            @click="searchHandler()">{{$t('groupButton.btnSearch')}}</button>
         </div>
     </div>
     <div class="line"></div>
     <div class="form-book">
         <p class="mb-20">{{$t('book.facilityNote')}}</p>
-        <div v-for="item in arrDateChoose" :key="item" class="text-center mb-10">
+        <div v-for="item in arrTimeFacility" :key="item" class="text-center mb-10">
             <button class="btnChooseTime"
             @click="formInput.time = item"
             :class="{'active': formInput.time === item}">{{ item }}</button>
@@ -34,24 +31,42 @@
     </div>
     <div class="group-button submit-form">
         <button
-            @click="this.$emit('submitFacilityBookHandler', 2)">{{$t('groupButton.btnContinue')}}</button>
+            @click="this.$emit('submitFacilityBookHandler', 2)"
+            :disabled="!formInput.time || !formInput.category || !formInput.dateBook">{{$t('groupButton.btnContinue')}}</button>
     </div>
+    <Loading v-if="isLoading"></Loading>
 </template>
 
 <script lang="ts">
-import { ElDatePicker } from 'element-plus';
+//layout
+import { ElDatePicker } from 'element-plus'
+import Loading from '../../components/loading/Loading.vue'
+//hooks
+import { useQuery } from 'vue-query'
+//const
+import { ECategory } from '../../enums/category'
+import { EQueryKey } from '../../enums/query-key'
+import { arrTimeFacility } from '../../constants/default'
+//service
+import { getListTypeRoomByType } from '../../services/bookService'
 export default {
     components: {
-        ElDatePicker
+        ElDatePicker,
+        Loading
     },  
-    data() {
-        return {
-            lstShisetsu: ['','プライベートダイニング ','テニスコート'],
-            arrDateChoose: null
-        }
-    },
+    emits: ['submitFacilityBookHandler'],
     props: {
         formInput: Object,
+    },
+    setup() {
+
+        const { data: lstCategoryFacility, isLoading } = useQuery([EQueryKey.Category, ECategory.CategoryFacility], () => getListTypeRoomByType({type: ECategory.CategoryFacility}))
+
+        return {
+            lstCategoryFacility,
+            isLoading,
+            arrTimeFacility
+        }
     },
     methods: {
         disabledDate(date) {
@@ -59,10 +74,7 @@ export default {
             let formatDay2 = new Date().setHours(0, 0, 0, 0)
             if (formatDay1 < formatDay2) return true
             return false
-        },
-        searchHandler() {
-            this.arrDateChoose = ['14:00 - 15:00', '15:00 - 16:00']
-        },
+        }
     },
 }
 </script>

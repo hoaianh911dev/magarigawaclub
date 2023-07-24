@@ -105,16 +105,16 @@ export default {
                 this.formInput.checkout = ''
             }
             if(!this.formInput.checkin ) {
-                this.formInput.checkin = this.helper.formatDateDMYString(day)
-            } else if(this.formInput.checkin <= this.helper.formatDateDMYString(day)){
-                this.formInput.checkout = this.helper.formatDateDMYString(day)
+                this.formInput.checkin = day
+            } else if(this.formInput.checkin <= day){
+                this.formInput.checkout = day
             } else {
-                this.formInput.checkin = this.helper.formatDateDMYString(day)
+                this.formInput.checkin = day
             }
         },
         handleSelected(day) {
-            let formatDateCheckin = this.helper.formatDateMDY(this.formInput.checkin)
-            let formatDateCheckout = this.helper.formatDateMDY(this.formInput.checkout)
+            let formatDateCheckin = this.formInput.checkin
+            let formatDateCheckout = this.formInput.checkout
 
             if(new Date(formatDateCheckin).setHours(0,0,0) == new Date(day).setHours(0,0,0)) {
                 return true

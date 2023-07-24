@@ -147,6 +147,18 @@
       "name": "Phòng Vip2",
       "type": "CategoryRoom",
       "price": "11"
+    },
+    {
+      "id": "CF1",
+      "name": "Lều",
+      "type": "CategoryFacility",
+      "price": "11"
+    },
+    {
+      "id": "CF2",
+      "name": "Bếp nướng",
+      "type": "CategoryFacility",
+      "price": "11"
     }
   ],
   "customers": [
@@ -267,6 +279,18 @@
       "typebook": "02",
       "id": 6,
       "createddate": "23/07/2023, 01:32"
+    },
+    {
+      "customerid": 1,
+      "typecustomer": "1",
+      "status": "booked",
+      "userid": 3,
+      "orderdate": "27/07/2023",
+      "typebook": "03",
+      "time": "10:00 - 12:00",
+      "typefacility": "CF2",
+      "id": 9,
+      "createddate": "24/07/2023, 13:52"
     }
   ]
 }
