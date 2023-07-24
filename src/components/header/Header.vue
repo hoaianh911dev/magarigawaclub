@@ -1,7 +1,7 @@
 <template>
     <header id="Header" class="fixed-top">
         <nav class="navbar  bg-black">
-            <div class="mx-auto max-w-95% px-2 sm:px-6 lg:px-8">
+            <div class="mx-auto px-20 sm:px-6 lg:px-8">
                 <div class="relative flex justify-between items-center h-56">
                     <a class="absolute inset-y-0 btnBack items-center flex" @click="$router.go(-1)" v-if="isBtnBack">
                         <i class="fa-solid fa-chevron-left"></i>

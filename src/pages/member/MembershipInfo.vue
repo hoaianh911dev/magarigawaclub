@@ -70,7 +70,7 @@
                 </div>
             </div>
             <div class="group-button">
-                <button @click="submitForm">{{$t('groupButton.btnConfirmation')}}</button>
+                <button @click="handleSubmit">{{$t('groupButton.btnSave')}}</button>
             </div>
         </div>
     </div>
@@ -87,25 +87,23 @@ export default {
     data() {
         return {
             form: {},
-            lstCity: ['', 'City1'],
-            PATH: PATH,
             isDragging: false,
             avatar: ''
         }
     },
     methods: {
-        submitForm() {
-            localStorage.setItem('member_info', JSON.stringify({
-                surname: this.form.surname,
-                name: this.form.name,
-                zipcode: this.form.zipcode,
-                city: this.form.city,
-                addressDetail: this.form.addressDetail,
-                addressHouse: this.form.addressHouse,
-                buildingName: this.form.buildingName,
-                phoneNumber: this.form.phoneNumber,
-                birthday: this.form.birthday
-            }))
+        handleSubmit() {
+            // localStorage.setItem('member_info', JSON.stringify({
+            //     surname: this.form.surname,
+            //     name: this.form.name,
+            //     zipcode: this.form.zipcode,
+            //     city: this.form.city,
+            //     addressDetail: this.form.addressDetail,
+            //     addressHouse: this.form.addressHouse,
+            //     buildingName: this.form.buildingName,
+            //     phoneNumber: this.form.phoneNumber,
+            //     birthday: this.form.birthday
+            // }))
             this.$router.push(PATH.membershipConfirm.url)
         },
         handleUpload() {
