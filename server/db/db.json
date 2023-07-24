@@ -298,7 +298,11 @@
       "created": "04/03/2023 14:00",
       "title": "Chán",
       "content": "1 2 ba bốn ngày",
-      "userid": 3
+      "userid": 3,
+      "lstImg": [
+        "/img/notice1.jpg",
+        "/img/notice11.jpg"
+      ]
     }
   ]
 }

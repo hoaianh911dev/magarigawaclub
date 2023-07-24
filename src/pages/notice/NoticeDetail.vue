@@ -1,44 +1,48 @@
 <template>
     <div class="section-main section-notice">
-        <ThumbGallery :lstImage="lstImage" :isShowThumbSub="true"></ThumbGallery>
+        <ThumbGallery :lstImage="notice[0].lstImg" :isShowThumbSub="true"
+        v-if="notice[0].lstImg"></ThumbGallery>
         <div class="content-main">
-            <div class="datetime">{{ notice.datetime }}</div>
-            <div class="title">{{ notice.title }}</div>
-            <div class="content">{{ notice.content }}</div>
+            <div class="datetime">{{ notice[0].created }}</div>
+            <div class="title">{{ notice[0].title }}</div>
+            <div class="content">{{ notice[0].content }}</div>
         </div>
     </div>
+    <Loading v-if="isLoading"></Loading>
 </template>
 
 <script lang="ts">
+//layout
+import Loading from '../../components/loading/Loading.vue'
 import ThumbGallery from '../../components/image/ThumbGallery.vue'
+//hooks
+import useLocalStorage from '../../hooks/useLocalStorage'
+import { useQuery } from 'vue-query'
+import { useRoute } from 'vue-router'
+//const
+import { EQueryKey } from '../../enums/query-key'
+//service
+import { getNoticeById } from '../../services/noticeService'
+
 export default {
     components: {
-        ThumbGallery
+        ThumbGallery,
+        Loading
     },
-    data() {
+    setup() {
+        const storage = useLocalStorage()  
+        const route = useRoute()
+        const { userId } = storage
+        const noticeId = route.params.id
+
+        const { data: lstNotice, isLoading } = useQuery([EQueryKey.Notice, userId, noticeId], () => getNoticeById({id: noticeId}))
+
         return {
-            lstImage: ['https://swiperjs.com/demos/images/nature-1.jpg', 
-                'https://swiperjs.com/demos/images/nature-2.jpg',
-                'https://swiperjs.com/demos/images/nature-3.jpg',
-                'https://swiperjs.com/demos/images/nature-4.jpg',
-                'https://swiperjs.com/demos/images/nature-5.jpg',
-                'https://swiperjs.com/demos/images/nature-6.jpg',
-                'https://swiperjs.com/demos/images/nature-7.jpg',
-                'https://swiperjs.com/demos/images/nature-8.jpg',
-                'https://swiperjs.com/demos/images/nature-10.jpg'],
-            notice: {
-                datetime: '2022.4.1 wed 14:00',
-                title: 'サーキット定期点検のお知らせ',
-                content: `サーキット定期点検のお知らせ
-                サーキット定期点検のお知らせサーキット定期点検 のお知らせサーキッ
-                ト定期点検のお知らせサーキッ ト定期点検のお知らせサーキット定期点検
-                のお知ら せサーキット定期点検のお知らせサーキット定期点 検のお知らせサ
-                ーキット定期点検のお知らせサー キット定期点検のお知らせサーキット定期点検のお
-                 知らせサーキット定期点検のお知らせサーキット定 期点検のお知らせサーキット
-                 定期点検のお知らせ サーキット定期点検のお知らせ`
-            }
+            isLoading,
+            notice: lstNotice,
+            noticeId
         }
-    },
+    }
 }
 </script>
 
