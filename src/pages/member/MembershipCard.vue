@@ -4,29 +4,29 @@
             <div class="logo">
                 <img src="/img/logobl.png" />
             </div>
-            <div class="mt-10 text-center capitalize">{{ user.type }}</div>
+            <div class="mt-10 text-center capitalize">{{ user?.type }}</div>
             <div class="mt-10">
-                <vue-qrcode :value="user.id" class="m-auto"
+                <vue-qrcode :value="user?.id" class="m-auto"
                 :options="{ width: 130 }"></vue-qrcode>
             </div>
             <div class="mt-14">
-                <img :src="user.avatar" class="m-auto border-50%"/>
+                <img :src="user?.avatar" class="m-auto border-50%"/>
             </div>
             <div class="grid grid-cols-12 infor-item">
                 <div class="col-span-3">{{ $t('member.lblName')}}</div>
-                <div class="col-span-9">{{ user.name }}</div>
+                <div class="col-span-9">{{ user?.name }}</div>
             </div>
             <div class="grid grid-cols-12 infor-item">
                 <div class="col-span-3">{{ $t('member.lblBirthday')}}</div>
-                <div class="col-span-9">{{ user.birthday }}</div>
+                <div class="col-span-9">{{ user?.birthday }}</div>
             </div>
             <div class="grid grid-cols-12 infor-item">
                 <div class="col-span-3">{{ $t('member.lblAddress')}}</div>
-                <div class="col-span-9">{{ user.address }}</div>
+                <div class="col-span-9">{{ user?.address }}</div>
             </div>
             <div class="grid grid-cols-12 infor-item">
                 <div class="col-span-3">{{ $t('member.lblTel') }}</div>
-                <div class="col-span-9">{{ formatBirthday(user.phonenumber) }}</div>
+                <div class="col-span-9" v-if="user">{{ formatBirthday(user?.phonenumber) }}</div>
             </div>
         </div>
         <div class="button-group">

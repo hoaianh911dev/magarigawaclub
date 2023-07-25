@@ -1,12 +1,14 @@
 <template>
     <div class="section-main section-notice">
-        <ThumbGallery :lstImage="notice[0].lstImg" :isShowThumbSub="true"
-        v-if="notice[0].lstImg"></ThumbGallery>
-        <div class="content-main">
-            <div class="datetime">{{ notice[0].created }}</div>
-            <div class="title">{{ notice[0].title }}</div>
-            <div class="content">{{ notice[0].content }}</div>
-        </div>
+        <template v-if="notice">
+            <ThumbGallery :lstImage="notice[0]?.lstImg" :isShowThumbSub="true"
+            v-if="notice[0]?.lstImg"></ThumbGallery>
+            <div class="content-main">
+                <div class="datetime">{{ notice[0].created }}</div>
+                <div class="title">{{ notice[0].title }}</div>
+                <div class="content">{{ notice[0].content }}</div>
+            </div>
+        </template>
     </div>
     <Loading v-if="isLoading"></Loading>
 </template>
