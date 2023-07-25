@@ -227,6 +227,7 @@
         border-radius: 15px;
         position: relative;
         overflow: hidden;
+        max-width: 100%;
         &> div {
             position: absolute;
             top: 50%;

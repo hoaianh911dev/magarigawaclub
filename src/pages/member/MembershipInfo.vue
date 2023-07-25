@@ -4,7 +4,7 @@
             <h2>{{ $t('member.titleMemberInfor') }}</h2>
         </div>
         <div class="form-input">
-            <div class="group-input grid grid-cols-12 gap-16">
+            <div class="group-input grid grid-cols-12">
                 <div class="col-span-12">
                     <label class="title-input">{{$t("member.lblYourName")}}
                         <span class="note">(*)</span>
@@ -13,7 +13,7 @@
                     name="fullname" :nameControl="$t('member.lblYourName')" v-model="form.fullname"/>
                 </div>
             </div>
-            <div class="group-input grid grid-cols-12 gap-16">
+            <div class="group-input grid grid-cols-12">
                 <div class="col-span-12">
                     <label class="title-input">{{$t("member.lblEmail")}}
                         <span class="note">(*) {{ $t('member.lblEmailNote') }}</span>

@@ -13,7 +13,7 @@
                                 <span v-if="item.totime">- {{ item.totime }}</span>
                             </div>
                         </div>
-                        <NoRecords v-if="getListCompleted.length == 0"></NoRecords>
+                        <NoRecords v-if="getListCompleted?.length == 0 && !isLoading"></NoRecords>
                     </div>
                 </div>
             </div>

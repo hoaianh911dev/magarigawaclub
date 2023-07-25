@@ -11,7 +11,7 @@
                             <span>{{item.nameScheduleTrip}}</span>
                             <div class="item_calendar">{{item.day}} {{ item.fromtime }} - {{ item.totime }}</div>
                         </div>
-                        <NoRecords v-if="lstCompleted.length == 0"></NoRecords>
+                        <NoRecords v-if="lstCompleted?.length == 0 && !isLoading"></NoRecords>
                     </div>
                 </div>
             </div>
