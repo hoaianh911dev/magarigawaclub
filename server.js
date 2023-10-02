@@ -122,24 +122,24 @@ server.put('/auth/updatePassword', (req, res) => {
     })
 })
 
-server.use(/^(?!.*auth).*$/, (req, res, next) => {
-    if(req.headers.authorization === undefined || req.headers.authorization.split(' ')[0] !== 'Bearer') {
-        const status = ResponseCode.UnAuthorized
-        const code = ResponseCode.BadAuthorizationHeader
-        const message = ResponseMessage.BadAuthorizationHeader
-        res.status(status).json({code, message})
-        return
-    }
-    try {
-        verifyToken(req.headers.authorization.split(' ')[1])
-        next()
-    } catch(err) {
-        const status = ResponseCode.UnAuthorized
-        const code = ResponseCode.AccessTokenNotValid
-        const message = ResponseMessage.AccessTokenNotValid
-        res.status(status).json({code, message})
-    }
-})
+// server.use(/^(?!.*auth).*$/, (req, res, next) => {
+//     if(req.headers.authorization === undefined || req.headers.authorization.split(' ')[0] !== 'Bearer') {
+//         const status = ResponseCode.UnAuthorized
+//         const code = ResponseCode.BadAuthorizationHeader
+//         const message = ResponseMessage.BadAuthorizationHeader
+//         res.status(status).json({code, message})
+//         return
+//     }
+//     try {
+//         verifyToken(req.headers.authorization.split(' ')[1])
+//         next()
+//     } catch(err) {
+//         const status = ResponseCode.UnAuthorized
+//         const code = ResponseCode.AccessTokenNotValid
+//         const message = ResponseMessage.AccessTokenNotValid
+//         res.status(status).json({code, message})
+//     }
+// })
 
 server.get('/friends', (req, res) => {
     const { userid } = req.query
