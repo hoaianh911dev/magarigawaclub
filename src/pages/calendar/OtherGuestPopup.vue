@@ -132,6 +132,6 @@ export default {
 
 </script>
 
-<style lang="scss">
-    @import "../../assets/scss/popup.scss";
+<style lang="scss" scoped>
+    @import "../../assets/scss/Popup.scss";
 </style>
