@@ -31,7 +31,7 @@
     </el-dialog>
 </template>
 
-<script>
+<script lang="ts">
 
 import { dayOfWeeks } from '../../constants/default'
 import { ElDialog } from 'element-plus';
@@ -62,13 +62,13 @@ export default {
     computed: {
         formatDate() {
             const date = new Date(this.dayChoose.date)
-            return `${date.getFullYear()}.${date.getMonth()+1}.${date.getDate()} ${daysOfWeek[date.getDay()]}`
+            return `${date.getFullYear()}.${date.getMonth()+1}.${date.getDate()} ${dayOfWeeks[date.getDay()]}`
         },
         formatDateDiff() {
             const dateStart = new Date(this.dayChoose.dayStart)
             const dateEnd = new Date(this.dayChoose.dayEnd)
 
-            return `${dateStart.getFullYear()}.${dateStart.getMonth()+1}.${dateStart.getDate()} ${daysOfWeek[dateStart.getDay()]} ~ ${dateEnd.getFullYear()}.${dateEnd.getMonth()+1}.${dateEnd.getDate()} ${daysOfWeek[dateEnd.getDay()]}`
+            return `${dateStart.getFullYear()}.${dateStart.getMonth()+1}.${dateStart.getDate()} ${dayOfWeeks[dateStart.getDay()]} ~ ${dateEnd.getFullYear()}.${dateEnd.getMonth()+1}.${dateEnd.getDate()} ${dayOfWeeks[dateEnd.getDay()]}`
         }
     },
     watch: {
