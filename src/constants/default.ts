@@ -1,6 +1,6 @@
 export const DEFAULT_TITLE = 'MAGARIGAWACLUB'
 
-export const BASE_URL_API = `${location.protocol}//${location.hostname}:3000/`
+export const BASE_URL_API = `${location.protocol}//${location.hostname}/server/`
 
 export const DEFAUT_LANGUAGE = 'vi'
 
