@@ -1,6 +1,7 @@
 import fs from 'fs'
 import jsonServer from 'json-server'
 import bodyParser from 'body-parser'
+import cors from 'cors'
 
 import jwt from 'jsonwebtoken'
 
@@ -36,6 +37,7 @@ const email = new Email({
 server.use(bodyParser.urlencoded({extended: true}))
 server.use(bodyParser.json())
 server.use(jsonServer.defaults());
+server.use(cors());
 
 const SECRET_KEY = '123456789'
 const expiresIn = '1h'
