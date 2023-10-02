@@ -144,7 +144,6 @@
         "lblAvatar": "Avatar",
         "lblDragImage": "Drag or press to upload image",
         "lblBirthdayNote": "Are you sure you are over 15 years old?",
-        "lblEmailNote": "Please enter the correct format __@__.__",
         "titleMemberInfor": "Member Information"
     }
 }

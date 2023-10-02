@@ -16,7 +16,7 @@
             <div class="group-input grid grid-cols-12">
                 <div class="col-span-12">
                     <label class="title-input">{{$t("member.lblEmail")}}
-                        <span class="note">(*) {{ $t('member.lblEmailNote') }}</span>
+                        <span class="note">(*)</span>
                     </label>
                     <input class="form-control required" :placeholder="$t('member.lblEmail')" 
                     name="email" :nameControl="$t('member.lblEmail')" v-model="form.email"/>
