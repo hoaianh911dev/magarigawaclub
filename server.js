@@ -122,7 +122,7 @@ server.put('/auth/updatePassword', (req, res) => {
     })
 })
 
-server.use(/^\/server\/auth.*$/, (req, res, next) => {
+server.use(/^(?!.*auth).*$/, (req, res, next) => {
     if(req.headers.authorization === undefined || req.headers.authorization.split(' ')[0] !== 'Bearer') {
         const status = ResponseCode.UnAuthorized
         const code = ResponseCode.BadAuthorizationHeader
