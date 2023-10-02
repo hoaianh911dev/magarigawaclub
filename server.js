@@ -2,6 +2,12 @@ import fs from 'fs'
 import jsonServer from 'json-server'
 import bodyParser from 'body-parser'
 import cors from 'cors'
+import path from 'path'
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 import jwt from 'jsonwebtoken'
 
@@ -13,7 +19,7 @@ import helper from './server/helper.js'
 
 const server = jsonServer.create()
 
-const router = jsonServer.router('./server/db/db.json')
+const router = jsonServer.router(path.join(__dirname, 'server', 'db', 'db.json'))
 const fileName = './server/db/users.json'
 const userDb = JSON.parse(fs.readFileSync(fileName))
 
