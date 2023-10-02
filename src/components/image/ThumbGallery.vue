@@ -79,7 +79,7 @@ export default {
     },
 
     props: {
-        lstImage: Array,
+        lstImage: Array<string>,
         isShowThumbSub: Boolean
     },
 
