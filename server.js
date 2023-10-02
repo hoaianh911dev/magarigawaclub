@@ -20,7 +20,7 @@ import helper from './server/helper.js'
 const server = jsonServer.create()
 
 const router = jsonServer.router(path.join(__dirname, 'server', 'db', 'db.json'))
-const fileName = './server/db/users.json'
+const fileName = path.join(__dirname, 'server', 'db', 'users.json')
 const userDb = JSON.parse(fs.readFileSync(fileName))
 
 const email = new Email({
